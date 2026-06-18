@@ -295,6 +295,7 @@ footer strong { color:var(--text-s);font-weight:500; }
   .ctrl .rdout{min-width:auto;}
   .apc-grid{grid-template-columns:1fr;}
 }
+
 </style>
 </head>
 <body>
@@ -685,9 +686,6 @@ footer strong { color:var(--text-s);font-weight:500; }
 
   <!-- TOPIC: Investment Vehicles -->
   <div id="invest-vehicles" class="topic tactive">
-    <div class="insight insight-teal">
-      <p><strong>Five ways people put money to work.</strong> As a beginner, most experts point to <em>index funds</em> first — they spread your money across hundreds of companies with one purchase. Savings accounts are for money you need soon. Crypto and single stocks are the risky end — learn them, but don't bet money you can't lose.</p>
-    </div>
     <div class="asset-filter-row">
       <button class="afilt aon" onclick="filterAssets('all',this)">All</button>
       <button class="afilt" onclick="filterAssets('low',this)">Low risk</button>
@@ -1002,6 +1000,7 @@ footer strong { color:var(--text-s);font-weight:500; }
   <p>Before making real money moves, talk to a parent, teacher, or trusted adult.</p>
 </footer>
 
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
 // ---- PANEL + TOPIC NAV ----
@@ -1220,7 +1219,6 @@ function showRisk(key, el) {
     <p style="font-size:14px;color:var(--text-s);line-height:1.65"><strong style="color:var(--text)">The trade-off:</strong> ${d.tradeoff}</p>`;
 }
 
-// Asset grid
 const riskDot = {low:'#378ADD',medium:'#EF9F27',high:'#E24B4A'};
 const assets = [
   {id:'cds',name:'Savings account',icon:'ti-piggy-bank',type:'Cash',risk:'low',riskN:1,ret:'3–5%',retN:4,liq:'Anytime',min:'$0',horizon:'0–2 years',rl:'Very Low',starter:false,
