@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Teen Money Lab — Learn money skills</title>
+<title>Teen Money Lab — Build money confidence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -22,12 +22,42 @@
   --surface:#fff;--surface-alt:#F7F6F3;
   --border:rgba(0,0,0,0.09);--border-s:rgba(0,0,0,0.17);
   --r:10px;--rl:14px;--rpill:999px;
+  /* theme-swappable surface tokens */
+  --header-bg:rgba(255,255,255,0.82);
+  --hpillar-bg:rgba(255,255,255,0.80);
+  --hpillar-border:rgba(255,255,255,0.90);
+  --tnav-bg:rgba(255,255,255,0.55);
+  --tnav-hover-bg:rgba(255,255,255,0.90);
+  --landing-start:#eef6e4;--landing-mid:#e8f2fc;--landing-end:#f7f6f3;
 }
+
+/* ── DARK THEME ─────────────────────────────────────── */
+[data-theme="dark"] {
+  --gray-50:#0f0f14;--gray-100:#252530;--gray-800:#e4e4e0;
+  --text:#e6e6e2;--text-s:#909090;--text-m:#606060;
+  --surface:#1c1c24;--surface-alt:#24242e;
+  --border:rgba(255,255,255,0.07);--border-s:rgba(255,255,255,0.14);
+  --header-bg:rgba(20,20,28,0.88);
+  --hpillar-bg:rgba(40,40,52,0.90);
+  --hpillar-border:rgba(255,255,255,0.08);
+  --tnav-bg:rgba(255,255,255,0.06);
+  --tnav-hover-bg:rgba(255,255,255,0.12);
+  --landing-start:#12151c;--landing-mid:#0f1118;--landing-end:#0f0f14;
+  /* tonal backgrounds — dark-tinted */
+  --green-50:rgba(99,153,34,0.18);--green-600:#7dbb30;--green-800:#a8d65e;
+  --blue-50:rgba(55,138,221,0.18);--blue-600:#5298e0;--blue-800:#7db8f5;
+  --teal-50:rgba(29,158,117,0.18);--teal-600:#2ab890;--teal-800:#5ecbaa;
+  --amber-50:rgba(239,159,39,0.18);--amber-600:#f0aa20;--amber-800:#f5c35a;
+  --red-50:rgba(226,75,74,0.18);--red-600:#e86565;--red-800:#f07575;
+  --purple-50:rgba(127,119,221,0.18);--purple-600:#8a80d8;--purple-800:#afa8f5;
+}
+
+
 html { scroll-behavior:smooth; }
 body { font-family:'Inter',system-ui,sans-serif;font-size:17px;line-height:1.7;color:var(--text);background:var(--gray-50);min-height:100vh; }
 
 /* HEADER */
-header { background:rgba(255,255,255,0.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.6);padding:0 1.5rem;display:flex;align-items:center;justify-content:center;gap:1rem;height:48px;position:sticky;top:0;z-index:100; }
+header { background:var(--header-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border-s);padding:0 1.5rem;display:flex;align-items:center;justify-content:center;gap:1rem;height:48px;position:sticky;top:0;z-index:100; }
 .logo { font-size:15px;font-weight:700;letter-spacing:-0.02em;color:var(--text);text-decoration:none; }
 .logo span { background:linear-gradient(135deg,var(--teal-400),var(--blue-400));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
 .tagline { font-size:12px;color:var(--text-m); }
@@ -38,8 +68,8 @@ header { background:rgba(255,255,255,0.82);backdrop-filter:blur(14px);-webkit-ba
     radial-gradient(ellipse 70% 80% at 10% 0%, rgba(99,153,34,0.18) 0%, transparent 50%),
     radial-gradient(ellipse 60% 70% at 90% 0%, rgba(55,138,221,0.18) 0%, transparent 50%),
     radial-gradient(ellipse 50% 60% at 50% 100%, rgba(29,158,117,0.12) 0%, transparent 50%),
-    linear-gradient(180deg,#eef6e4 0%,#e8f2fc 45%,#f7f6f3 100%);
-  border-bottom:1px solid rgba(0,0,0,0.06);
+    linear-gradient(180deg,var(--landing-start) 0%,var(--landing-mid) 45%,var(--landing-end) 100%);
+  border-bottom:1px solid var(--border);
 }
 .landing-inner { position:relative;z-index:1;max-width:960px;margin:0 auto;padding:1rem 1.5rem 0.75rem; }
 
@@ -48,12 +78,20 @@ header { background:rgba(255,255,255,0.82);backdrop-filter:blur(14px);-webkit-ba
 .hero-text { width:100%; }
 .hero h1 { font-size:clamp(22px,3.5vw,30px);font-weight:700;letter-spacing:-0.02em;line-height:1.2;margin-bottom:0.25rem;color:var(--gray-800); }
 .hero-sub { font-size:14px;color:var(--text-s);line-height:1.5;margin:0 auto;max-width:480px; }
-.hero-pillars { display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:min(100%,400px);margin:0 auto; }
-.hpillar { background:rgba(255,255,255,0.8);backdrop-filter:blur(8px);border-radius:var(--r);padding:0.625rem 0.5rem;text-align:center;border:2px solid rgba(255,255,255,0.9);box-shadow:0 2px 8px rgba(0,0,0,0.05);transition:all 0.15s;cursor:pointer;font-family:inherit;appearance:none;-webkit-appearance:none; }
-.hpillar:hover { transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,0.08); }
+.hero-pillars { display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:min(100%,500px);margin:0 auto; }
+.hpillar { background:var(--hpillar-bg);backdrop-filter:blur(8px);border-radius:var(--rl);padding:0.875rem 0.625rem 0.75rem;text-align:center;border:2px solid var(--hpillar-border);box-shadow:0 2px 8px rgba(0,0,0,0.05);transition:all 0.15s;cursor:pointer;font-family:inherit;appearance:none;-webkit-appearance:none; }
+.hpillar:hover { transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,0.09); }
 .hpillar:focus-visible { outline:2px solid var(--teal-400);outline-offset:2px; }
-.hpillar-icon { font-size:20px;display:block;margin-bottom:2px;line-height:1; }
-.hpillar-name { font-size:13px;font-weight:600;letter-spacing:-0.01em; }
+.hpillar-icon { font-size:24px;display:block;margin-bottom:4px;line-height:1; }
+.hpillar-name { font-size:14px;font-weight:700;letter-spacing:-0.01em;display:block; }
+.hpillar-desc { font-size:11px;display:block;margin-top:3px;line-height:1.35;font-weight:400;opacity:0.72; }
+.hpillar.active .hpillar-desc { opacity:0.88; }
+/* Secondary hero chips (Concepts + Quiz) */
+.hero-chips { display:flex;justify-content:center;gap:8px;margin-top:7px;flex-wrap:wrap; }
+.hero-chip { display:inline-flex;align-items:center;gap:6px;padding:6px 18px;border-radius:var(--rpill);border:1.5px solid var(--border-s);background:var(--surface);color:var(--text-s);font-size:12px;font-weight:500;font-family:inherit;cursor:pointer;transition:all 0.14s; }
+.hero-chip:hover { background:var(--surface-alt);color:var(--text); }
+.hero-chip.chip-concepts.con-active { background:var(--purple-50);color:var(--purple-800);border-color:var(--purple-400);font-weight:600; }
+.hero-chip.chip-quiz.con-active { background:var(--teal-50);color:var(--teal-800);border-color:var(--teal-400);font-weight:600; }
 .hpillar-make { border-bottom:3px solid var(--green-400); }
 .hpillar-make .hpillar-name { color:var(--green-800); }
 .hpillar-save { border-bottom:3px solid var(--blue-400); }
@@ -92,8 +130,8 @@ header { background:rgba(255,255,255,0.82);backdrop-filter:blur(14px);-webkit-ba
 .topic-nav-wrap { display:flex;justify-content:center;padding:0.625rem 0 0;min-height:36px; }
 .topic-nav-side { display:none;flex-wrap:wrap;justify-content:center;gap:5px;max-width:100%; }
 .topic-nav-side.visible { display:flex; }
-.topic-nav-side .tnav { display:inline-block;padding:5px 12px;border-radius:var(--rpill);font-size:12px;font-weight:500;cursor:pointer;border:none;background:rgba(255,255,255,0.55);color:var(--text-s);font-family:inherit;transition:all 0.12s;white-space:nowrap; }
-.topic-nav-side .tnav:hover { background:rgba(255,255,255,0.9);color:var(--text); }
+.topic-nav-side .tnav { display:inline-block;padding:5px 12px;border-radius:var(--rpill);font-size:12px;font-weight:500;cursor:pointer;border:none;background:var(--tnav-bg);color:var(--text-s);font-family:inherit;transition:all 0.12s;white-space:nowrap; }
+.topic-nav-side .tnav:hover { background:var(--tnav-hover-bg);color:var(--text); }
 .topic-nav-side .tnav.ton { background:var(--surface);color:var(--text);font-weight:600;box-shadow:0 1px 6px rgba(0,0,0,0.07); }
 .tnav-group { flex-basis:100%;text-align:center;font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-m);padding:0.375rem 0 0;margin-top:0.125rem;border-top:1px dashed rgba(0,0,0,0.08); }
 
@@ -267,12 +305,53 @@ header { background:rgba(255,255,255,0.82);backdrop-filter:blur(14px);-webkit-ba
 .red-flag ul { padding-left:17px; }
 .red-flag li { font-size:13px;color:var(--red-600);margin-bottom:4px; }
 
+/* CREDIT CARD COMPARISON */
+.cc-compare { display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:1.25rem 0; }
+.cc-card { border-radius:var(--rl);padding:1.25rem 1rem;text-align:center;border:2px solid var(--border); }
+.cc-card.cc-basic { background:var(--surface-alt);border-color:var(--border-s); }
+.cc-card.cc-smart { background:var(--blue-50);border-color:var(--blue-400); }
+.cc-card-label { font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-m);margin-bottom:8px; }
+.cc-card.cc-smart .cc-card-label { color:var(--blue-600); }
+.cc-pct { font-size:38px;font-weight:700;letter-spacing:-0.03em;line-height:1; }
+.cc-card.cc-basic .cc-pct { color:var(--text-s); }
+.cc-card.cc-smart .cc-pct { color:var(--blue-600); }
+.cc-back-label { font-size:13px;color:var(--text-m);margin-bottom:14px; }
+.cc-spend { font-size:12px;color:var(--text-m);margin-bottom:4px; }
+.cc-earn { font-size:24px;font-weight:700;letter-spacing:-0.02em; }
+.cc-card.cc-basic .cc-earn { color:var(--text); }
+.cc-card.cc-smart .cc-earn { color:var(--blue-800); }
+.cc-vs { display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--text-m);align-self:center; }
+.cc-compare-wrap { position:relative; }
+
+/* NVIDIA EXAMPLE */
+.nvda-box { background:linear-gradient(135deg,var(--teal-50) 0%,var(--blue-50) 100%);border:2px solid var(--teal-400);border-radius:var(--rl);padding:1.5rem 1rem;margin:1.25rem 0;text-align:center; }
+.nvda-then-now { display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:0.75rem; }
+.nvda-bubble { border-radius:var(--rl);padding:1rem 1.25rem;min-width:120px; }
+.nvda-then-b { background:var(--surface);border:1.5px solid var(--border-s); }
+.nvda-now-b { background:var(--teal-400);border:1.5px solid var(--teal-600); }
+.nvda-lbl { font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px; }
+.nvda-then-b .nvda-lbl { color:var(--text-m); }
+.nvda-now-b .nvda-lbl { color:rgba(255,255,255,0.8); }
+.nvda-amt { font-size:28px;font-weight:700;letter-spacing:-0.02em;line-height:1; }
+.nvda-then-b .nvda-amt { color:var(--text); }
+.nvda-now-b .nvda-amt { color:#fff; }
+.nvda-yr { font-size:11px;margin-top:2px; }
+.nvda-then-b .nvda-yr { color:var(--text-m); }
+.nvda-now-b .nvda-yr { color:rgba(255,255,255,0.75); }
+.nvda-arrow { font-size:22px;color:var(--teal-600); }
+.nvda-mult { font-size:13px;font-weight:600;color:var(--teal-800);margin-top:4px; }
+
+/* THEME TOGGLE */
+.theme-toggle { margin-left:auto;width:32px;height:32px;border-radius:50%;border:1px solid var(--border-s);background:var(--surface);color:var(--text-s);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;flex-shrink:0; }
+.theme-toggle:hover { background:var(--surface-alt);color:var(--text);border-color:var(--border-s); }
+.theme-toggle svg { width:15px;height:15px;display:block; }
+
 /* FOOTER */
 footer { border-top:1px solid var(--border);background:var(--surface);text-align:center;padding:2rem 1.5rem;font-size:13px;color:var(--text-m); }
 footer p { margin-bottom:4px; }
 footer strong { color:var(--text-s);font-weight:500; }
 @media(max-width:768px){
-  .hero-pillars{grid-template-columns:repeat(2,1fr);width:min(100%,280px);}
+  .hero-pillars{grid-template-columns:repeat(3,1fr);width:min(100%,360px);}
   .topic-nav-side .tnav{padding:5px 10px;font-size:11px;}
   .content-area{padding:1rem 1rem 2rem;}
   .concepts-layout{flex-direction:column;margin:0;}
@@ -287,9 +366,11 @@ footer strong { color:var(--text-s);font-weight:500; }
   .landing-inner{padding:0.75rem 1rem 0.625rem;}
   .hero h1{font-size:20px;}
   .hero-sub{font-size:13px;}
-  .hpillar{padding:0.5rem 0.375rem;}
-  .hpillar-icon{font-size:18px;}
+  .hero-pillars{width:min(100%,320px);gap:7px;}
+  .hpillar{padding:0.625rem 0.375rem 0.5rem;}
+  .hpillar-icon{font-size:20px;}
   .hpillar-name{font-size:12px;}
+  .hpillar-desc{display:none;}
   .ctrl{flex-wrap:wrap;}
   .ctrl label{min-width:100%;}
   .ctrl .rdout{min-width:auto;}
@@ -302,21 +383,45 @@ footer strong { color:var(--text-s);font-weight:500; }
 
 <header>
   <a class="logo" href="#">Teen <span>Money</span> Lab</a>
-  <span class="tagline">Money skills for grades 9–12</span>
+  <span class="tagline">Practical money skills for grades 9–12</span>
+  <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    </svg>
+  </button>
 </header>
 
 <div class="landing">
   <div class="landing-inner">
     <div class="landing-top">
       <div class="hero-text">
-        <h1>Learn money skills.</h1>
-        <p class="hero-sub">Real tools for earning, saving, and investing — no judgment, start where you are.</p>
+        <h1>Build money confidence.</h1>
+        <p class="hero-sub">Practical tools for earning, saving, and investing — start with what you know and grow from there.</p>
       </div>
       <div class="hero-pillars" role="tablist" aria-label="Main sections">
-        <button class="hpillar hpillar-make" role="tab" aria-selected="false" onclick="showPanel('make',this)"><span class="hpillar-icon">💸</span><span class="hpillar-name">Earn</span></button>
-        <button class="hpillar hpillar-save" role="tab" aria-selected="false" onclick="showPanel('save',this)"><span class="hpillar-icon">🏦</span><span class="hpillar-name">Save</span></button>
-        <button class="hpillar hpillar-invest active" role="tab" aria-selected="true" onclick="showPanel('invest',this)"><span class="hpillar-icon">📈</span><span class="hpillar-name">Invest</span></button>
-        <button class="hpillar hpillar-concepts" role="tab" aria-selected="false" onclick="showPanel('concepts',this)"><span class="hpillar-icon">💡</span><span class="hpillar-name">Concepts</span></button>
+        <button class="hpillar hpillar-make" role="tab" aria-selected="false" onclick="showPanel('make',this)">
+          <span class="hpillar-icon">💸</span>
+          <span class="hpillar-name">Earn</span>
+          <span class="hpillar-desc">Jobs &amp; paychecks</span>
+        </button>
+        <button class="hpillar hpillar-save" role="tab" aria-selected="false" onclick="showPanel('save',this)">
+          <span class="hpillar-icon">🏦</span>
+          <span class="hpillar-name">Save</span>
+          <span class="hpillar-desc">Budget &amp; goals</span>
+        </button>
+        <button class="hpillar hpillar-invest active" role="tab" aria-selected="true" onclick="showPanel('invest',this)">
+          <span class="hpillar-icon">📈</span>
+          <span class="hpillar-name">Invest</span>
+          <span class="hpillar-desc">Grow your money</span>
+        </button>
+      </div>
+      <div class="hero-chips">
+        <button class="hero-chip chip-concepts" id="concepts-chip" onclick="showPanel('concepts',this)" aria-label="Open key concepts">
+          💡 <strong>Concepts</strong> — key ideas explained simply
+        </button>
+        <button class="hero-chip chip-quiz" id="quiz-chip" onclick="showPanel('quiz',this)" aria-label="Take the money quiz">
+          🎯 <strong>Quiz</strong> — test what you know
+        </button>
       </div>
     </div>
     <div class="topic-nav-wrap" id="topic-nav-wrap">
@@ -324,13 +429,11 @@ footer strong { color:var(--text-s);font-weight:500; }
         <button class="tnav ton" onclick="showTopic('make','skill-calc',this)">What could I earn?</button>
         <button class="tnav" onclick="showTopic('make','hustles',this)">Side hustles</button>
         <button class="tnav" onclick="showTopic('make','paycheck',this)">First paycheck 101</button>
-        <button class="tnav" onclick="showTopic('make','quiz-make',this)">Quiz</button>
       </div>
       <div id="tnav-save" class="topic-nav-side">
-        <button class="tnav ton" onclick="showTopic('save','budget',this)">Budget builder</button>
+        <button class="tnav ton" onclick="showTopic('save','smart',this)">Save the Smart way</button>
+        <button class="tnav" onclick="showTopic('save','budget',this)">Budget builder</button>
         <button class="tnav" onclick="showTopic('save','emergency',this)">Emergency stash</button>
-        <button class="tnav" onclick="showTopic('save','goals',this)">Save for something</button>
-        <button class="tnav" onclick="showTopic('save','quiz-save',this)">Quiz</button>
         <span class="tnav-group">Money hygiene</span>
         <button class="tnav" onclick="showTopic('save','credit',this)">Credit score 101</button>
         <button class="tnav" onclick="showTopic('save','identity',this)">Scams & identity theft</button>
@@ -338,10 +441,7 @@ footer strong { color:var(--text-s);font-weight:500; }
       </div>
       <div id="tnav-invest" class="topic-nav-side visible">
         <button class="tnav ton" onclick="showTopic('invest','vehicles',this)">Investment types</button>
-        <button class="tnav" onclick="showTopic('invest','compound',this)">How money grows</button>
-        <button class="tnav" onclick="showTopic('invest','simulator',this)">Your money at work</button>
-        <button class="tnav" onclick="showTopic('invest','risk-chooser',this)">Risk vs. reward</button>
-        <button class="tnav" onclick="showTopic('invest','quiz-invest',this)">Quiz</button>
+        <button class="tnav" onclick="showTopic('invest','compound',this)">Magic of Compounding</button>
       </div>
     </div>
   </div>
@@ -434,31 +534,86 @@ footer strong { color:var(--text-s);font-weight:500; }
   </div>
 
   <!-- TOPIC: Quiz -->
-  <div id="make-quiz-make" class="topic">
-    <div class="quiz-q">
-      <p class="qtext">You tutor 4 hours a week at $18/hr. How much do you earn in a month (4 weeks)?</p>
-      <button class="qopt" onclick="ans(this,'wrong','mq1')">$72</button>
-      <button class="qopt" onclick="ans(this,'correct','mq1')">$288</button>
-      <button class="qopt" onclick="ans(this,'wrong','mq1')">$180</button>
-      <div class="qexp" id="mq1-exp">4 hrs × $18 = $72/week. $72 × 4 weeks = $288/month. Over a school year that's $2,880 — enough for a phone, concert tickets, or the start of a savings account.</div>
-    </div>
-    <div class="quiz-q">
-      <p class="qtext">Your gross paycheck is $400. Why might your take-home be only $340?</p>
-      <button class="qopt" onclick="ans(this,'wrong','mq2')">Your employer is keeping some for themselves</button>
-      <button class="qopt" onclick="ans(this,'correct','mq2')">Taxes are automatically withheld from your paycheck</button>
-      <button class="qopt" onclick="ans(this,'wrong','mq2')">You owe money from last month</button>
-      <div class="qexp" id="mq2-exp">Federal income tax, state tax, and Social Security contributions are withheld automatically. It's not a penalty — it's just how the system works. You may get some back as a tax refund after you file each April.</div>
-    </div>
-  </div>
 </section>
 
 <!-- ===== SAVE IT ===== -->
 <section id="panel-save" class="panel" aria-label="Save">
   <h2 class="sec-title">Save</h2>
-  <span class="core-msg sec-msg-blue">Saving = more choices later.</span>
+  <span class="core-msg sec-msg-blue">Being smart beats being frugal — optimize every dollar.</span>
+
+  <!-- TOPIC: Save the Smart Way -->
+  <div id="save-smart" class="topic tactive">
+    <div class="insight" style="background:var(--blue-50);border-left:3px solid var(--blue-400);border-radius:0 var(--r) var(--r) 0;margin-bottom:1.25rem;">
+      <p style="color:var(--blue-800);"><strong>Two kinds of savers.</strong> Frugal savers cut back — skip coffee, buy less, sacrifice more. <em>Smart savers</em> do something different: they make every dollar they already spend work harder. This is the approach we teach here.</p>
+    </div>
+
+    <!-- Credit Card Cashback -->
+    <h3 style="font-size:16px;font-weight:600;margin:0 0 0.375rem;">Credit card cashback: 1% vs. 3%</h3>
+    <p style="font-size:14px;color:var(--text-s);margin-bottom:1rem;">You're already spending $10,000 a year on everyday things — gas, groceries, subscriptions. A smarter card pays you back more of it. Zero extra sacrifice required.</p>
+
+    <div class="cc-compare">
+      <div class="cc-card cc-basic">
+        <div class="cc-card-label">Basic card</div>
+        <div class="cc-pct">1%</div>
+        <div class="cc-back-label">cash back</div>
+        <div class="cc-spend">$10,000 spent / year</div>
+        <div class="cc-earn">$100 back</div>
+      </div>
+      <div class="cc-card cc-smart">
+        <div class="cc-card-label">Smart card ✓</div>
+        <div class="cc-pct">3%</div>
+        <div class="cc-back-label">cash back</div>
+        <div class="cc-spend">$10,000 spent / year</div>
+        <div class="cc-earn">$300 back</div>
+      </div>
+    </div>
+
+    <div class="insight insight-blue" style="margin-top:0;">
+      <p><strong>$200 more per year — same purchases, smarter card.</strong> Over 10 years that's <strong>$2,000 extra</strong> in your pocket with zero extra sacrifice. That's what being smart looks like.</p>
+    </div>
+    <div class="warn-box">⚠️ This only works if you pay the full balance every month. A 20% APR credit card erases all cashback the moment you carry a balance. Smart saving = zero balance, every single month.</div>
+
+    <!-- Nvidia What-If -->
+    <h3 style="font-size:16px;font-weight:600;margin:1.75rem 0 0.375rem;">What if that $200 had been invested?</h3>
+    <p style="font-size:14px;color:var(--text-s);margin-bottom:1rem;">Here's a real-world example of what small, smart savings can become when invested early. Someone who put $200 into Nvidia stock in June 2016 and simply held on...</p>
+
+    <div class="nvda-box">
+      <div class="nvda-then-now">
+        <div class="nvda-bubble nvda-then-b">
+          <div class="nvda-lbl">You invest</div>
+          <div class="nvda-amt">$200</div>
+          <div class="nvda-yr">June 2016</div>
+        </div>
+        <div class="nvda-arrow">→</div>
+        <div class="nvda-bubble nvda-now-b">
+          <div class="nvda-lbl">Value today</div>
+          <div class="nvda-amt">~$61,000</div>
+          <div class="nvda-yr">June 2026</div>
+        </div>
+      </div>
+      <div class="nvda-mult">~306× return · ~30,500% gain over 10 years</div>
+    </div>
+
+    <div class="warn-box">⚠️ Nvidia is an exceptional outlier — most stocks don't come close to this. This is <strong>not</strong> investment advice and is not a recommendation to buy any stock. Single stocks can also go to zero. Index funds are safer for most investors. This example shows what's <em>possible</em> — not what's <em>typical</em>.</div>
+
+    <div class="insight insight-teal" style="margin-top:1rem;">
+      <p><strong>The real lesson isn't "buy Nvidia."</strong> It's this: the $200 you save by being smart — choosing a better credit card, automating savings, avoiding fees — is a seed. What you do with that seed decides your future. Small habits, invested early, can become something that surprises you.</p>
+    </div>
+
+    <div class="real-talk">
+      <p><strong>Being smart, not just frugal:</strong> You don't have to give up things you love. Choose a card that pays you back. Set up automatic transfers the day you get paid. Avoid monthly fees. The goal isn't to suffer — it's to make every dollar smarter than the one before it.</p>
+    </div>
+
+    <div class="principles">
+      <span class="pp">Smart beats frugal</span>
+      <span class="pp">Optimize every dollar</span>
+      <span class="pp">Small seeds, big harvests</span>
+    </div>
+    <div class="reflect"><strong>Think about it:</strong> If you could save an extra $200 this year just by swapping one card or one habit — where would you want that $200 to go?</div>
+  </div>
 
   <!-- TOPIC: Budget -->
-  <div id="save-budget" class="topic tactive">
+  <div id="save-budget" class="topic">
     <div class="ctrl">
       <label for="s-income">Monthly income ($)</label>
       <input type="range" id="s-income" min="50" max="1500" step="25" value="250" oninput="calcBudget()">
@@ -486,6 +641,26 @@ footer strong { color:var(--text-s);font-weight:500; }
       <span class="pp">Small habits add up</span>
       <span class="pp">Goals need a number + deadline</span>
     </div>
+
+    <!-- GOAL CALCULATOR — combined -->
+    <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+      <h3 style="font-size:15px;font-weight:600;margin-bottom:0.25rem;">Turn your savings into a goal</h3>
+      <p style="font-size:13px;color:var(--text-s);margin-bottom:0.875rem;">A goal without a number and a deadline is just a wish. Set a target — your budget above tells you how fast you'll get there.</p>
+      <div class="ctrl">
+        <label for="goal-amt">Savings goal ($)</label>
+        <input type="range" id="goal-amt" min="100" max="5000" step="100" value="800" oninput="calcGoal()">
+        <span class="rdout" id="goal-amt-out">$800</span>
+      </div>
+      <div class="cards" style="grid-template-columns:repeat(3,1fr);">
+        <div class="card"><h3>Goal</h3><div class="val" id="g-goal">$800</div></div>
+        <div class="card"><h3>Months to reach it</h3><div class="val val-green" id="g-months">10</div><div class="sub">at your savings rate</div></div>
+        <div class="card"><h3>Reached by</h3><div class="val" id="g-date">Apr 2027</div></div>
+      </div>
+      <div class="insight" style="margin-top:0.5rem;">
+        <p>Popular teen goals: new phone ($800–1,200), gaming setup ($500–1,500), first car down payment ($2,000–5,000), senior trip ($300–800), college books ($400–800).</p>
+      </div>
+      <div class="reflect"><strong>Think about it:</strong> What's one thing you're saving for right now? If you're not saving yet, what would make it worth starting?</div>
+    </div>
   </div>
 
   <!-- TOPIC: Emergency Fund -->
@@ -510,47 +685,6 @@ footer strong { color:var(--text-s);font-weight:500; }
     </div>
     <div class="insight">
       <p>Keep this in a <strong>high-yield savings account</strong> — not your checking account (too easy to spend) and not stocks (they can drop right when you need cash).</p>
-    </div>
-  </div>
-
-  <!-- TOPIC: Savings Goals -->
-  <div id="save-goals" class="topic">
-    <div class="ctrl">
-      <label for="goal-amt">Savings goal ($)</label>
-      <input type="range" id="goal-amt" min="100" max="5000" step="100" value="800" oninput="calcGoal()">
-      <span class="rdout" id="goal-amt-out">$800</span>
-    </div>
-    <div class="ctrl">
-      <label for="goal-save">Saving per month ($)</label>
-      <input type="range" id="goal-save" min="10" max="500" step="10" value="80" oninput="calcGoal()">
-      <span class="rdout" id="goal-save-out">$80</span>
-    </div>
-    <div class="cards">
-      <div class="card"><h3>Goal</h3><div class="val" id="g-goal">$1,000</div></div>
-      <div class="card"><h3>Months to reach it</h3><div class="val val-green" id="g-months">13</div></div>
-      <div class="card"><h3>Reached by</h3><div class="val" id="g-date">Aug 2026</div></div>
-    </div>
-    <div class="insight">
-      <p>Popular teen goals: new phone ($800–1,200), gaming setup ($500–1,500), first car ($2,000–5,000), senior trip ($300–800), college books ($400–800). Pick a number and a date — "I want a phone" is a wish; "$800 by December" is a plan.</p>
-    </div>
-    <div class="reflect"><strong>Think about it:</strong> What's one thing you're saving for right now? If you're not saving yet, what would make it worth starting?</div>
-  </div>
-
-  <!-- TOPIC: Quiz -->
-  <div id="save-quiz-save" class="topic">
-    <div class="quiz-q">
-      <p class="qtext">What does "pay yourself first" mean?</p>
-      <button class="qopt" onclick="ans(this,'wrong','sq1')">Buy the things you want before paying bills</button>
-      <button class="qopt" onclick="ans(this,'correct','sq1')">Move money to savings before spending anything else</button>
-      <button class="qopt" onclick="ans(this,'wrong','sq1')">Only save money if you have extra left over</button>
-      <div class="qexp" id="sq1-exp">Pay yourself first = savings moves out the moment you get paid — before snacks, subscriptions, or anything else. It takes the "should I save this month?" decision off the table.</div>
-    </div>
-    <div class="quiz-q">
-      <p class="qtext">Why should your emergency fund NOT be in a stock market account?</p>
-      <button class="qopt" onclick="ans(this,'wrong','sq2')">Because stocks don't earn interest</button>
-      <button class="qopt" onclick="ans(this,'correct','sq2')">Because markets can drop 30–40% right when you need the money most</button>
-      <button class="qopt" onclick="ans(this,'wrong','sq2')">Because banks don't allow it</button>
-      <div class="qexp" id="sq2-exp">Emergencies don't wait for a good market day. If stocks drop 35% the same week your laptop breaks, you'd have to sell at a loss. Emergency money needs to be safe and easy to grab — a savings account is the move.</div>
     </div>
   </div>
 
@@ -699,22 +833,51 @@ footer strong { color:var(--text-s);font-weight:500; }
       <canvas id="rvrChart" role="img" aria-label="Bubble chart of investment vehicles by risk and expected return">Asset classes plotted by risk level and approximate annual return.</canvas>
     </div>
     <div class="warn-box" style="margin-top:1rem;">⚠️ For education only. Not financial advice. Talk to a trusted adult before making real investment decisions.</div>
+
+    <!-- Risk vs. reward — integrated -->
+    <div style="margin-top:1.75rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+      <div class="insight insight-teal" style="margin-top:0;">
+        <p><strong>Bigger possible reward = bigger risk.</strong> There's no investment that's both totally safe and super high-return. Anyone promising otherwise is probably trying to sell you something.</p>
+      </div>
+    </div>
   </div>
 
-  <!-- TOPIC: Compounding -->
+  <!-- TOPIC: Compounding + Money at Work -->
   <div id="invest-compound" class="topic">
-    <div class="insight insight-teal">
-      <p><strong>Compound growth = your money earns money, and that new money earns too.</strong> It's like a snowball rolling downhill. The secret ingredient isn't how much you start with — it's <em>how long</em> you leave it alone. Starting at 16 vs. 26 can mean hundreds of thousands of dollars difference by retirement.</p>
+    <h3 style="font-size:20px;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.25rem;">✨ The Magic of Compounding</h3>
+    <p style="font-size:14px;color:var(--text-s);margin-bottom:1.25rem;line-height:1.6;">Einstein reportedly called it the <em>eighth wonder of the world</em> — and once you see it, you'll understand why.</p>
+    <div class="insight insight-teal" style="margin-top:0;">
+      <p><strong>Simple interest:</strong> You earn interest only on your original money.<br>
+      <strong>Compound interest:</strong> You earn interest on your money <em>and</em> on all the interest you've already earned.</p>
+      <p style="margin-top:0.625rem;">That difference sounds small. Over decades, it's the gap between tens of thousands and hundreds of thousands of dollars.</p>
     </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:1.25rem 0;">
+      <div style="background:var(--teal-50);border-radius:var(--rl);padding:1rem;text-align:center;">
+        <div style="font-size:22px;margin-bottom:4px;">⏰</div>
+        <div style="font-size:13px;font-weight:600;color:var(--teal-800);">Time is #1</div>
+        <div style="font-size:12px;color:var(--teal-600);margin-top:3px;line-height:1.4;">Starting 10 years earlier can double your final balance</div>
+      </div>
+      <div style="background:var(--green-50);border-radius:var(--rl);padding:1rem;text-align:center;">
+        <div style="font-size:22px;margin-bottom:4px;">🔄</div>
+        <div style="font-size:13px;font-weight:600;color:var(--green-800);">Stay consistent</div>
+        <div style="font-size:12px;color:var(--green-600);margin-top:3px;line-height:1.4;">Small amounts added regularly beat one big lump sum</div>
+      </div>
+      <div style="background:var(--blue-50);border-radius:var(--rl);padding:1rem;text-align:center;">
+        <div style="font-size:22px;margin-bottom:4px;">🚫</div>
+        <div style="font-size:13px;font-weight:600;color:var(--blue-800);">Don't touch it</div>
+        <div style="font-size:12px;color:var(--blue-600);margin-top:3px;line-height:1.4;">Withdrawing early breaks the chain — growth resets</div>
+      </div>
+    </div>
+    <p style="font-size:13px;font-weight:600;color:var(--text-s);margin:1.25rem 0 0.75rem;">Use the calculator below to see the magic in action:</p>
     <div class="ctrl">
       <label for="c-start">Starting amount ($)</label>
-      <input type="range" id="c-start" min="0" max="1000" step="25" value="50" oninput="calcCompound()">
-      <span class="rdout" id="c-start-out">$50</span>
+      <input type="range" id="c-start" min="0" max="5000" step="50" value="1000" oninput="calcCompound()">
+      <span class="rdout" id="c-start-out">$1,000</span>
     </div>
     <div class="ctrl">
       <label for="c-monthly">Monthly contribution ($)</label>
-      <input type="range" id="c-monthly" min="0" max="200" step="5" value="20" oninput="calcCompound()">
-      <span class="rdout" id="c-monthly-out">$20</span>
+      <input type="range" id="c-monthly" min="0" max="500" step="10" value="100" oninput="calcCompound()">
+      <span class="rdout" id="c-monthly-out">$100</span>
     </div>
     <div class="ctrl">
       <label for="c-years">Years invested</label>
@@ -727,17 +890,32 @@ footer strong { color:var(--text-s);font-weight:500; }
       <span class="rdout" id="c-rate-out">7%</span>
     </div>
     <div class="cards">
-      <div class="card"><h3>Total you put in</h3><div class="val" id="c-contrib">$6,100</div></div>
-      <div class="card"><h3>Growth on top</h3><div class="val val-green" id="c-growth">+$9,500</div></div>
-      <div class="card"><h3>Final value</h3><div class="val val-green" id="c-total">$15,600</div></div>
+      <div class="card"><h3>Total you put in</h3><div class="val" id="c-contrib">$37,000</div></div>
+      <div class="card"><h3>Growth on top</h3><div class="val val-green" id="c-growth">+$93,114</div></div>
+      <div class="card"><h3>Final value</h3><div class="val val-green" id="c-total">$130,114</div></div>
     </div>
-    <div class="chart-box" style="height:240px;">
+    <p style="font-size:13px;font-weight:500;color:var(--text-s);margin:1rem 0 0.5rem;">You vs. growth — who did more work?</p>
+    <div class="bar-sim" id="bar-sim">
+      <div class="bar-row">
+        <div class="bar-label"><span>Money you put in</span><span id="c-contrib-bar-lbl">$37,000</span></div>
+        <div class="bar-track"><div class="bar-fill bar-contrib" id="c-contrib-bar" style="width:40%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label"><span>Money earned from growth</span><span id="c-growth-bar-lbl" style="color:var(--teal-600)">$93,114</span></div>
+        <div class="bar-track"><div class="bar-fill bar-growth" id="c-growth-bar" style="width:100%"></div></div>
+      </div>
+    </div>
+    <div class="chart-box" style="height:240px;margin-top:1.25rem;">
       <canvas id="compoundChart" role="img" aria-label="Line chart showing money contributed vs. total value over time">Compound growth chart showing contributions and total value over the selected period.</canvas>
     </div>
     <div class="warn-box">⚠️ These numbers are estimates for learning — not a promise of returns. Talk to a parent or teacher before investing real money.</div>
-    <div class="real-talk">
-      <p><strong>Try this:</strong> Set years to 30 and monthly to $20. That's roughly one less DoorDash order per week. Now compare total you put in vs. growth on top.</p>
+    <div class="insight">
+      <p>See that moment when the <strong>green bar gets longer than the blue bar</strong>? That's compounding flipping the switch — your money earning more than you're putting in. That's the magic. Starting at 16 vs. 26 can mean hundreds of thousands of dollars difference by retirement.</p>
     </div>
+    <div class="real-talk">
+      <p><strong>Try this:</strong> With the defaults ($1,000 start, $100/month, 30 years, 7%), compounding adds about <strong>$93,000</strong> on top of what you put in. Now drag "Years invested" down to 10 — the gap shrinks dramatically. <em>Time</em> is the magic ingredient.</p>
+    </div>
+    <div class="reflect"><strong>Think about it:</strong> Could you put away even $25/month from a part-time job starting now? Run the numbers — then imagine waiting until age 25 to start.</div>
     <div class="principles">
       <span class="pp">Start early</span>
       <span class="pp">Stay consistent</span>
@@ -745,87 +923,6 @@ footer strong { color:var(--text-s);font-weight:500; }
     </div>
   </div>
 
-  <!-- TOPIC: Money Working For You Simulator -->
-  <div id="invest-simulator" class="topic">
-    <div class="insight insight-teal">
-      <p><strong>Saving vs. investing in one picture.</strong> In a savings account, your money mostly sits there. Invested, it can grow on its own — and eventually the growth can beat what you put in yourself.</p>
-    </div>
-    <div class="ctrl">
-      <label for="sim-monthly">Monthly amount ($)</label>
-      <input type="range" id="sim-monthly" min="10" max="200" step="5" value="25" oninput="calcSim()">
-      <span class="rdout" id="sim-monthly-out">$25</span>
-    </div>
-    <div class="ctrl">
-      <label for="sim-years">Years</label>
-      <input type="range" id="sim-years" min="1" max="40" step="1" value="20" oninput="calcSim()">
-      <span class="rdout" id="sim-years-out">20 yrs</span>
-    </div>
-    <div class="ctrl">
-      <label for="sim-rate">Annual return (%)</label>
-      <input type="range" id="sim-rate" min="3" max="10" step="0.5" value="7" oninput="calcSim()">
-      <span class="rdout" id="sim-rate-out">7%</span>
-    </div>
-    <div class="bar-sim" id="bar-sim">
-      <div class="bar-row">
-        <div class="bar-label"><span>Money you put in</span><span id="sim-contrib-lbl">$6,000</span></div>
-        <div class="bar-track"><div class="bar-fill bar-contrib" id="sim-contrib-bar" style="width:40%"></div></div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label"><span>Money earned from growth</span><span id="sim-growth-lbl" style="color:var(--teal-600)">$9,500</span></div>
-        <div class="bar-track"><div class="bar-fill bar-growth" id="sim-growth-bar" style="width:60%"></div></div>
-      </div>
-    </div>
-    <div class="cards">
-      <div class="card"><h3>You put in</h3><div class="val" id="sim-c">$6,000</div></div>
-      <div class="card"><h3>Growth earned</h3><div class="val val-green" id="sim-g">$9,500</div></div>
-      <div class="card"><h3>Total</h3><div class="val val-green" id="sim-t">$15,500</div></div>
-    </div>
-    <div class="insight">
-      <p>See that moment when the <strong>green bar gets longer than the blue bar</strong>? That's when your money is doing more work than your paycheck. Wait longer to start, and more of the bar belongs to you sweating — less belongs to growth.</p>
-    </div>
-    <div class="reflect"><strong>Think about it:</strong> Could you put away $10–20/month from a side hustle? What would that look like in 10 years?</div>
-  </div>
-
-  <!-- TOPIC: Risk vs Reward -->
-  <div id="invest-risk-chooser" class="topic">
-    <div class="insight insight-teal">
-      <p><strong>Bigger possible reward usually = bigger risk.</strong> There's no investment that's both super safe and super high-return. Anyone on TikTok promising otherwise is probably trying to sell you something.</p>
-    </div>
-    <p style="font-size:14px;color:var(--text-s);margin-bottom:1rem;">Tap each option to see what it is and who it's for:</p>
-    <div class="risk-choices">
-      <div class="rchoice rc-low" onclick="showRisk('savings',this)"><i class="ti ti-piggy-bank" aria-hidden="true"></i><div class="rc-name">Savings account</div><div class="rc-ret">~4–5% / yr</div></div>
-      <div class="rchoice rc-medlow" onclick="showRisk('bond',this)"><i class="ti ti-file-certificate" aria-hidden="true"></i><div class="rc-name">Bond fund</div><div class="rc-ret">~3–5% / yr</div></div>
-      <div class="rchoice rc-med" onclick="showRisk('index',this)"><i class="ti ti-arrows-exchange" aria-hidden="true"></i><div class="rc-name">Index fund</div><div class="rc-ret">~7–9% / yr</div></div>
-      <div class="rchoice rc-high" onclick="showRisk('stock',this)"><i class="ti ti-chart-line" aria-hidden="true"></i><div class="rc-name">Single stock</div><div class="rc-ret">Varies wildly</div></div>
-      <div class="rchoice rc-vhigh" onclick="showRisk('crypto',this)"><i class="ti ti-currency-bitcoin" aria-hidden="true"></i><div class="rc-name">Crypto</div><div class="rc-ret">Speculative</div></div>
-    </div>
-    <div class="risk-result" id="risk-result">
-      <p style="color:var(--text-m);font-size:14px;">Select an investment above to see its profile.</p>
-    </div>
-    <div class="principles" style="margin-top:1.25rem;">
-      <span class="pp">No free lunch</span>
-      <span class="pp">If it sounds too good, it probably is</span>
-      <span class="pp">Match risk to your timeline</span>
-    </div>
-  </div>
-
-  <!-- TOPIC: Quiz -->
-  <div id="invest-quiz-invest" class="topic">
-    <div class="quiz-q">
-      <p class="qtext">You put $50/month into an index fund for 30 years at 7%. You contributed $18,000 total. Roughly how much might you end up with?</p>
-      <button class="qopt" onclick="ans(this,'wrong','iq1')">$18,000 — same as you put in</button>
-      <button class="qopt" onclick="ans(this,'wrong','iq1')">$30,000</button>
-      <button class="qopt" onclick="ans(this,'correct','iq1')">~$60,000 — compounding tripled your money</button>
-      <div class="qexp" id="iq1-exp">At 7% compounded monthly over 30 years, $50/month grows to approximately $60,000. You put in $18,000; compounding added another ~$42,000. That's the power of starting early and staying consistent.</div>
-    </div>
-    <div class="quiz-q">
-      <p class="qtext">What's the main advantage of an index fund over picking a single stock?</p>
-      <button class="qopt" onclick="ans(this,'wrong','iq2')">Index funds always go up in value</button>
-      <button class="qopt" onclick="ans(this,'correct','iq2')">You own hundreds of companies, so one failure doesn't ruin you</button>
-      <button class="qopt" onclick="ans(this,'wrong','iq2')">Index funds have higher returns than individual stocks</button>
-      <div class="qexp" id="iq2-exp">Spreading your money across hundreds of companies is the key. One fails? Barely a blip. Put everything on one stock? One bad year can wipe out half your money or more.</div>
-    </div>
-  </div>
 </section>
 
 <!-- ===== CONCEPTS ===== -->
@@ -859,8 +956,8 @@ footer strong { color:var(--text-s);font-weight:500; }
           </div>
           <div class="pitem">
             <i class="ti ti-layout-grid" aria-hidden="true"></i>
-            <h4>Index funds: the starter pack</h4>
-            <p>Instead of picking one company, an index fund buys hundreds at once (like the 500 biggest US companies). One fails? The other 499 help carry you. Lower drama, solid long-term track record.</p>
+            <h4>Mutual/Index funds: the starter pack</h4>
+            <p>Instead of picking one company, a mutual/index fund buys hundreds at once (like the 500 biggest US companies). One fails? The other 499 help carry you. Lower drama, solid long-term track record.</p>
           </div>
           <div class="pitem">
             <i class="ti ti-clock" aria-hidden="true"></i>
@@ -873,9 +970,9 @@ footer strong { color:var(--text-s);font-weight:500; }
           <button class="qopt" onclick="ans(this,'wrong','iq-s1')">You get your $500 back from the government</button>
           <button class="qopt" onclick="ans(this,'correct','iq-s1')">You lose the full $500 — stockholders are last in line</button>
           <button class="qopt" onclick="ans(this,'wrong','iq-s1')">Your broker covers the loss</button>
-          <div class="qexp" id="iq-s1-exp">When a company goes bankrupt, stockholders — the owners — are last to be paid after employees, creditors, and bondholders. In most bankruptcies, stock becomes worthless. This is why diversification (spreading money across many stocks via index funds) is so important.</div>
+          <div class="qexp" id="iq-s1-exp">When a company goes bankrupt, stockholders — the owners — are last to be paid after employees, creditors, and bondholders. In most bankruptcies, stock becomes worthless. This is why diversification (spreading money across many stocks via mutual/index funds) is so important.</div>
         </div>
-        <div class="concept-takeaway"><strong>Bottom line:</strong> A stock is ownership in a real business. It can build wealth over decades — but single-company bets are high risk. Most beginners start with index funds that spread the risk.</div>
+        <div class="concept-takeaway"><strong>Bottom line:</strong> A stock is ownership in a real business. It can build wealth over decades — but single-company bets are high risk. Most beginners start with mutual/index funds that spread the risk.</div>
       </div>
 
       <div id="concepts-credit" class="concept">
@@ -928,7 +1025,7 @@ footer strong { color:var(--text-s);font-weight:500; }
           <div class="pitem">
             <i class="ti ti-chart-line" aria-hidden="true"></i>
             <h4>Contributed vs. growth</h4>
-            <p>At some point, the growth bar exceeds what you put in. That's the moment your money is working harder than you are. The Invest section's simulator shows this visually.</p>
+            <p>At some point, the growth bar exceeds what you put in. That's the moment your money is working harder than you are. See it on the Invest tab under <strong>How money grows</strong>.</p>
           </div>
           <div class="pitem">
             <i class="ti ti-alert-triangle" aria-hidden="true"></i>
@@ -951,7 +1048,7 @@ footer strong { color:var(--text-s);font-weight:500; }
           <p><strong>The formula:</strong> 72 ÷ interest rate = years to double. Earning ~7% per year? 72 ÷ 7 ≈ <strong>10 years</strong> to turn $500 into ~$1,000. It's an estimate — not exact — but close enough to make smart decisions on the spot.</p>
         </div>
         <div class="cards" style="margin-bottom:1rem;">
-          <div class="card"><h3>~7% (index fund)</h3><div class="val val-green">~10 yrs</div><div class="sub">$1,000 → ~$2,000</div></div>
+          <div class="card"><h3>~7% (mutual/index)</h3><div class="val val-green">~10 yrs</div><div class="sub">$1,000 → ~$2,000</div></div>
           <div class="card"><h3>~4% (savings)</h3><div class="val">~18 yrs</div><div class="sub">$1,000 → ~$2,000</div></div>
           <div class="card"><h3>20% (credit card)</h3><div class="val" style="color:var(--red-600)">~3.6 yrs</div><div class="sub">Debt doubles against you</div></div>
         </div>
@@ -993,6 +1090,13 @@ footer strong { color:var(--text-s);font-weight:500; }
 
 </div>
 </div>
+<!-- ===== QUIZ ===== -->
+<section id="panel-quiz" class="panel" aria-label="Money Quiz">
+  <div id="quiz-content">
+    <p style="color:var(--text-m);font-size:14px;padding:2rem 0;">Loading quiz…</p>
+  </div>
+</section>
+
 </main>
 
 <footer>
@@ -1007,17 +1111,25 @@ footer strong { color:var(--text-s);font-weight:500; }
 function showPanel(id, el) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.hpillar').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+  document.querySelectorAll('.hero-chip').forEach(c => c.classList.remove('con-active'));
   document.querySelectorAll('.topic-nav-side').forEach(n => n.classList.remove('visible'));
   document.getElementById('panel-' + id).classList.add('active');
-  el.classList.add('active');
-  el.setAttribute('aria-selected','true');
+  const isChip = id === 'concepts' || id === 'quiz';
+  if (isChip) {
+    el.classList.add('con-active');
+  } else {
+    el.classList.add('active');
+    el.setAttribute('aria-selected','true');
+  }
   const tnav = document.getElementById('tnav-' + id);
   if (tnav) tnav.classList.add('visible');
   const topicWrap = document.getElementById('topic-nav-wrap');
   const appLayout = document.querySelector('.app-layout');
-  if (topicWrap) topicWrap.classList.toggle('hidden', id === 'concepts');
-  if (appLayout) appLayout.classList.toggle('concepts-open', id === 'concepts');
-  if (id === 'invest') setTimeout(() => { renderAssetGrid(); initRvrChart(); calcCompound(); calcSim(); }, 60);
+  const hideNav = id === 'concepts' || id === 'quiz';
+  if (topicWrap) topicWrap.classList.toggle('hidden', hideNav);
+  if (appLayout) appLayout.classList.toggle('concepts-open', hideNav);
+  if (id === 'invest') setTimeout(() => { renderAssetGrid(); initRvrChart(); calcCompound(); }, 60);
+  if (id === 'quiz') buildQuiz();
 }
 
 function showConcept(topic, el) {
@@ -1035,10 +1147,10 @@ function showTopic(panel, topic, el) {
   document.querySelectorAll('#panel-' + panel + ' .topic').forEach(t => t.classList.remove('tactive'));
   document.getElementById(prefix + topic).classList.add('tactive');
   if (topic === 'compound') setTimeout(calcCompound, 60);
-  if (topic === 'simulator') setTimeout(calcSim, 60);
   if (topic === 'vehicles') setTimeout(() => { renderAssetGrid(); setTimeout(initRvrChart, 80); }, 60);
   if (topic === 'credit') setTimeout(updateCredit, 60);
   if (topic === 'debt') setTimeout(calcDebt, 60);
+  if (topic === 'budget') setTimeout(() => { calcBudget(); }, 60);
 }
 
 // ---- QUIZ ----
@@ -1108,6 +1220,9 @@ function calcBudget() {
   document.getElementById('b-needs').textContent = '$' + Math.round(rem * 0.625);
   document.getElementById('b-wants').textContent = '$' + Math.round(rem * 0.375);
   document.getElementById('b-year').textContent = '$' + (save * 12).toLocaleString();
+  // Sync goal section if present
+  const goalEl = document.getElementById('goal-amt');
+  if (goalEl) calcGoal();
 }
 
 function calcEmergency() {
@@ -1124,14 +1239,21 @@ function calcEmergency() {
 
 function calcGoal() {
   const goal = +document.getElementById('goal-amt').value;
-  const sv = +document.getElementById('goal-save').value;
   document.getElementById('goal-amt-out').textContent = '$' + goal.toLocaleString();
-  document.getElementById('goal-save-out').textContent = '$' + sv;
-  const months = Math.ceil(goal / sv);
   document.getElementById('g-goal').textContent = '$' + goal.toLocaleString();
-  document.getElementById('g-months').textContent = months;
-  const d = new Date(); d.setMonth(d.getMonth() + months);
-  document.getElementById('g-date').textContent = d.toLocaleDateString('en-US',{month:'short',year:'numeric'});
+  // Use the budget monthly savings amount
+  const incEl = document.getElementById('s-income');
+  const pctEl = document.getElementById('s-save');
+  const sv = (incEl && pctEl) ? Math.round(+incEl.value * (+pctEl.value / 100)) : 0;
+  if (sv > 0) {
+    const months = Math.ceil(goal / sv);
+    document.getElementById('g-months').textContent = months;
+    const d = new Date(); d.setMonth(d.getMonth() + months);
+    document.getElementById('g-date').textContent = d.toLocaleDateString('en-US',{month:'short',year:'numeric'});
+  } else {
+    document.getElementById('g-months').textContent = '—';
+    document.getElementById('g-date').textContent = 'Set a budget first';
+  }
 }
 
 // ---- INVEST IT ----
@@ -1140,17 +1262,23 @@ function calcCompound() {
   const start = +document.getElementById('c-start').value;
   const mo = +document.getElementById('c-monthly').value;
   const yrs = +document.getElementById('c-years').value;
-  const rate = +document.getElementById('c-rate').value / 100;
-  document.getElementById('c-start-out').textContent = '$' + start;
+  const ratePct = +document.getElementById('c-rate').value;
+  const rate = ratePct / 100;
+  document.getElementById('c-start-out').textContent = '$' + start.toLocaleString();
   document.getElementById('c-monthly-out').textContent = '$' + mo;
   document.getElementById('c-years-out').textContent = yrs + ' yrs';
-  document.getElementById('c-rate-out').textContent = rate.toFixed(1).replace(/\.0$/,'') + '%';
+  document.getElementById('c-rate-out').textContent = ratePct.toFixed(1).replace(/\.0$/,'') + '%';
   const mr = rate/12; const labels=[], cd=[], td=[]; let bal=start, tc=start;
   for (let m=1;m<=yrs*12;m++) { bal=bal*(1+mr)+mo; tc+=mo; if(m%12===0){labels.push('Yr '+(m/12));cd.push(Math.round(tc));td.push(Math.round(bal));}}
-  const fv=Math.round(bal), contrib=Math.round(tc);
+  const fv=Math.round(bal), contrib=Math.round(tc), growth=fv-contrib;
   document.getElementById('c-contrib').textContent = '$' + contrib.toLocaleString();
-  document.getElementById('c-growth').textContent = '+$' + (fv-contrib).toLocaleString();
+  document.getElementById('c-growth').textContent = '+$' + growth.toLocaleString();
   document.getElementById('c-total').textContent = '$' + fv.toLocaleString();
+  document.getElementById('c-contrib-bar-lbl').textContent = '$' + contrib.toLocaleString();
+  document.getElementById('c-growth-bar-lbl').textContent = '$' + growth.toLocaleString();
+  const max = Math.max(contrib, growth, 1);
+  document.getElementById('c-contrib-bar').style.width = Math.round(contrib/max*100) + '%';
+  document.getElementById('c-growth-bar').style.width = Math.round(growth/max*100) + '%';
   const ctx = document.getElementById('compoundChart').getContext('2d');
   if (compoundChart) compoundChart.destroy();
   compoundChart = new Chart(ctx, {
@@ -1164,26 +1292,6 @@ function calcCompound() {
   });
 }
 
-function calcSim() {
-  const mo = +document.getElementById('sim-monthly').value;
-  const yrs = +document.getElementById('sim-years').value;
-  const rate = +document.getElementById('sim-rate').value / 100;
-  document.getElementById('sim-monthly-out').textContent = '$' + mo;
-  document.getElementById('sim-years-out').textContent = yrs + ' yrs';
-  document.getElementById('sim-rate-out').textContent = rate.toFixed(1).replace(/\.0$/,'') + '%';
-  const mr = rate/12; let bal=0, tc=0;
-  for (let m=1;m<=yrs*12;m++){bal=bal*(1+mr)+mo;tc+=mo;}
-  const fv=Math.round(bal), contrib=Math.round(tc), growth=fv-contrib;
-  document.getElementById('sim-c').textContent = '$' + contrib.toLocaleString();
-  document.getElementById('sim-g').textContent = '$' + growth.toLocaleString();
-  document.getElementById('sim-t').textContent = '$' + fv.toLocaleString();
-  document.getElementById('sim-contrib-lbl').textContent = '$' + contrib.toLocaleString();
-  document.getElementById('sim-growth-lbl').textContent = '$' + growth.toLocaleString();
-  const max = Math.max(contrib, growth);
-  document.getElementById('sim-contrib-bar').style.width = Math.round(contrib/max*100) + '%';
-  document.getElementById('sim-growth-bar').style.width = Math.round(growth/max*100) + '%';
-}
-
 // Risk chooser
 const riskData = {
   savings:{name:'Savings account / CDs',color:'#378ADD',rc:'blue',risk:'Very low',ret:'3–5%',liq:'Anytime',
@@ -1192,7 +1300,7 @@ const riskData = {
   bond:{name:'Bond fund',color:'#1D9E75',rc:'teal',risk:'Low–Medium',ret:'3–5%',liq:'Easy to sell',
     what:'You\'re basically lending money to governments or companies. They pay you back with interest. Bond funds hold lots of bonds so one default doesn\'t wreck you.',
     tradeoff:'Steadier than stocks, but not risk-free. When interest rates rise, bond prices can fall. More of a stabilizer than a growth engine.'},
-  index:{name:'Index fund (e.g. S&P 500)',color:'#EF9F27',rc:'amber',risk:'Medium',ret:'7–9% historically',liq:'Easy to sell',
+  index:{name:'Mutual/Index fund (e.g. S&P 500)',color:'#EF9F27',rc:'amber',risk:'Medium',ret:'7–9% historically',liq:'Easy to sell',
     what:'Owns tiny pieces of hundreds of big companies at once — Apple, Microsoft, Nike, etc. One fund, instant diversification.',
     tradeoff:'Can drop 30–40% in a bad year (that\'s scary). But over 20+ year stretches, US indexes have historically recovered and grown. Patience matters.'},
   stock:{name:'Single stock',color:'#E24B4A',rc:'red',risk:'High',ret:'All over the place',liq:'Easy to sell',
@@ -1221,22 +1329,22 @@ function showRisk(key, el) {
 
 const riskDot = {low:'#378ADD',medium:'#EF9F27',high:'#E24B4A'};
 const assets = [
-  {id:'cds',name:'Savings account',icon:'ti-piggy-bank',type:'Cash',risk:'low',riskN:1,ret:'3–5%',retN:4,liq:'Anytime',min:'$0',horizon:'0–2 years',rl:'Very Low',starter:false,
+  {id:'cds',name:'Savings account',icon:'ti-building-bank',type:'Cash',risk:'low',riskN:1,ret:'3–5%',retN:4,liq:'Anytime',min:'$0',horizon:'0–2 years',rl:'Very Low',starter:false,
    desc:'Your money sits in a bank and earns a small, guaranteed amount. FDIC-insured — you can\'t lose the principal. Best for emergency funds and short-term goals like saving for a phone.',
    pros:['Can\'t lose your deposit','Easy to access','No market swings','Great for emergencies'],
    cons:['Won\'t grow much long-term','Easy to spend from checking','Returns barely beat inflation','Not for building wealth over decades'],tags:['Safe','Short-term']},
-  {id:'etfs',name:'Index fund',icon:'ti-arrows-exchange',type:'Pooled investment',risk:'medium',riskN:2,ret:'5–9%',retN:7,liq:'Easy',min:'$1+',horizon:'5+ years',rl:'Medium',starter:true,
-   desc:'One purchase buys tiny pieces of hundreds of companies (like the 500 biggest in the US). Most financial educators say this is the best place to start investing as a beginner.',
-   pros:['Spread across many companies','Super low fees','Start with just a few dollars','Strong long-term track record'],
-   cons:['Can drop 30–40% in bad years','Need a brokerage account','Takes patience — not quick money','Still has market risk'],tags:['Best starter','Spread out','Long-term']},
   {id:'bonds',name:'Bonds',icon:'ti-file-certificate',type:'Loan',risk:'low',riskN:1.5,ret:'2–5%',retN:3.5,liq:'Med–High',min:'$100+',horizon:'1–10 yrs',rl:'Low',
    desc:'You lend money to a government or company; they pay you back with interest. Steadier than stocks — often used to balance out a portfolio later in life.',
    pros:['More predictable than stocks','Less dramatic ups and downs','US government bonds very safe','Steady interest payments'],
    cons:['Lower growth than stocks','Can lose value if rates rise','Not exciting — slow and steady','Usually not your first investment'],tags:['Fixed income','Steady']},
+  {id:'etfs',name:'Mutual/Index fund',icon:'ti-arrows-exchange',type:'Pooled investment',risk:'medium',riskN:2,ret:'5–9%',retN:7,liq:'Easy',min:'$1+',horizon:'5+ years',rl:'Medium',starter:true,
+   desc:'One purchase buys tiny pieces of hundreds of companies (like the 500 biggest in the US). Most financial educators say this is the best place to start investing as a beginner.',
+   pros:['Spread across many companies','Super low fees','Start with just a few dollars','Strong long-term track record'],
+   cons:['Can drop 30–40% in bad years','Need a brokerage account','Takes patience — not quick money','Still has market risk'],tags:['Best starter','Spread out','Long-term']},
   {id:'stocks',name:'Single stock',icon:'ti-chart-line',type:'One company',risk:'high',riskN:3,ret:'Varies',retN:8,liq:'Easy',min:'$1+',horizon:'5+ years',rl:'High',starter:false,
    desc:'You own a piece of one company — like one gaming brand or one restaurant chain. If it does great, you win. If it struggles or goes bankrupt, you can lose everything.',
    pros:['Easy to understand','Can feel fun to follow a brand you know','Some pay small cash dividends','Start with fractional shares'],
-   cons:['One company can fail completely','Very emotional when prices swing','Hard to pick winners consistently','Most beginners do better with index funds'],tags:['High risk','One company']},
+   cons:['One company can fail completely','Very emotional when prices swing','Hard to pick winners consistently','Most beginners do better with mutual/index funds'],tags:['High risk','One company']},
   {id:'crypto',name:'Crypto',icon:'ti-currency-bitcoin',type:'Digital',risk:'high',riskN:3.2,ret:'Wild swings',retN:10,liq:'24/7',min:'$1+',horizon:'Speculative',rl:'Very High',starter:false,
    desc:'Digital money like Bitcoin with no company or government backing its value. Prices move on hype and fear. Treat it as a gamble — never money you need for rent, college, or emergencies.',
    pros:['You\'ve probably heard of it','Easy to buy on apps','Can move fast (up or down)','Useful to understand the hype'],
@@ -1354,14 +1462,232 @@ function calcDebt() {
   document.getElementById('dc-bal').textContent = '$' + bal.toLocaleString();
 }
 
+// ---- QUIZ ----
+const QB = {
+  earn: [
+    { q:'You tutor 4 hours a week at $18/hr. How much do you earn in a month (4 weeks)?',
+      opts:['$72','$288','$180'], c:1,
+      exp:'4 hrs × $18 = $72/week. $72 × 4 weeks = $288/month. Over a school year that\'s $2,880.' },
+    { q:'Your gross paycheck is $400. Why might your take-home be only about $340?',
+      opts:['Your employer keeps the difference','Taxes are automatically withheld','You owe money from last month'], c:1,
+      exp:'Federal income tax, state tax, and FICA (Social Security + Medicare) are withheld automatically. You may get some back after filing taxes in April.' },
+    { q:'What is the purpose of the W-4 form you fill out when starting a new job?',
+      opts:['To prove you\'re old enough to work','To register for Social Security','To tell your employer how much federal income tax to withhold'], c:2,
+      exp:'The W-4 sets your tax withholding. More allowances = less withheld each check — but possibly a bigger bill at tax time.' },
+    { q:'What does FICA on your pay stub fund?',
+      opts:['Federal Income Collection Allowance','Social Security and Medicare taxes','A retirement account you control'], c:1,
+      exp:'FICA = Federal Insurance Contributions Act. It takes 6.2% for Social Security and 1.45% for Medicare (7.65% total). Your employer matches that.' },
+    { q:'Why do skilled side hustles (coding, design, tutoring) generally pay more than task-based ones (lawn care, deliveries)?',
+      opts:['They take less time per job','Fewer people can do them, so demand outpaces supply','The government sets higher rates for them'], c:1,
+      exp:'Pay follows scarcity. If almost anyone can do a task, competition keeps rates low. Hard-to-learn skills command higher rates.' },
+    { q:'You receive a W-2 from your employer in January. What is it for?',
+      opts:['Applying for a new job','Filing your annual tax return — it shows wages and taxes withheld','Proving employment for a loan application'], c:1,
+      exp:'Every employer sends a W-2 by Jan 31. It reports your earnings and withholding so you can file your 1040 tax return by April 15.' },
+    { q:'You earn $1,200/month from a part-time job. What\'s a reasonable take-home estimate?',
+      opts:['$1,200 — you keep it all','~$1,020–$1,080 after federal income tax and FICA','$600 — about half goes to taxes'], c:1,
+      exp:'Most teens fall in the 10–12% federal bracket plus FICA (~7.65%). Combined withholding is around 15–18%, so roughly $180–$215 out of $1,200.' },
+    { q:'You start a photography side hustle earning $500 this month with no employer. What\'s different about your taxes?',
+      opts:['Nothing — you only owe taxes over $10,000','You must pay self-employment tax (15.3%) plus income tax on that $500','Taxes only apply next April, so ignore it now'], c:1,
+      exp:'Self-employed people pay both the employee AND employer share of FICA (15.3%). Keep ~25–30% of every self-employment dollar aside for taxes.' },
+    { q:'Which strategy most reliably increases your hourly earning rate over time?',
+      opts:['Working more hours at your current job','Building a high-demand skill and showing results','Waiting for your employer\'s annual raise'], c:1,
+      exp:'Skills compound like money. A year of learning to code or design can 2–3× your rate. Hours worked have a ceiling; skills don\'t.' },
+    { q:'What is "net pay"?',
+      opts:['What you earn before any deductions','What you take home after all taxes and deductions','What you\'d earn if you worked overtime'], c:1,
+      exp:'Gross pay = before deductions. Net pay = after. Always budget using net — that\'s the actual money you have.' },
+    { q:'Your friend works "under the table" for cash and doesn\'t report it. What risk are they taking?',
+      opts:['None — cash income under $600 isn\'t taxable','Underreporting income is illegal and can result in penalties or back taxes','They\'ll just get a smaller refund'], c:1,
+      exp:'All income is taxable regardless of how it\'s paid — cash, Venmo, crypto. Not reporting is tax evasion, which carries serious legal consequences.' },
+    { q:'You negotiate your wage from $14/hr to $16/hr. Working 20 hrs/week, how much extra do you earn per month (4 weeks)?',
+      opts:['$40 more','$80 more','$160 more'], c:2,
+      exp:'$2 more × 20 hrs = $40/week × 4 weeks = $160/month. That\'s $1,920 extra per year from one conversation.' }
+  ],
+  save: [
+    { q:'What does "pay yourself first" mean?',
+      opts:['Buy the things you want before paying bills','Move money to savings before spending anything else','Only save if you have money left over at month\'s end'], c:1,
+      exp:'Savings moves out the moment you get paid — before snacks, subscriptions, anything else. It removes the "should I save this month?" decision entirely.' },
+    { q:'Why should your emergency fund NOT be in a stock market account?',
+      opts:['Because stocks don\'t earn interest','Because markets can drop 30–40% right when you need the money most','Because banks don\'t allow it'], c:1,
+      exp:'Emergencies don\'t wait for a good market day. A 35% drop the week your car breaks = forced selling at a loss. Emergency money needs to be safe and liquid.' },
+    { q:'The 50/30/20 budget rule allocates your income as:',
+      opts:['50% wants, 30% needs, 20% savings','50% savings, 30% needs, 20% wants','50% needs, 30% wants, 20% savings/debt'], c:2,
+      exp:'50% fixed needs (rent, food, bills), 30% flexible wants, 20% savings or debt payoff. Ratios can shift — the point is having a deliberate plan.' },
+    { q:'Financial experts typically recommend keeping how much in an emergency fund?',
+      opts:['1 week of expenses','3–6 months of essential expenses','2 years of expenses'], c:1,
+      exp:'Enough to cover 3–6 months of essential expenses means a job loss, medical bill, or major repair won\'t force you into debt.' },
+    { q:'What is the main advantage of a high-yield savings account (HYSA) over a regular checking account?',
+      opts:['It\'s harder to access so you spend less','It earns significantly more interest on your balance','It comes with a better debit card'], c:1,
+      exp:'A regular savings account might earn 0.01%. A HYSA can earn 4–5%. On $1,000 that\'s $0.10/year vs. $40–50 — just for moving the money.' },
+    { q:'What\'s the biggest single factor in your credit score?',
+      opts:['How much money you have in your bank account','Your payment history — whether you pay bills on time','Your income level'], c:1,
+      exp:'Payment history is ~35% of your FICO score. One missed payment can drop your score 50–100 points. Bank balances don\'t affect it at all.' },
+    { q:'You carry a $1,000 credit card balance at 24% APR and only pay the minimum each month. What happens?',
+      opts:['You pay it off in about 2 years','Compound interest keeps growing the balance — it can take years and cost hundreds extra','The interest stops once you\'ve paid back the original $1,000'], c:1,
+      exp:'At 24% APR on minimums, a $1,000 balance can take 5+ years to clear and cost $600–800 in interest. This is compound interest working against you.' },
+    { q:'Someone DMs you on Instagram offering to "flip" your $200 into $800 in 48 hours. What is this?',
+      opts:['A legitimate side hustle opportunity','A rare investment opportunity worth exploring','A scam — guaranteed fast returns don\'t exist'], c:2,
+      exp:'Money flipping scams target teens on social media. They take your money, send fake "proof," and disappear. No real investment guarantees 4× returns in 48 hours.' },
+    { q:'What does FDIC insurance protect?',
+      opts:['Your stock portfolio from market losses','Your bank deposits (up to $250,000) if the bank fails','Your credit score if you miss a payment'], c:1,
+      exp:'FDIC guarantees up to $250,000 per depositor per bank. If your bank fails, you get your money back. Stocks and investments are NOT covered.' },
+    { q:'A car loan to get to work vs. a credit card balance for concert tickets — what\'s the key difference?',
+      opts:['Both are bad debt — avoid borrowing in all forms','The car loan helps you earn; the credit card debt is for something already consumed','Both are fine as long as you pay the minimums'], c:1,
+      exp:'Debt for earning potential (car to work, education) can make sense. Debt for past experiences is just paying more over time for something you can\'t return.' },
+    { q:'You make $1,600/month net, spending $900 rent, $200 food, $300 other. How much is left to save?',
+      opts:['$0','$200','$400'], c:1,
+      exp:'$1,600 – $900 – $200 – $300 = $200. Even small savings add up: $200/month = $2,400/year, plus compound interest.' },
+    { q:'You want to buy a $600 item in 4 months. How much do you need to save per month?',
+      opts:['$100/month','$150/month','$200/month'], c:1,
+      exp:'$600 ÷ 4 months = $150/month. Setting a specific goal with a deadline makes saving automatic — you know your monthly target.' }
+  ],
+  invest: [
+    { q:'You put $50/month into a mutual/index fund for 30 years at 7%. You contributed $18,000 total. Roughly how much might you end up with?',
+      opts:['$18,000 — same as you put in','$30,000','~$60,000 — compounding tripled your money'], c:2,
+      exp:'At 7% compounded monthly for 30 years, $50/month grows to ~$60,000. You put in $18,000; compounding added ~$42,000. That\'s the magic of starting early.' },
+    { q:'What\'s the main advantage of a mutual/index fund over picking a single stock?',
+      opts:['Mutual/index funds always go up in value','You own hundreds of companies, so one failure doesn\'t ruin you','Mutual/index funds always have higher returns'], c:1,
+      exp:'Diversification is the key. One company fails? You still own hundreds of others. Put everything on one stock and one bad year can wipe out half your money.' },
+    { q:'You invest $500 in a single stock. The company goes bankrupt. What happens?',
+      opts:['You get your $500 back — the government protects investors','You lose the full $500 — stockholders are last in line','Your broker covers the loss up to $500'], c:1,
+      exp:'Stockholders are owners, not lenders. In bankruptcy, employees, creditors, and bondholders are paid first. Stockholders typically get nothing.' },
+    { q:'You invest at roughly 9% per year. About how long until your money doubles (Rule of 72)?',
+      opts:['About 4 years','About 8 years (72 ÷ 9 = 8)','About 18 years'], c:1,
+      exp:'72 ÷ 9 = 8 years. At 9% annual growth, $500 becomes ~$1,000 in 8 years, then ~$2,000 in another 8. Each doubling takes the same time at a steady rate.' },
+    { q:'You\'re saving to buy a car in 8 months. Where should you put that money?',
+      opts:['A high-yield savings account — safe and accessible','Crypto — potential gains could speed up your goal','An index fund — long-term growth is better'], c:0,
+      exp:'For goals under 1–2 years, markets are too risky. A 30% drop right before you need the money ruins your plan. Short-term money belongs in safe, liquid accounts.' },
+    { q:'What is diversification in investing?',
+      opts:['Putting all your money in the best-performing investment','Spreading money across many investments so one failure doesn\'t sink you','Switching investments frequently to maximize returns'], c:1,
+      exp:'"Don\'t put all your eggs in one basket." A mutual/index fund holding 500 companies is diversified — if one fails, 499 others keep working for you.' },
+    { q:'When you own a share of stock, you:',
+      opts:['Are lending money to a company at interest','Own a tiny piece of that company and share in its profits and losses','Are guaranteed to get your money back plus growth'], c:1,
+      exp:'Stockholders are owners, not lenders. You benefit when the company thrives and lose if it struggles. There is no guarantee — ownership always carries risk.' },
+    { q:'Why is "time in the market" generally better than "timing the market"?',
+      opts:['Because you can predict market crashes with enough research','Because markets go up every single year','Because missing just the 10 best days in a decade can cut your total returns roughly in half'], c:2,
+      exp:'Studies show investors who jump in and out frequently miss the biggest gain days. Staying invested consistently — through ups and downs — beats trying to pick peaks and valleys.' },
+    { q:'What is a bond?',
+      opts:['A guaranteed investment that always pays 5%+','A type of stock in a government company','A loan you make to a government or company in exchange for regular interest payments'], c:2,
+      exp:'When you buy a bond, you\'re the lender. The borrower promises to pay you back with interest. Bonds are generally safer than stocks but offer lower growth.' },
+    { q:'A mutual/index fund charges 0.05% in annual fees vs. a managed fund at 1.2%. Why does this matter?',
+      opts:['It doesn\'t — fees are too small to notice','Over 30 years, the fee difference can cost tens of thousands of dollars in lost compounding','Higher fees usually mean better performance'], c:1,
+      exp:'On $10,000 at 7% for 30 years: 0.05% fee → ~$74,000; 1.2% fee → ~$57,000. The $17,000 difference is just from fees — lower costs keep more money compounding.' },
+    { q:'Bitcoin dropped over 70% in value in 2022. What does this best illustrate?',
+      opts:['Crypto is a reliable long-term investment like index funds','All investments drop sometimes — crypto is no different','Crypto is highly speculative and can lose most of its value quickly'], c:2,
+      exp:'Bitcoin has dropped 70–80%+ multiple times. Unlike stocks in companies with real earnings, crypto value is driven largely by sentiment and speculation.' },
+    { q:'Inflation is 3% per year and your savings account earns 1%. What\'s happening to your money\'s real value?',
+      opts:['It\'s growing — 1% is still a positive return','It\'s losing purchasing power — your money buys less each year','Inflation doesn\'t affect savings accounts'], c:1,
+      exp:'Real return = investment return – inflation. 1% – 3% = –2%. Your dollar amount grows, but what you can buy shrinks. This is why long-term wealth needs investments that beat inflation.' }
+  ]
+};
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+let quizScore = { answered: 0, correct: 0 };
+
+function buildQuiz() {
+  const earn4   = shuffle(QB.earn).slice(0, 4);
+  const save4   = shuffle(QB.save).slice(0, 4);
+  const invest4 = shuffle(QB.invest).slice(0, 4);
+  quizScore = { answered: 0, correct: 0, total: 12 };
+
+  function renderGroup(label, color, icon, qs, offset) {
+    return `
+      <div style="margin-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.75rem;padding-bottom:0.5rem;border-bottom:2px solid ${color}20;">
+          <span style="font-size:18px">${icon}</span>
+          <span style="font-size:13px;font-weight:700;letter-spacing:0.02em;text-transform:uppercase;color:${color}">${label}</span>
+        </div>
+        ${qs.map((q, i) => renderQ(q, offset + i)).join('')}
+      </div>`;
+  }
+
+  function renderQ(q, idx) {
+    const qid = 'qq' + idx;
+    return `
+      <div class="quiz-q" id="qblock-${qid}">
+        <p class="qtext">${q.q}</p>
+        ${q.opts.map((o, i) => `<button class="qopt" onclick="quizAns(this,'${qid}',${i},${q.c})">${o}</button>`).join('')}
+        <div class="qexp" id="${qid}-exp">${q.exp}</div>
+      </div>`;
+  }
+
+  const html = `
+    <h2 class="sec-title" style="margin-bottom:4px;">🎯 Money Quiz</h2>
+    <p class="sec-sub" style="margin-bottom:1.25rem;">12 random questions, 4 from each topic. New mix every time you open this.</p>
+    <div id="quiz-score-bar" style="background:var(--surface-alt);border-radius:var(--rl);padding:0.75rem 1.125rem;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--text-s);">
+      <span>Score: <strong id="score-display" style="color:var(--text)">0 / 12</strong></span>
+      <span id="score-msg"></span>
+    </div>
+    ${renderGroup('Earn','#639922','💸', earn4, 0)}
+    ${renderGroup('Save','#185FA5','🏦', save4, 4)}
+    ${renderGroup('Invest','#0F6E56','📈', invest4, 8)}
+    <button onclick="buildQuiz()" style="margin-top:0.5rem;padding:9px 22px;border-radius:var(--rpill);border:1.5px solid var(--teal-400);background:var(--teal-50);color:var(--teal-800);font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;">🔀 New set of questions</button>
+  `;
+  document.getElementById('quiz-content').innerHTML = html;
+}
+
+function quizAns(btn, qid, chosen, correct) {
+  const block = document.getElementById('qblock-' + qid);
+  block.querySelectorAll('.qopt').forEach(b => b.disabled = true);
+  btn.classList.add(chosen === correct ? 'correct' : 'wrong');
+  document.getElementById(qid + '-exp').classList.add('show');
+  quizScore.answered++;
+  if (chosen === correct) quizScore.correct++;
+  document.getElementById('score-display').textContent = quizScore.correct + ' / ' + quizScore.total;
+  if (quizScore.answered === quizScore.total) {
+    const pct = Math.round(quizScore.correct / quizScore.total * 100);
+    const msg = pct === 100 ? '🏆 Perfect!' : pct >= 75 ? '🌟 Great job!' : pct >= 50 ? '👍 Good start!' : '📚 Keep learning!';
+    document.getElementById('score-msg').innerHTML = `<strong style="color:var(--teal-800)">${pct}% — ${msg}</strong>`;
+  }
+}
+
+// ---- THEME ----
+const ICON_SUN = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+const ICON_MOON = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+
+function applyTheme(name) {
+  const isDark = name === 'dark';
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+  document.getElementById('theme-icon').innerHTML = isDark ? ICON_SUN : ICON_MOON;
+  document.getElementById('theme-toggle').title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+  if (typeof Chart !== 'undefined') {
+    Chart.defaults.color = isDark ? '#909090' : '#8a8a84';
+    if (typeof compoundChart !== 'undefined' && compoundChart) calcCompound();
+    if (typeof rvrChart !== 'undefined' && rvrChart) initRvrChart();
+  }
+  localStorage.setItem('tml-theme', name);
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  applyTheme(current === 'dark' ? 'light' : 'dark');
+}
+
+// Restore saved theme on load
+(function() {
+  const saved = localStorage.getItem('tml-theme');
+  if (saved === 'dark') applyTheme('dark');
+})();
+
 // ---- INIT ----
 calcSkill();
 calcPaycheck();
-calcBudget();
+calcBudget(); // also seeds goal display
 calcEmergency();
-calcGoal();
 updateCredit();
 calcDebt();
+calcCompound();
 renderAssetGrid();
 setTimeout(initRvrChart, 100);
 </script>
