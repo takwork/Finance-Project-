@@ -61,6 +61,7 @@
   --purple-50:rgba(127,119,221,0.18);--purple-600:#8a80d8;--purple-800:#afa8f5;
 }
 
+
 html { scroll-behavior:smooth; }
 body { font-family:'Inter',system-ui,sans-serif;font-size:17px;line-height:1.7;color:var(--text);background:var(--gray-50);min-height:100vh; }
 
@@ -1653,6 +1654,13 @@ function quizAns(btn, qid, chosen, correct) {
     const pct = Math.round(quizScore.correct / quizScore.total * 100);
     const msg = pct === 100 ? '🏆 Perfect!' : pct >= 75 ? '🌟 Great job!' : pct >= 50 ? '👍 Good start!' : '📚 Keep learning!';
     document.getElementById('score-msg').innerHTML = `<strong style="color:var(--teal-800)">${pct}% — ${msg}</strong>`;
+    if (typeof gtag === 'function') {
+      gtag('event', 'quiz_completed', {
+        'quiz_score': quizScore.correct,
+        'quiz_total': quizScore.total,
+        'quiz_percentage': pct
+      });
+    }
   }
 }
 
