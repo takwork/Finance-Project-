@@ -50,8 +50,27 @@
 [data-accent="invest"]  { --acc:var(--teal-600);--acc-strong:var(--teal-700);--acc-bg:var(--teal-50);--acc-line:var(--teal-100); }
 [data-accent="protect"] { --acc:var(--gold-500);--acc-strong:var(--gold-600);--acc-bg:var(--gold-50);--acc-line:var(--gold-100); }
 
+/* dark theme */
+[data-theme="dark"] {
+  --ink:#E6EAF2;--ink-2:#C3CBD8;--ink-3:#93A0B4;--ink-4:#64748B;
+  --bg:#111A2C;--bg-soft:#0B1220;--bg-softer:#1C2739;
+  --line:rgba(148,163,184,0.16);--line-2:rgba(148,163,184,0.32);
+  --blue-50:rgba(59,130,246,0.14);--blue-100:rgba(59,130,246,0.28);--blue-600:#3B82F6;--blue-700:#7AB0FF;
+  --green-50:rgba(34,197,94,0.13);--green-100:rgba(34,197,94,0.26);--green-600:#2FD06B;--green-700:#4ADE80;
+  --gold-50:rgba(245,158,11,0.13);--gold-100:rgba(245,158,11,0.26);--gold-600:#FBBF24;
+  --teal-50:rgba(20,184,166,0.13);--teal-100:rgba(20,184,166,0.26);--teal-600:#14B8A6;--teal-700:#2DD4BF;
+  --red-50:rgba(239,68,68,0.13);--red-600:#F16A6A;--red-700:#F87171;
+  --sh-sm:0 1px 2px rgba(0,0,0,0.35);--sh-md:0 8px 24px rgba(0,0,0,0.4);--sh-lg:0 16px 40px rgba(0,0,0,0.5);
+}
+[data-theme="dark"] .site-header { background:rgba(11,18,32,0.92); }
+[data-theme="dark"] .hero { background:
+  radial-gradient(ellipse 55% 65% at 50% -10%, rgba(59,130,246,0.16), transparent 60%),
+  linear-gradient(180deg,#131E33 0%,#0B1220 100%); }
+[data-theme="dark"] .hero-badge { background:var(--bg-softer); }
+[data-theme="dark"] .btn-outline { background:transparent; }
+
 html { scroll-behavior:smooth; }
-body { font-family:var(--font);font-size:16px;line-height:1.7;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased; }
+body { font-family:var(--font);font-size:16px;line-height:1.7;color:var(--ink);background:var(--bg-soft);-webkit-font-smoothing:antialiased; }
 img, canvas { max-width:100%; }
 a { color:var(--blue-600); }
 :focus-visible { outline:3px solid var(--blue-500);outline-offset:2px;border-radius:4px; }
@@ -76,19 +95,21 @@ a { color:var(--blue-600); }
 .hp-fill { height:100%;width:0;border-radius:var(--r-pill);background:linear-gradient(90deg,var(--blue-600),var(--blue-500));transition:width 0.5s ease; }
 .hp-label { font-size:12.5px;font-weight:600;color:var(--ink-3);white-space:nowrap;font-variant-numeric:tabular-nums; }
 .menu-btn { display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:var(--r-sm);background:none;font-size:20px;color:var(--ink);cursor:pointer;align-items:center;justify-content:center; }
+.theme-btn { width:38px;height:38px;border:1px solid var(--line);border-radius:var(--r-sm);background:none;color:var(--ink-3);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;transition:color 0.15s,border-color 0.15s; }
+.theme-btn:hover { color:var(--ink);border-color:var(--line-2); }
 
 /* ============================================================
    APP GRID  (nav / content / rail)
    ============================================================ */
 .app { display:grid;grid-template-columns:var(--nav-w) minmax(0,1fr) var(--rail-w);gap:var(--sp-6);max-width:var(--page-max);margin:0 auto;padding:0 var(--sp-5);align-items:start; }
 .app.no-rail { grid-template-columns:var(--nav-w) minmax(0,1fr); }
-.content { min-width:0;max-width:var(--content-max);width:100%;margin:0 auto;padding:var(--sp-6) 0 var(--sp-7); }
-.app.no-rail .content { max-width:1180px; }
+.content { min-width:0;max-width:var(--content-max);width:100%;margin:0 auto;padding:20px 0 44px; }
+.app.no-rail .content { max-width:1280px; }
 
 /* ============================================================
    SIDEBAR NAV
    ============================================================ */
-.sidenav { position:sticky;top:var(--header-h);height:calc(100vh - var(--header-h));overflow-y:auto;padding:var(--sp-5) 0 var(--sp-6);border-right:1px solid var(--line); }
+.sidenav { position:sticky;top:var(--header-h);height:calc(100vh - var(--header-h));overflow-y:auto;padding:var(--sp-5) 0 var(--sp-6);border-right:1px solid var(--line);background:var(--bg); }
 .sn-item { display:flex;align-items:center;gap:10px;width:calc(100% - 16px);margin:1px 8px;padding:9px 12px;border:none;border-radius:var(--r-sm);background:none;font-family:inherit;font-size:14px;font-weight:500;color:var(--ink-2);text-align:left;cursor:pointer;text-decoration:none;transition:background 0.15s,color 0.15s; }
 .sn-item i { font-size:18px;color:var(--ink-4);flex-shrink:0;transition:color 0.15s; }
 .sn-item:hover { background:var(--bg-softer);color:var(--ink); }
@@ -112,7 +133,7 @@ a { color:var(--blue-600); }
 /* ============================================================
    RIGHT RAIL
    ============================================================ */
-.rail { position:sticky;top:calc(var(--header-h) + var(--sp-5));display:flex;flex-direction:column;gap:var(--sp-4);padding:var(--sp-5) 0 var(--sp-6); }
+.rail { display:none; /* right rail hidden for now — restore by removing this line and the forced no-rail in showPage() */ position:sticky;top:calc(var(--header-h) + var(--sp-5));flex-direction:column;gap:var(--sp-4);padding:var(--sp-5) 0 var(--sp-6); }
 .rail-card { background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--sp-4) var(--sp-4);box-shadow:var(--sh-sm); }
 .rail-card h3 { display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-3); }
 .rail-card h3 i { font-size:16px;color:var(--blue-600); }
@@ -134,27 +155,31 @@ a { color:var(--blue-600); }
    PAGE / SECTION PRIMITIVES
    ============================================================ */
 .page[hidden] { display:none; }
-.page-eyebrow { display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--acc,var(--blue-600));margin-bottom:var(--sp-2); }
-.page-eyebrow .dot { width:8px;height:8px;border-radius:50%;background:var(--acc,var(--blue-600)); }
-h1.page-title { font-size:clamp(30px,3.4vw,40px);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:var(--sp-3); }
-.page-lede { font-size:17px;color:var(--ink-3);max-width:640px;margin-bottom:var(--sp-5);line-height:1.65; }
-.section { margin:52px 0; }
-.section-head { display:flex;align-items:baseline;justify-content:space-between;gap:var(--sp-4);margin-bottom:20px; }
-.section-head h2 { font-size:clamp(22px,2.4vw,28px);font-weight:750;letter-spacing:-0.02em; }
-.section-head p { font-size:15px;color:var(--ink-3); }
+.page-eyebrow { display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--acc,var(--blue-600));margin-bottom:4px; }
+.page-eyebrow .dot { width:7px;height:7px;border-radius:50%;background:var(--acc,var(--blue-600)); }
+h1.page-title { font-size:clamp(22px,2.3vw,28px);font-weight:800;letter-spacing:-0.02em;line-height:1.2;margin-bottom:6px; }
+.page-lede { font-size:14.5px;color:var(--ink-3);max-width:78ch;margin-bottom:18px;line-height:1.6;padding-bottom:14px;border-bottom:1px solid var(--line); }
+.section { margin:36px 0; }
+.section-head { display:flex;align-items:baseline;justify-content:space-between;gap:var(--sp-4);margin-bottom:14px; }
+.section-head h2 { font-size:clamp(19px,2vw,23px);font-weight:750;letter-spacing:-0.02em; }
+.section-head p { font-size:14px;color:var(--ink-3); }
 .section-link { font-size:14px;font-weight:600;color:var(--blue-600);text-decoration:none;white-space:nowrap; }
 .section-link:hover { text-decoration:underline; }
-h2.content-h2 { font-size:24px;font-weight:750;letter-spacing:-0.02em;margin:var(--sp-6) 0 var(--sp-3); }
-h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2); }
-.content p.body { font-size:16px;color:var(--ink-2);margin-bottom:var(--sp-4);max-width:70ch; }
+h2.content-h2 { font-size:20px;font-weight:750;letter-spacing:-0.02em;margin:24px 0 10px; }
+h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
+.content p.body { font-size:15px;color:var(--ink-2);margin-bottom:12px;max-width:78ch; }
 
 /* cards */
-.card { background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--sp-5);box-shadow:var(--sh-sm);transition:transform 0.18s ease,box-shadow 0.18s ease,border-color 0.18s ease; }
+.card { background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px 20px;box-shadow:var(--sh-sm);transition:transform 0.18s ease,box-shadow 0.18s ease,border-color 0.18s ease; }
 .card.hoverable:hover { transform:translateY(-3px);box-shadow:var(--sh-md);border-color:var(--line-2); }
-.grid-2 { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-5); }
-.grid-3 { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-5); }
-.grid-4 { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--sp-5); }
+.grid-2 { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px; }
+.grid-3 { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px; }
+.grid-4 { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px; }
 .icon-chip { width:44px;height:44px;border-radius:var(--r-md);background:var(--acc-bg,var(--blue-50));color:var(--acc,var(--blue-600));display:inline-flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0; }
+/* compact info tiles inside lesson pages: less padding, no icon images */
+.page[data-accent] .grid-2 > .card, .page[data-accent] .grid-3 > .card { padding:13px 16px; }
+.page[data-accent] .grid-2 > .card > .icon-chip, .page[data-accent] .grid-3 > .card > .icon-chip { display:none; }
+.page[data-accent] .grid-2 > .card .content-h3, .page[data-accent] .grid-3 > .card .content-h3 { margin:0 0 4px;font-size:16px; }
 
 /* buttons */
 .btn { display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 22px;border-radius:var(--r-pill);border:none;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:background 0.15s,transform 0.15s,box-shadow 0.15s; }
@@ -167,9 +192,9 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
 .btn-sm { min-height:38px;padding:7px 16px;font-size:14px; }
 
 /* callouts */
-.callout { border-left:4px solid var(--line-2);border-radius:0 var(--r-md) var(--r-md) 0;background:var(--bg-soft);padding:var(--sp-4) var(--sp-4);margin:var(--sp-4) 0; }
-.callout::before { display:block;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:5px;color:var(--ink-3); }
-.callout p { font-size:14.5px;color:var(--ink-2);line-height:1.65; }
+.callout { border-left:4px solid var(--line-2);border-radius:0 var(--r-md) var(--r-md) 0;background:var(--bg);padding:11px 14px;margin:12px 0; }
+.callout::before { display:block;font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:3px;color:var(--ink-3); }
+.callout p { font-size:14px;color:var(--ink-2);line-height:1.6; }
 .callout p strong { color:var(--ink); }
 .co-idea { border-left-color:var(--blue-600);background:var(--blue-50); }
 .co-idea::before { content:'Key idea';color:var(--blue-700); }
@@ -183,13 +208,13 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
 .co-danger::before { content:'Red flags';color:var(--red-700); }
 
 /* tool panel + controls */
-.tool-panel { background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--sh-md);margin:var(--sp-5) 0;overflow:hidden; }
-.tool-head { display:flex;align-items:center;gap:12px;padding:var(--sp-4) var(--sp-5);border-bottom:1px solid var(--line);background:var(--bg-soft); }
-.tool-head .icon-chip { width:36px;height:36px;font-size:18px;border-radius:10px; }
-.tool-head h3 { font-size:15.5px;font-weight:650; }
-.tool-head .tool-sub { font-size:13px;color:var(--ink-3);margin-left:auto; }
-.tool-body { padding:var(--sp-5); }
-.ctrl { display:flex;align-items:center;gap:var(--sp-4);margin-bottom:var(--sp-4);flex-wrap:wrap; }
+.tool-panel { background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--sh-md);margin:16px 0;overflow:hidden; }
+.tool-head { display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid var(--line);background:var(--bg-soft); }
+.tool-head .icon-chip { width:30px;height:30px;font-size:16px;border-radius:8px; }
+.tool-head h3 { font-size:14.5px;font-weight:650; }
+.tool-head .tool-sub { font-size:12.5px;color:var(--ink-3);margin-left:auto; }
+.tool-body { padding:16px 18px; }
+.ctrl { display:flex;align-items:center;gap:14px;margin-bottom:12px;flex-wrap:wrap; }
 .ctrl label { font-size:14.5px;font-weight:500;color:var(--ink-2);min-width:180px; }
 .ctrl select { flex:1;min-width:150px;min-height:42px;padding:8px 12px;border:1.5px solid var(--line-2);border-radius:var(--r-sm);font-size:14.5px;font-family:inherit;background:var(--bg);color:var(--ink); }
 .ctrl input[type=range] { -webkit-appearance:none;appearance:none;flex:1;min-width:130px;height:8px;border-radius:var(--r-pill);background:var(--bg-softer);outline-offset:6px;cursor:pointer; }
@@ -197,41 +222,41 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
 .ctrl input[type=range]::-moz-range-thumb { width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--blue-600);box-shadow:0 1px 4px rgba(15,23,42,0.25);cursor:grab; }
 .ctrl input[type=range]::-moz-range-progress { background:var(--blue-600);height:8px;border-radius:var(--r-pill); }
 .ctrl .rdout { font-size:14px;font-weight:600;min-width:80px;text-align:center;background:var(--bg-soft);border:1px solid var(--line);border-radius:8px;padding:5px 10px;font-variant-numeric:tabular-nums; }
-.stat-row { display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;background:var(--bg-soft);margin:var(--sp-4) 0; }
-.stat { padding:var(--sp-4);border-left:1px solid var(--line); }
+.stat-row { display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;background:var(--bg-soft);margin:12px 0; }
+.stat { padding:11px 14px;border-left:1px solid var(--line); }
 .stat:first-child { border-left:none; }
-.stat h4 { font-size:11px;font-weight:650;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px; }
-.stat .val { font-size:24px;font-weight:750;letter-spacing:-0.02em;font-variant-numeric:tabular-nums; }
+.stat h4 { font-size:10.5px;font-weight:650;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2px; }
+.stat .val { font-size:20px;font-weight:750;letter-spacing:-0.02em;font-variant-numeric:tabular-nums; }
 .stat .val.pos { color:var(--green-600); }
 .stat .val.neg { color:var(--red-600); }
 .stat .sub { font-size:12px;color:var(--ink-4);margin-top:2px; }
 .chart-wrap { position:relative;margin-top:var(--sp-4); }
 .fineprint { font-size:12.5px;color:var(--ink-4);margin-top:var(--sp-3); }
 
-/* check question */
-.check-card { background:var(--bg);border:1.5px solid var(--line);border-radius:var(--r-lg);padding:var(--sp-5);margin:var(--sp-5) 0;box-shadow:var(--sh-sm); }
-.check-card h3 { display:flex;align-items:center;gap:9px;font-size:16px;font-weight:650;margin-bottom:var(--sp-3); }
-.check-card h3 i { color:var(--blue-600);font-size:19px; }
-.check-card .q { font-size:15px;color:var(--ink-2);margin-bottom:var(--sp-3); }
-.qopt { display:block;width:100%;min-height:46px;text-align:left;padding:11px 16px;margin-bottom:9px;border:1.5px solid var(--line);border-radius:var(--r-sm);background:var(--bg);font-family:inherit;font-size:14.5px;color:var(--ink);cursor:pointer;transition:border-color 0.15s,background 0.15s; }
-.qopt:hover:not(:disabled) { border-color:var(--blue-500);background:var(--blue-50); }
+/* check question — tinted blue so it always stands apart from lesson content */
+.check-card { background:var(--blue-50);border:1.5px solid var(--blue-100);border-radius:var(--r-lg);padding:16px 18px;margin:18px 0;box-shadow:var(--sh-sm); }
+.check-card h3 { display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:var(--blue-700);margin-bottom:10px; }
+.check-card h3 i { color:var(--blue-600);font-size:18px; }
+.check-card .q { font-size:14.5px;color:var(--ink-2);margin-bottom:10px; }
+.qopt { display:block;width:100%;min-height:40px;text-align:left;padding:9px 14px;margin-bottom:8px;border:1.5px solid var(--line);border-radius:var(--r-sm);background:var(--bg);font-family:inherit;font-size:14px;color:var(--ink);cursor:pointer;transition:border-color 0.15s,background 0.15s; }
+.qopt:hover:not(:disabled) { border-color:var(--blue-500); }
 .qopt.correct { border-color:var(--green-600);background:var(--green-50);color:var(--green-700);font-weight:600; }
 .qopt.wrong { border-color:var(--red-600);background:var(--red-50);color:var(--red-700); }
 .qopt:disabled { cursor:default; }
-.qexp { display:none;font-size:14px;color:var(--ink-2);line-height:1.65;padding:var(--sp-3) var(--sp-4);background:var(--bg-soft);border-radius:var(--r-sm);margin-top:6px; }
+.qexp { display:none;font-size:13.5px;color:var(--ink-2);line-height:1.6;padding:10px 14px;background:var(--bg);border-radius:var(--r-sm);margin-top:4px; }
 .qexp.show { display:block; }
 .done-note { display:none;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--green-600);margin-top:var(--sp-3); }
 .done-note.show { display:inline-flex; }
 
 /* interactive picker chips / scenario buttons */
 .pick-row { display:flex;gap:var(--sp-3);flex-wrap:wrap;margin:var(--sp-4) 0; }
-.pick-btn { flex:1;min-width:150px;min-height:48px;border:1.5px solid var(--line);border-radius:var(--r-md);padding:11px 16px;background:var(--bg);cursor:pointer;text-align:center;font-family:inherit;font-size:14px;font-weight:600;color:var(--ink-2);transition:all 0.15s; }
+.pick-btn { flex:1;min-width:140px;min-height:42px;border:1.5px solid var(--line);border-radius:var(--r-md);padding:9px 14px;background:var(--bg);cursor:pointer;text-align:center;font-family:inherit;font-size:13.5px;font-weight:600;color:var(--ink-2);transition:all 0.15s; }
 .pick-btn:hover { border-color:var(--blue-500); }
 .pick-btn.sel { border-color:var(--blue-600);background:var(--blue-50);color:var(--blue-700); }
 
 /* topic footer nav */
-.topic-nav { display:flex;justify-content:space-between;gap:var(--sp-4);margin-top:var(--sp-7);padding-top:var(--sp-5);border-top:1px solid var(--line);flex-wrap:wrap; }
-.tn-btn { display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:180px;min-height:56px;padding:10px 18px;border-radius:var(--r-md);border:1.5px solid var(--line-2);background:var(--bg);font-family:inherit;cursor:pointer;text-align:left;text-decoration:none;transition:border-color 0.15s,transform 0.15s,box-shadow 0.15s; }
+.topic-nav { display:flex;justify-content:space-between;gap:var(--sp-4);margin-top:28px;padding-top:16px;border-top:1px solid var(--line);flex-wrap:wrap; }
+.tn-btn { display:flex;flex-direction:column;justify-content:center;gap:1px;min-width:170px;min-height:46px;padding:7px 15px;border-radius:var(--r-md);border:1.5px solid var(--line-2);background:var(--bg);font-family:inherit;cursor:pointer;text-align:left;text-decoration:none;transition:border-color 0.15s,transform 0.15s,box-shadow 0.15s; }
 .tn-btn:hover { border-color:var(--blue-500);transform:translateY(-2px);box-shadow:var(--sh-sm); }
 .tn-btn small { font-size:10.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-4); }
 .tn-btn .t { font-size:14.5px;font-weight:600;color:var(--ink); }
@@ -243,36 +268,35 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
 /* ============================================================
    HOME
    ============================================================ */
-.hero { position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(250px,0.75fr);gap:var(--sp-6);align-items:center;border-radius:var(--r-lg);background:linear-gradient(120deg,#EFF6FF 0%,#F0FDFA 55%,#F0FDF4 100%);border:1px solid var(--blue-100);padding:var(--sp-6) var(--sp-6) var(--sp-5);margin-top:var(--sp-4);overflow:hidden; }
-.hero::after { content:'';position:absolute;right:-120px;top:-120px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,0.10),transparent 65%);pointer-events:none; }
-.hero-badge { display:inline-flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--blue-100);color:var(--blue-700);font-size:12.5px;font-weight:600;padding:5px 13px;border-radius:var(--r-pill);margin-bottom:var(--sp-3);box-shadow:var(--sh-sm); }
-.hero h1 { font-size:clamp(23px,2.5vw,32px);font-weight:800;letter-spacing:-0.03em;line-height:1.15;max-width:520px;margin-bottom:var(--sp-3); }
+.hero { position:relative;text-align:center;border-radius:var(--r-lg);background:
+  radial-gradient(ellipse 55% 65% at 50% -10%, rgba(37,99,235,0.10), transparent 60%),
+  linear-gradient(180deg,#FFFFFF 0%,#F8FAFC 100%);
+  border:1px solid var(--line);padding:26px 24px 22px;margin-top:var(--sp-3);overflow:hidden; }
+.hero-badge { display:inline-flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--blue-100);color:var(--blue-700);font-size:12.5px;font-weight:600;padding:5px 13px;border-radius:var(--r-pill);margin-bottom:var(--sp-4);box-shadow:var(--sh-sm); }
+.hero h1 { font-size:clamp(18px,2.1vw,26px);font-weight:800;letter-spacing:-0.03em;line-height:1.2;margin:0 auto 8px; }
 .hero h1 em { font-style:normal;color:var(--blue-600); }
-.hero p.sub { font-size:16px;color:var(--ink-3);max-width:520px;line-height:1.6;margin-bottom:var(--sp-4); }
-.hero-ctas { display:flex;gap:var(--sp-3);flex-wrap:wrap; }
-.hero-card { position:relative;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px 20px;box-shadow:var(--sh-md);max-width:340px;justify-self:end;width:100%; }
-.hero-card .hc-label { display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px; }
-.hero-card .hc-label i { color:var(--teal-600);font-size:16px; }
-.hero-card .hc-lede { font-size:13.5px;color:var(--ink-3);margin-bottom:4px; }
-.hero-card .hc-big { font-size:27px;font-weight:800;letter-spacing:-0.03em;color:var(--green-600);font-variant-numeric:tabular-nums;margin-bottom:10px; }
-.hc-bar-row { margin-bottom:10px; }
-.hc-bar-label { display:flex;justify-content:space-between;font-size:12px;color:var(--ink-3);margin-bottom:4px;font-variant-numeric:tabular-nums; }
-.hc-bar-track { height:9px;background:var(--bg-softer);border-radius:var(--r-pill);overflow:hidden; }
-.hc-bar-fill { height:100%;border-radius:var(--r-pill); }
-.hero-card .hc-link { display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--blue-600);text-decoration:none;margin-top:8px; }
-.hero-card .hc-link:hover { text-decoration:underline; }
-.hero-stats { grid-column:1 / -1;display:flex;gap:var(--sp-6);flex-wrap:wrap;border-top:1px solid var(--blue-100);padding-top:var(--sp-4);margin-top:var(--sp-2); }
-.hstat { display:flex;align-items:baseline;gap:8px; }
-.hstat .num { font-size:21px;font-weight:800;letter-spacing:-0.02em;color:var(--ink);font-variant-numeric:tabular-nums; }
-.hstat .lbl { font-size:13px;color:var(--ink-3);font-weight:500; }
-@media (max-width:980px) { .hero { grid-template-columns:1fr; } .hero-card { display:none; } }
+.hero p.sub { font-size:14.5px;color:var(--ink-3);line-height:1.55;margin:0 auto 16px; }
+.hero-ctas { display:flex;gap:var(--sp-3);justify-content:center;flex-wrap:wrap;margin-bottom:20px; }
+.hero-pillars { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:620px;margin:0 auto; }
+.hp3 { display:flex;flex-direction:column;align-items:center;gap:3px;background:var(--bg);border:1.5px solid var(--line);border-bottom:3px solid var(--acc);border-radius:var(--r-md);padding:12px 10px 10px;text-decoration:none;color:var(--ink);box-shadow:var(--sh-sm);transition:transform 0.16s,box-shadow 0.16s; }
+.hp3:hover { transform:translateY(-3px);box-shadow:var(--sh-md); }
+.hp3 i { font-size:26px;color:var(--acc);line-height:1; }
+.hp3 .n { font-size:15.5px;font-weight:750;color:var(--acc-strong);letter-spacing:-0.01em; }
+.hp3 .d { font-size:12px;color:var(--ink-4);font-weight:500;line-height:1.35; }
+.hero-protect { display:inline-flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;max-width:620px;width:100%;margin:12px auto 0;background:var(--gold-50);border:1px solid var(--gold-100);border-radius:var(--r-md);padding:8px 14px;font-size:13px;color:var(--ink-2);text-decoration:none;transition:border-color 0.15s,box-shadow 0.15s; }
+.hero-protect i { color:var(--gold-500);font-size:18px; }
+.hero-protect strong { color:var(--gold-600); }
+.hero-protect .go-arrow { color:var(--gold-600);font-weight:600; }
+.hero-protect:hover { border-color:var(--gold-500);box-shadow:var(--sh-sm); }
+.hero-proof { margin-top:16px;font-size:13px;color:var(--ink-3); }
+.hero-proof strong { color:var(--green-600);font-weight:750;font-variant-numeric:tabular-nums; }
 
-.pillar-card { display:flex;flex-direction:column;gap:var(--sp-3);position:relative;border-top:4px solid var(--acc); }
-.pillar-card h3 { font-size:19px;font-weight:700;letter-spacing:-0.01em; }
-.pillar-card p { font-size:14.5px;color:var(--ink-3);line-height:1.6;flex:1; }
-.pillar-card .btn { align-self:flex-start;margin-top:var(--sp-2); }
-.pillar-topics { display:flex;flex-wrap:wrap;gap:6px; }
-.pillar-topics span { font-size:12px;font-weight:600;color:var(--acc-strong);background:var(--acc-bg);padding:3px 10px;border-radius:var(--r-pill); }
+.pillar-mini { display:flex;align-items:center;gap:12px;padding:14px 16px;text-decoration:none;color:inherit;border-top:3px solid var(--acc); }
+.pillar-mini .icon-chip { width:36px;height:36px;font-size:18px;border-radius:10px; }
+.pillar-mini h3 { font-size:15px;font-weight:700;letter-spacing:-0.01em; }
+.pillar-mini p { font-size:12.5px;color:var(--ink-4);line-height:1.4; }
+.pillar-mini .go { margin-left:auto;font-size:17px;color:var(--ink-4);transition:transform 0.15s,color 0.15s; }
+.pillar-mini:hover .go { color:var(--acc);transform:translateX(3px); }
 
 .tool-card { display:flex;align-items:flex-start;gap:var(--sp-4);text-decoration:none;color:inherit; }
 .tool-card h3 { font-size:15.5px;font-weight:650;margin-bottom:3px; }
@@ -286,12 +310,12 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
 .lesson-card p { font-size:14px;color:var(--ink-3);line-height:1.6;flex:1; }
 .lesson-card .meta { font-size:13px;font-weight:600;color:var(--blue-600); }
 
-.scenario-card { background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--sp-5); }
+.scenario-card { background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--sp-5);box-shadow:var(--sh-sm); }
 .scenario-card .q { font-size:15.5px;font-weight:650;margin:var(--sp-3) 0 var(--sp-2); }
 .scenario-card p { font-size:14px;color:var(--ink-3);line-height:1.6;margin-bottom:var(--sp-3); }
 .scenario-card a { font-size:14px;font-weight:600; }
 
-.band { border-radius:var(--r-lg);padding:var(--sp-6);display:flex;align-items:center;gap:var(--sp-5);flex-wrap:wrap;border:1px solid var(--line); }
+.band { border-radius:var(--r-lg);padding:18px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;border:1px solid var(--line); }
 .band-quiz { background:linear-gradient(120deg,var(--blue-50),var(--blue-100)); }
 .band-survey { background:linear-gradient(120deg,var(--gold-50),var(--gold-100)); }
 .band .icon-chip { width:56px;height:56px;font-size:28px;border-radius:var(--r-lg);background:var(--bg); }
@@ -313,7 +337,7 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
 .sort-chip.sort-wrong { border-color:var(--red-600) !important;background:var(--red-50) !important;color:var(--red-700) !important; }
 
 /* hustle explorer */
-.hustle-card { border:1.5px solid var(--line);border-radius:var(--r-md);padding:16px 12px;background:var(--bg);cursor:pointer;text-align:center;font-family:inherit;transition:all 0.15s;min-height:96px; }
+.hustle-card { border:1.5px solid var(--line);border-radius:var(--r-md);padding:12px 10px;background:var(--bg);cursor:pointer;text-align:center;font-family:inherit;transition:all 0.15s;min-height:82px; }
 .hustle-card i { font-size:24px;color:var(--green-600); }
 .hustle-card .hname { font-size:14px;font-weight:600;margin-top:6px; }
 .hustle-card .hearn { font-size:12px;color:var(--ink-4); }
@@ -321,7 +345,7 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
 .chip-badge { display:inline-block;font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:var(--r-pill);margin:2px 4px 2px 0;background:var(--blue-50);color:var(--blue-700); }
 
 /* asset explorer */
-.asset-card { border:1.5px solid var(--line);border-radius:var(--r-md);padding:14px;background:var(--bg);cursor:pointer;font-family:inherit;text-align:left;transition:all 0.15s; }
+.asset-card { border:1.5px solid var(--line);border-radius:var(--r-md);padding:11px 13px;background:var(--bg);cursor:pointer;font-family:inherit;text-align:left;transition:all 0.15s; }
 .asset-card:hover, .asset-card.asel { border-color:var(--blue-500);box-shadow:var(--sh-sm); }
 .asset-card i { font-size:22px;display:block;margin-bottom:6px; }
 .asset-card .an { font-size:14px;font-weight:650; }
@@ -343,7 +367,7 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
 .pc-con { background:var(--red-50); } .pc-con h5 { color:var(--red-700); }
 
 /* spot the scam */
-.scam-item { border:1px solid var(--line);border-radius:var(--r-md);padding:16px;margin-bottom:12px;background:var(--bg); }
+.scam-item { border:1px solid var(--line);border-radius:var(--r-md);padding:12px 14px;margin-bottom:10px;background:var(--bg); }
 .scam-msg { font-size:14px;color:var(--ink-2);font-style:italic;margin-bottom:12px;line-height:1.6; }
 .scam-btns { display:flex;gap:10px; }
 .scam-btn { flex:1;min-height:42px;padding:8px 12px;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--bg);font-family:inherit;font-size:13.5px;font-weight:600;cursor:pointer;color:var(--ink-2);transition:all 0.15s; }
@@ -356,12 +380,12 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
 .scam-exp.show { display:block; }
 
 /* quiz page */
-.quiz-score-bar { display:flex;justify-content:space-between;align-items:center;background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--r-md);padding:14px 20px;margin-bottom:24px;font-size:14px;color:var(--ink-2); }
+.quiz-score-bar { display:flex;justify-content:space-between;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:10px 16px;margin-bottom:16px;font-size:14px;color:var(--ink-2); }
 .quiz-group-label { font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;margin:28px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line); }
 
 /* footer */
 .site-footer { border-top:1px solid var(--line);background:var(--bg-soft);margin-top:var(--sp-7); }
-.footer-inner { max-width:var(--page-max);margin:0 auto;padding:var(--sp-6) var(--sp-5);display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--sp-6); }
+.footer-inner { max-width:var(--page-max);margin:0 auto;padding:24px var(--sp-5);display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--sp-6); }
 .footer-inner h4 { font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-3); }
 .footer-inner p { font-size:14px;color:var(--ink-3);line-height:1.7;max-width:420px; }
 .footer-inner ul { list-style:none; }
@@ -427,6 +451,7 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
         <div class="hp-track"><div class="hp-fill" id="hp-fill"></div></div>
         <span class="hp-label" id="hp-label">0 / 12 lessons</span>
       </div>
+      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="ti ti-moon" aria-hidden="true"></i></button>
     </div>
   </div>
 </header>
@@ -450,16 +475,16 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
     <div class="sn-group" data-accent="save" id="group-save">
       <button class="sn-group-head" onclick="toggleGroup('save')" aria-expanded="false"><span class="dot"></span>Saving Money<span class="sn-count" id="count-save">0/3</span><i class="ti ti-chevron-right chev" aria-hidden="true"></i></button>
       <div class="sn-group-body">
+        <a class="sn-item" href="#save-banking" data-route="save-banking"><i class="ti ti-building-bank" aria-hidden="true"></i>Smart Money</a>
         <a class="sn-item" href="#save-budget" data-route="save-budget"><i class="ti ti-wallet" aria-hidden="true"></i>Budgeting</a>
         <a class="sn-item" href="#save-emergency" data-route="save-emergency"><i class="ti ti-lifebuoy" aria-hidden="true"></i>Emergency Fund</a>
-        <a class="sn-item" href="#save-banking" data-route="save-banking"><i class="ti ti-building-bank" aria-hidden="true"></i>Smart Banking</a>
       </div>
     </div>
     <div class="sn-group" data-accent="invest" id="group-invest">
       <button class="sn-group-head" onclick="toggleGroup('invest')" aria-expanded="false"><span class="dot"></span>Investing<span class="sn-count" id="count-invest">0/3</span><i class="ti ti-chevron-right chev" aria-hidden="true"></i></button>
       <div class="sn-group-body">
+        <a class="sn-item" href="#invest-funds" data-route="invest-funds"><i class="ti ti-chart-pie" aria-hidden="true"></i>Investment Types</a>
         <a class="sn-item" href="#invest-stocks" data-route="invest-stocks"><i class="ti ti-chart-line" aria-hidden="true"></i>What Is a Stock?</a>
-        <a class="sn-item" href="#invest-funds" data-route="invest-funds"><i class="ti ti-chart-pie" aria-hidden="true"></i>Funds &amp; Diversification</a>
         <a class="sn-item" href="#invest-compound" data-route="invest-compound"><i class="ti ti-trending-up" aria-hidden="true"></i>Compound Interest</a>
       </div>
     </div>
@@ -485,72 +510,49 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
     <!-- ============ HOME ============ -->
     <section class="page" id="page-home" aria-label="Home">
       <div class="hero">
-        <div class="hero-main">
-          <span class="hero-badge"><i class="ti ti-school" aria-hidden="true"></i> Free personal finance course · Grades 9–12</span>
-          <h1>Money skills for real life, <em>before</em> you need them.</h1>
-          <p class="sub">Short lessons, real calculators, zero jargon — learn to make, save, invest, and protect your money.</p>
-          <div class="hero-ctas">
-            <a class="btn btn-primary" href="#make-jobs">Start learning <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
-            <a class="btn btn-outline" href="#tools">Try the calculators</a>
-          </div>
+        <span class="hero-badge"><i class="ti ti-school" aria-hidden="true"></i> Free personal finance course · Grades 9–12</span>
+        <h1>Money skills for real life, <em>before</em> you need them.</h1>
+        <p class="sub">Practical lessons and real calculators for earning, saving, and investing — start with what you know and grow from there.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#make-jobs">Start learning <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+          <a class="btn btn-outline" href="#quiz">Take the quiz</a>
         </div>
-        <div class="hero-card" aria-label="Compounding example">
-          <div class="hc-label"><i class="ti ti-trending-up" aria-hidden="true"></i>Why start at 16?</div>
-          <p class="hc-lede">$100/month at 10% for 30 years becomes</p>
-          <div class="hc-big">$<span class="counter" data-count="226049">0</span></div>
-          <div class="hc-bar-row">
-            <div class="hc-bar-label"><span>You put in</span><span>$36,000</span></div>
-            <div class="hc-bar-track"><div class="hc-bar-fill" style="width:19%;background:var(--blue-600);"></div></div>
-          </div>
-          <div class="hc-bar-row">
-            <div class="hc-bar-label"><span>Compound growth</span><span>$190,049</span></div>
-            <div class="hc-bar-track"><div class="hc-bar-fill" style="width:100%;background:var(--green-600);"></div></div>
-          </div>
-          <a class="hc-link" href="#invest-compound">Run your own numbers <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        <div class="hero-pillars">
+          <a class="hp3" data-accent="make" href="#make-jobs"><i class="ti ti-briefcase" aria-hidden="true"></i><span class="n">Earn</span><span class="d">Jobs &amp; paychecks</span></a>
+          <a class="hp3" data-accent="save" href="#save-banking"><i class="ti ti-pig-money" aria-hidden="true"></i><span class="n">Save</span><span class="d">Smart money &amp; goals</span></a>
+          <a class="hp3" data-accent="invest" href="#invest-funds"><i class="ti ti-chart-line" aria-hidden="true"></i><span class="n">Invest</span><span class="d">Grow your money</span></a>
         </div>
-        <div class="hero-stats">
-          <div class="hstat"><div class="num"><span class="counter" data-count="12">0</span></div><div class="lbl">interactive lessons</div></div>
-          <div class="hstat"><div class="num"><span class="counter" data-count="9">0</span></div><div class="lbl">calculators &amp; tools</div></div>
-          <div class="hstat"><div class="num"><span class="counter" data-count="4">0</span></div><div class="lbl">money pillars</div></div>
-          <div class="hstat"><div class="num"><span class="counter" data-count="36">0</span></div><div class="lbl">quiz questions</div></div>
-        </div>
+        <a class="hero-protect" href="#protect-credit"><i class="ti ti-shield" aria-hidden="true"></i><span><strong>Protect what you build</strong> — credit, insurance, scams &amp; identity theft</span><span class="go-arrow">→</span></a>
+        <p class="hero-proof">$100/month invested at 10% from age 16 → <strong>$<span class="counter" data-count="226049">0</span></strong> by 46. That's why this course exists.</p>
       </div>
 
       <!-- Pillars -->
       <div class="section reveal" aria-label="Finance pillars">
         <div class="section-head">
-          <h2>The four money pillars</h2>
-          <p>Everything on this site fits one of these.</p>
+          <h2>The money pillars</h2>
+          <p>Earn it, save it, grow it — and protect all three.</p>
         </div>
         <div class="grid-4">
-          <div class="card hoverable pillar-card" data-accent="make">
+          <a class="card hoverable pillar-mini" data-accent="make" href="#make-jobs">
             <span class="icon-chip"><i class="ti ti-briefcase" aria-hidden="true"></i></span>
-            <h3>Making Money</h3>
-            <p>Skills raise your pay, paychecks shrink after taxes, and side hustles can start now.</p>
-            <div class="pillar-topics"><span>Jobs</span><span>Taxes</span><span>Side hustles</span></div>
-            <a class="btn btn-soft btn-sm" href="#make-jobs">Start learning <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
-          </div>
-          <div class="card hoverable pillar-card" data-accent="save">
+            <div><h3>Earning</h3><p>Jobs, taxes &amp; side hustles</p></div>
+            <i class="ti ti-arrow-right go" aria-hidden="true"></i>
+          </a>
+          <a class="card hoverable pillar-mini" data-accent="save" href="#save-banking">
             <span class="icon-chip"><i class="ti ti-pig-money" aria-hidden="true"></i></span>
-            <h3>Saving Money</h3>
-            <p>Pay yourself first, build a budget that works, and keep an emergency stash.</p>
-            <div class="pillar-topics"><span>Budgeting</span><span>Emergency fund</span><span>Banking</span></div>
-            <a class="btn btn-soft btn-sm" href="#save-budget">Start learning <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
-          </div>
-          <div class="card hoverable pillar-card" data-accent="invest">
+            <div><h3>Saving</h3><p>Smart money, budgets &amp; stash</p></div>
+            <i class="ti ti-arrow-right go" aria-hidden="true"></i>
+          </a>
+          <a class="card hoverable pillar-mini" data-accent="invest" href="#invest-funds">
             <span class="icon-chip"><i class="ti ti-chart-line" aria-hidden="true"></i></span>
-            <h3>Investing Money</h3>
-            <p>Stocks, funds, and the compounding math that rewards people who start early.</p>
-            <div class="pillar-topics"><span>Stocks</span><span>Funds</span><span>Compounding</span></div>
-            <a class="btn btn-soft btn-sm" href="#invest-stocks">Start learning <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
-          </div>
-          <div class="card hoverable pillar-card" data-accent="protect">
+            <div><h3>Investing</h3><p>Stocks, funds &amp; compounding</p></div>
+            <i class="ti ti-arrow-right go" aria-hidden="true"></i>
+          </a>
+          <a class="card hoverable pillar-mini" data-accent="protect" href="#protect-credit">
             <span class="icon-chip"><i class="ti ti-shield" aria-hidden="true"></i></span>
-            <h3>Protecting Money</h3>
-            <p>Credit scores, smart vs. dangerous debt, insurance, and spotting scams.</p>
-            <div class="pillar-topics"><span>Credit</span><span>Insurance</span><span>Identity theft</span></div>
-            <a class="btn btn-soft btn-sm" href="#protect-credit">Start learning <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
-          </div>
+            <div><h3>Protecting</h3><p>Credit, insurance &amp; scams</p></div>
+            <i class="ti ti-arrow-right go" aria-hidden="true"></i>
+          </a>
         </div>
       </div>
 
@@ -604,7 +606,7 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
           <a class="card hoverable lesson-card" href="#invest-compound" data-accent="invest">
             <span class="tag">Investing</span>
             <h3>The magic of compounding</h3>
-            <p>$100/month from age 16 can beat $300/month from age 30. The math will surprise you.</p>
+            <p>At the market's historical ~10% average, $100/month from age 16 beats $300/month from age 30. The math will surprise you.</p>
             <span class="meta">7 min lesson + calculator →</span>
           </a>
           <a class="card hoverable lesson-card" href="#make-taxes" data-accent="make">
@@ -767,9 +769,9 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
           </div>
           <div class="stat-row">
             <div class="stat"><h4>Per hour</h4><div class="val" id="sk-hr">$15</div></div>
-            <div class="stat"><h4>Monthly</h4><div class="val pos" id="sk-mo">$300</div></div>
-            <div class="stat"><h4>Yearly</h4><div class="val pos" id="sk-yr">$3,600</div></div>
-            <div class="stat"><h4>In 4 years</h4><div class="val" id="sk-4yr">$14,400</div><div class="sub">if you keep going</div></div>
+            <div class="stat"><h4>Monthly</h4><div class="val pos" id="sk-mo">$325</div></div>
+            <div class="stat"><h4>Yearly</h4><div class="val pos" id="sk-yr">$3,900</div></div>
+            <div class="stat"><h4>In 4 years</h4><div class="val" id="sk-4yr">$15,600</div><div class="sub">if you keep going</div></div>
           </div>
         </div>
       </div>
@@ -985,16 +987,16 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
     <section class="page" id="page-save-banking" data-accent="save" hidden aria-label="Smart banking">
       <p class="page-eyebrow"><span class="dot"></span>Saving Money</p>
       <h1 class="page-title">Smart beats only frugal</h1>
-      <p class="page-lede">Frugal savers cut back. Smart savers also make the dollars they already have work harder: no-fee accounts, automatic transfers on payday, and high-yield savings.</p>
+      <p class="page-lede">Frugal savers cut back. Smart savers also make the dollars they already have work harder — cash back on spending you'd do anyway, and real interest on money you're already saving.</p>
 
       <div class="grid-2">
         <div class="card">
-          <h3 class="content-h3" style="margin-top:0;">High-yield savings (HYSA)</h3>
-          <p style="font-size:14.5px;color:var(--ink-2);line-height:1.7;">A regular savings account might pay 0.01%; a HYSA can pay 4–5%. On $1,000 that's $0.10 vs. $40–50 a year — for moving the money once.</p>
+          <h3 class="content-h3" style="margin-top:0;">Cash back</h3>
+          <p style="font-size:14.5px;color:var(--ink-2);line-height:1.7;">Money back on spending you'd do anyway. On $10,000 a year, a 3% card returns $300 — our best example. Try the comparison below.</p>
         </div>
         <div class="card">
-          <h3 class="content-h3" style="margin-top:0;">Automate on payday</h3>
-          <p style="font-size:14.5px;color:var(--ink-2);line-height:1.7;">An automatic transfer the day you're paid removes the "should I save this month?" decision entirely. You can't skip what you never see.</p>
+          <h3 class="content-h3" style="margin-top:0;">Interest income</h3>
+          <p style="font-size:14.5px;color:var(--ink-2);line-height:1.7;">A high-yield savings account can pay 4–5% while many big banks pay 0.01%. On $10,000 that's $400–500 a year instead of about $1 — for moving the money once.</p>
         </div>
       </div>
 
@@ -1066,9 +1068,9 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
     </section>
 
     <!-- ============ INVEST: FUNDS ============ -->
-    <section class="page" id="page-invest-funds" data-accent="invest" hidden aria-label="Funds and diversification">
+    <section class="page" id="page-invest-funds" data-accent="invest" hidden aria-label="Investment types">
       <p class="page-eyebrow"><span class="dot"></span>Investing</p>
-      <h1 class="page-title">Funds, diversification &amp; risk vs. reward</h1>
+      <h1 class="page-title">Investment types — risk vs. reward</h1>
       <p class="page-lede">Bigger possible reward usually means bigger risk. There's no investment that's both totally safe and super high-return — anyone promising otherwise is selling something.</p>
 
       <div class="callout co-idea"><p><strong>The order many educators recommend for beginners:</strong> emergency fund first → avoid high-interest debt → then low-cost index/mutual funds for long-term money. Speculative stuff (like crypto) only with money you can afford to lose entirely — if at all.</p></div>
@@ -1134,13 +1136,13 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
           </div>
           <div class="ctrl">
             <label for="c-rate">Est. annual return (%)</label>
-            <input type="range" id="c-rate" min="3" max="10" step="0.5" value="7" oninput="calcCompound()">
-            <span class="rdout" id="c-rate-out">7%</span>
+            <input type="range" id="c-rate" min="3" max="10" step="0.5" value="10" oninput="calcCompound()">
+            <span class="rdout" id="c-rate-out">10%</span>
           </div>
           <div class="stat-row">
             <div class="stat"><h4>You put in</h4><div class="val" id="c-contrib">$37,000</div></div>
-            <div class="stat"><h4>Growth</h4><div class="val pos" id="c-growth">+$93,114</div></div>
-            <div class="stat"><h4>Final value</h4><div class="val pos" id="c-total">$130,114</div></div>
+            <div class="stat"><h4>Growth</h4><div class="val pos" id="c-growth">+$208,886</div></div>
+            <div class="stat"><h4>Final value</h4><div class="val pos" id="c-total">$245,886</div></div>
           </div>
           <div class="chart-wrap" style="height:240px;"><canvas id="compoundChart" role="img" aria-label="Line chart comparing contributions to total value over time"></canvas></div>
           <p class="fineprint">Estimates for learning — not a promise of returns.</p>
@@ -1191,7 +1193,7 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
       </div>
 
       <div class="tool-panel" id="tool-credit">
-        <div class="tool-head"><span class="icon-chip"><i class="ti ti-gauge" aria-hidden="true"></i></span><h3>Credit Score Simulator</h3><span class="tool-sub">What a score costs on a $15k car</span></div>
+        <div class="tool-head"><span class="icon-chip"><i class="ti ti-gauge" aria-hidden="true"></i></span><h3>Credit Score Simulator</h3><span class="tool-sub">$15,000 car · 48-month loan (est.)</span></div>
         <div class="tool-body">
           <div class="ctrl">
             <label for="credit-score">Simulate a credit score</label>
@@ -1200,9 +1202,9 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
           </div>
           <div class="stat-row">
             <div class="stat"><h4>Score</h4><div class="val" id="cr-score">720</div></div>
-            <div class="stat"><h4>Rating</h4><div class="val" id="cr-rating" style="color:var(--green-600)">Very Good</div></div>
-            <div class="stat"><h4>Car loan rate (est.)</h4><div class="val" id="cr-rate">5.5%</div></div>
-            <div class="stat"><h4>Extra cost vs. excellent</h4><div class="val" id="cr-extra">~$400</div></div>
+            <div class="stat"><h4>Rating</h4><div class="val" id="cr-rating" style="color:var(--blue-600)">Good</div></div>
+            <div class="stat"><h4>Car loan rate (est.)</h4><div class="val" id="cr-rate">7.2%</div></div>
+            <div class="stat"><h4>Extra cost vs. excellent</h4><div class="val" id="cr-extra">~$900</div></div>
           </div>
         </div>
       </div>
@@ -1363,7 +1365,7 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
     <section class="page" id="page-about" hidden aria-label="About this project">
       <p class="page-eyebrow"><span class="dot"></span>About</p>
       <h1 class="page-title">About Teen Money Lab</h1>
-      <p class="page-lede">A free, student-built project to make personal finance practical, approachable, and actually useful — starting from day one of your first paycheck.</p>
+      <p class="page-lede">A free project with one goal: make personal finance practical, approachable, and actually useful — starting from day one of your first paycheck.</p>
       <div class="grid-2">
         <div class="card">
           <h3 class="content-h3" style="margin-top:0;">Why this exists</h3>
@@ -1412,8 +1414,8 @@ h3.content-h3 { font-size:18px;font-weight:650;margin:var(--sp-5) 0 var(--sp-2);
       <h4>Learn</h4>
       <ul>
         <li><a href="#make-jobs">Making Money</a></li>
-        <li><a href="#save-budget">Saving Money</a></li>
-        <li><a href="#invest-stocks">Investing</a></li>
+        <li><a href="#save-banking">Saving Money</a></li>
+        <li><a href="#invest-funds">Investing</a></li>
         <li><a href="#protect-credit">Protecting Money</a></li>
       </ul>
     </div>
@@ -1450,29 +1452,29 @@ const TOPICS = {
     facts:['Most teen hustles need $0 to start','CPR certification lets babysitters charge more','Small businesses pay $15–40 per social media post'],
     dyk:'Canva and CapCut are free — three sample pieces are usually enough to land a first client.',
     related:['make-jobs','make-taxes','save-budget'] },
+  'save-banking': { title:'Smart Money', pillar:'Saving Money',
+    facts:['High-yield savings: 4–5% vs 0.01% at many big banks','Cashback only wins at zero balance','Never pay monthly account fees — no-fee options exist'],
+    dyk:'$10,000 in a high-yield savings account can earn $400–500 a year. The same money at a typical big bank earns about $1.',
+    related:['save-budget','save-emergency','protect-credit'] },
   'save-budget': { title:'Budgeting', pillar:'Saving Money',
     facts:['50/30/20: needs / wants / savings','Move savings out before you spend — automatically','$50/month is $600/year before any interest'],
     dyk:'People who set a specific goal with a deadline consistently save more than people who just "try to save."',
-    related:['save-emergency','save-banking','make-taxes'] },
+    related:['save-banking','save-emergency','make-taxes'] },
   'save-emergency': { title:'Emergency Fund', pillar:'Saving Money',
-    facts:['Target: 3–6 months of essential expenses','Keep it liquid — HYSA, not stocks','FDIC insures bank deposits up to $250,000'],
+    facts:['Target: 3–6 months of essential expenses','Keep it liquid — high-yield savings, not stocks','FDIC insures bank deposits up to $250,000'],
     dyk:'About 4 in 10 American adults would struggle to cover a surprise $400 expense. An emergency fund puts you ahead of them as a teenager.',
     related:['save-budget','save-banking','invest-funds'] },
-  'save-banking': { title:'Smart Banking', pillar:'Saving Money',
-    facts:['HYSA: 4–5% vs 0.01% at many big banks','Cashback only wins at zero balance','Never pay monthly account fees — no-fee options exist'],
-    dyk:'On $1,000, a high-yield savings account can earn hundreds of times more interest per year than a typical big-bank savings account.',
-    related:['save-emergency','save-budget','protect-credit'] },
+  'invest-funds': { title:'Investment Types', pillar:'Investing',
+    facts:['One fund purchase = hundreds of companies','Index fund fees can be under 0.05% per year','Match the investment to the time horizon'],
+    dyk:'A 1.2% annual fee vs 0.05% can cost tens of thousands of dollars in lost compounding over 30 years.',
+    related:['invest-stocks','invest-compound','save-emergency'] },
   'invest-stocks': { title:'What Is a Stock?', pillar:'Investing',
     facts:['A share = partial ownership of a company','Stockholders are paid last in bankruptcy','Dividends are profit sharing to owners'],
     dyk:'Single years have dropped 30–40% before — yet long US market stretches have historically recovered every time so far.',
     related:['invest-funds','invest-compound','protect-fraud'] },
-  'invest-funds': { title:'Funds & Diversification', pillar:'Investing',
-    facts:['One fund purchase = hundreds of companies','Index fund fees can be under 0.05% per year','Match the investment to the time horizon'],
-    dyk:'A 1.2% annual fee vs 0.05% can cost tens of thousands of dollars in lost compounding over 30 years.',
-    related:['invest-stocks','invest-compound','save-emergency'] },
   'invest-compound': { title:'Compound Interest', pillar:'Investing',
     facts:['72 ÷ rate ≈ years for money to double','Time in the market beats timing the market','Starting at 16 vs 26 can change everything'],
-    dyk:'In the default demo, growth adds about $93,000 on top of $37,000 contributed — the money ends up doing more work than you.',
+    dyk:'In the default demo (10% for 30 years), growth adds about $209,000 on top of the $37,000 you put in — the money ends up doing far more work than you.',
     related:['invest-funds','invest-stocks','protect-credit'] },
   'protect-credit': { title:'Credit & Debt', pillar:'Protecting Money',
     facts:['Scores run 300–850; 700+ is good','Payment history ≈ 35% of your score','Keep utilization under 30% of your limit'],
@@ -1567,8 +1569,9 @@ function showPage(route, fromHistory) {
   if (!fromHistory) history.pushState(null, '', '#' + route);
 
   const isTopic = route in TOPICS;
-  document.getElementById('app').classList.toggle('no-rail', !isTopic);
-  if (isTopic) renderRail(route);
+  // Right rail hidden for now: always full-width. To restore, swap the next
+  // line for: classList.toggle('no-rail', !isTopic); if (isTopic) renderRail(route);
+  document.getElementById('app').classList.add('no-rail');
 
   // active states
   document.querySelectorAll('[data-route]').forEach(el => {
@@ -1613,8 +1616,12 @@ function initPageTools(route) {
 }
 
 function onHistoryNav() {
-  const r = routeFromHash() || 'home';
-  if (r !== currentRoute) showPage(r, true);
+  const r = routeFromHash();
+  // Unknown hashes (e.g. the #main skip link) are in-page anchors, not routes —
+  // leave the current page alone and let the browser jump to the element.
+  if (r === null && location.hash && location.hash !== '#') return;
+  const route = r || 'home';
+  if (route !== currentRoute) showPage(route, true);
 }
 window.addEventListener('popstate', onHistoryNav);
 window.addEventListener('hashchange', onHistoryNav);
@@ -1674,7 +1681,7 @@ function buildTopicNavs() {
 
 // A lesson counts as complete when the student moves on via "Next"
 // (answering the check question correctly also completes it).
-// Progress is stored per browser in localStorage — each student/device has its own.
+// Progress lives in memory only and resets on refresh/close — see PROGRESS above.
 function completeTopic(id) {
   if (completed.has(id)) return;
   completed.add(id);
@@ -2158,8 +2165,8 @@ const QB = {
   protect: [
     { q:'What’s the biggest single factor in your credit score?', opts:['How much money you have in the bank','Your payment history — paying bills on time','Your income level'], c:1,
       exp:'Payment history is ~35% of a FICO score. One missed payment can drop you 50–100 points.' },
-    { q:'You carry a $1,000 credit card balance at 24% APR and pay only the minimum. What happens?', opts:['You pay it off in about 2 years','It can take 5+ years and cost hundreds extra in interest','Interest stops once you’ve paid back the original $1,000'], c:1,
-      exp:'This is compound interest working against you — the balance shrinks painfully slowly.' },
+    { q:'You carry a $1,000 credit card balance at 23% APR and pay only the minimum. What happens?', opts:['You pay it off in about 2 years','It can take years — often 5 or more — and cost hundreds extra in interest','Interest stops once you’ve paid back the original $1,000'], c:1,
+      exp:'Card minimums shrink as the balance drops, which stretches the payoff out for years. This is compound interest working against you.' },
     { q:'Someone DMs you offering to "flip" your $200 into $800 in 48 hours. What is this?', opts:['A legitimate side hustle opportunity','A rare investment worth exploring','A scam — guaranteed fast returns don’t exist'], c:2,
       exp:'Money-flipping scams target teens on social media. No real investment guarantees 4× in two days.' },
     { q:'What does FDIC insurance protect?', opts:['Your stock portfolio from market losses','Your bank deposits (up to $250,000) if the bank fails','Your credit score if you miss a payment'], c:1,
@@ -2241,7 +2248,7 @@ const GOOGLE_FORM_URL = 'PASTE_YOUR_GOOGLE_FORM_LINK_HERE';
 function initSurvey() {
   const box = document.getElementById('survey-embed');
   if (!box || box.childElementCount) return;
-  if (GOOGLE_FORM_URL.indexOf('docs.google.com/forms') === -1) {
+  if (GOOGLE_FORM_URL.indexOf('docs.google.com/forms') === -1 && GOOGLE_FORM_URL.indexOf('forms.gle/') === -1) {
     box.innerHTML = '<div class="callout co-warn"><p><strong>Survey not connected yet.</strong> The site owner needs to paste the Google Form link into <code>GOOGLE_FORM_URL</code> near the bottom of this file. Check back soon!</p></div>';
     document.getElementById('survey-direct-link').closest('p').style.display = 'none';
     return;
@@ -2252,8 +2259,28 @@ function initSurvey() {
 }
 
 /* ============================================================
+   THEME
+   ============================================================ */
+function applyTheme(name) {
+  if (name === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  else document.documentElement.removeAttribute('data-theme');
+  const icon = document.querySelector('#theme-btn i');
+  if (icon) icon.className = 'ti ' + (name === 'dark' ? 'ti-sun' : 'ti-moon');
+  localStorage.setItem('tml2-theme', name);
+  if (typeof Chart !== 'undefined') {
+    Chart.defaults.color = name === 'dark' ? '#93A0B4' : '#64748B';
+    if (compoundChart) calcCompound();
+    if (rvrChart) initRvrChart();
+  }
+}
+function toggleTheme() {
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+}
+
+/* ============================================================
    INIT
    ============================================================ */
+if (localStorage.getItem('tml2-theme') === 'dark') applyTheme('dark');
 buildTopicNavs();
 updateProgressUI();
 // open the group of the current topic (if any); leave others collapsed
