@@ -376,7 +376,8 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
 .scam-exp.show { display:block; }
 
 /* quiz page */
-.quiz-score-bar { display:flex;justify-content:space-between;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:10px 16px;margin-bottom:16px;font-size:14px;color:var(--ink-2); }
+.quiz-score-bar { position:sticky;top:calc(var(--header-h) + 10px);z-index:60;display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:8px 10px 8px 16px;margin-bottom:16px;font-size:14px;color:var(--ink-2);box-shadow:var(--sh-md); }
+.quiz-score-bar #score-msg { margin-left:auto; }
 .quiz-group-label { font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;margin:28px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line); }
 
 /* footer */
@@ -2177,11 +2178,12 @@ function buildQuiz() {
     <div class="quiz-score-bar">
       <span>Score: <strong id="score-display">0 / 12</strong></span>
       <span id="score-msg"></span>
+      <button onclick="buildQuiz()" class="btn btn-outline btn-sm" title="Get a new set of questions"><i class="ti ti-refresh" aria-hidden="true"></i> Refresh</button>
     </div>
     ${groups.map(([label,color,qs,off]) =>
       `<div class="quiz-group-label" style="color:${color};border-color:${color};">${label}</div>` + qs.map((q,i)=>renderQ(q, off+i)).join('')
-    ).join('')}
-    <button onclick="buildQuiz()" class="btn btn-outline" style="margin-top:20px;"><i class="ti ti-arrows-shuffle" aria-hidden="true"></i> New set of questions</button>`;
+    ).join('')}`;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 function quizAns(btn, qid, chosen, correct) {
   document.getElementById('qblock-' + qid).querySelectorAll('.qopt').forEach(b => b.disabled = true);
