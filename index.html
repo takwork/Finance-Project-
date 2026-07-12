@@ -351,6 +351,21 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
 .asset-detail { border:1px solid var(--line);border-radius:var(--r-md);padding:20px;margin-top:16px;background:var(--bg-soft);display:none; }
 .asset-detail.show { display:block; }
 .asset-detail h4 { font-size:16.5px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:9px; }
+.asset-card { position:relative; }
+.asset-card-head { display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px; }
+.asset-card-head i { font-size:22px;display:block; }
+.asset-help-btn { width:24px;height:24px;border:1px solid var(--line-2);border-radius:50%;background:var(--bg);color:var(--blue-600);font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0; }
+.asset-help-btn:hover { background:var(--blue-50);border-color:var(--blue-500); }
+.glossary-inline-help { display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--blue-50);color:var(--blue-700);font-size:11px;font-weight:700;margin:0 4px; }
+.glossary-help-panel { display:none;margin-top:12px; }
+.glossary-help-panel.show { display:block; }
+.glossary-help-card { border:1px solid var(--blue-100);background:var(--blue-50);border-radius:var(--r-md);padding:12px 14px; }
+.glossary-help-card h5 { font-size:14px;font-weight:700;color:var(--blue-700);margin-bottom:4px; }
+.glossary-help-card p { font-size:13.5px;color:var(--ink-2);line-height:1.6; }
+.glossary-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px; }
+.glossary-card { background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);padding:16px 18px;box-shadow:var(--sh-sm); }
+.glossary-card h3 { font-size:15px;font-weight:700;letter-spacing:-0.01em;margin-bottom:6px; }
+.glossary-card p { font-size:13.5px;color:var(--ink-3);line-height:1.6; }
 .amet-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:12px 0; }
 .amet { background:var(--bg);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 12px; }
 .amet .ml { font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-4); }
@@ -424,11 +439,11 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
   .sidenav { position:fixed;left:0;top:var(--header-h);z-index:140;width:min(320px,86vw);background:var(--bg);box-shadow:var(--sh-lg);transform:translateX(-105%);transition:transform 0.22s ease;border-right:1px solid var(--line); }
   .sidenav.open { transform:none; }
   .backdrop.open { display:block;position:fixed;inset:var(--header-h) 0 0 0;background:rgba(15,23,42,0.4);z-index:130; }
-  .grid-4 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .grid-4, .glossary-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .header-progress { display:none; }
 }
 @media (max-width:680px) {
-  .grid-2, .grid-3, .grid-4 { grid-template-columns:1fr; }
+  .grid-2, .grid-3, .grid-4, .glossary-grid { grid-template-columns:1fr; }
   .hero { padding:var(--sp-6) var(--sp-5); }
   .band .btn { margin-left:0; }
   .content { padding-top:var(--sp-5); }
@@ -509,6 +524,7 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
     <a class="sn-item" href="#ai-prompts" data-route="ai-prompts"><i class="ti ti-sparkles" aria-hidden="true"></i>AI Prompts</a>
     <a class="sn-item" href="#quiz" data-route="quiz"><i class="ti ti-clipboard-check" aria-hidden="true"></i>Money Quiz</a>
     <a class="sn-item" href="#survey" data-route="survey"><i class="ti ti-message-circle" aria-hidden="true"></i>Survey</a>
+    <a class="sn-item" href="#glossary" data-route="glossary"><i class="ti ti-vocabulary" aria-hidden="true"></i>Glossary</a>
     <a class="sn-item" href="#about" data-route="about"><i class="ti ti-info-circle" aria-hidden="true"></i>About</a>
   </nav>
 
@@ -663,36 +679,6 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
             <p>A two-minute survey for students, teachers, and anyone curious: what should this site teach next? Your answers guide what gets built.</p>
           </div>
           <a class="btn btn-primary" href="#survey">Take the survey</a>
-        </div>
-      </div>
-
-      <!-- Resources -->
-      <div class="section reveal" aria-label="Latest resources">
-        <div class="section-head">
-          <h2>Latest resources</h2>
-          <p>Trusted, free places to keep learning.</p>
-        </div>
-        <div class="grid-4">
-          <a class="card hoverable resource-card" href="https://www.khanacademy.org/college-careers-more/financial-literacy" target="_blank" rel="noopener">
-            <h3><i class="ti ti-book" aria-hidden="true"></i>Khan Academy</h3>
-            <p>Full financial-literacy course with videos and practice.</p>
-            <span class="ext"><i class="ti ti-external-link" aria-hidden="true"></i>khanacademy.org</span>
-          </a>
-          <a class="card hoverable resource-card" href="https://www.consumerfinance.gov/consumer-tools/educator-tools/youth-financial-education/" target="_blank" rel="noopener">
-            <h3><i class="ti ti-building-bank" aria-hidden="true"></i>CFPB Youth</h3>
-            <p>US government tools and guides for young people and classrooms.</p>
-            <span class="ext"><i class="ti ti-external-link" aria-hidden="true"></i>consumerfinance.gov</span>
-          </a>
-          <a class="card hoverable resource-card" href="https://www.investor.gov/" target="_blank" rel="noopener">
-            <h3><i class="ti ti-chart-line" aria-hidden="true"></i>Investor.gov</h3>
-            <p>The SEC's plain-English investing basics and free calculators.</p>
-            <span class="ext"><i class="ti ti-external-link" aria-hidden="true"></i>investor.gov</span>
-          </a>
-          <a class="card hoverable resource-card" href="https://www.irs.gov/individuals/students" target="_blank" rel="noopener">
-            <h3><i class="ti ti-receipt-tax" aria-hidden="true"></i>IRS for Students</h3>
-            <p>Official answers about W-2s and filing your first tax return.</p>
-            <span class="ext"><i class="ti ti-external-link" aria-hidden="true"></i>irs.gov</span>
-          </a>
         </div>
       </div>
 
@@ -1076,7 +1062,9 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
             <button class="pick-btn" style="flex:0 1 auto;min-width:110px;" onclick="filterAssets('medium',this)">Medium risk</button>
             <button class="pick-btn" style="flex:0 1 auto;min-width:100px;" onclick="filterAssets('high',this)">High risk</button>
           </div>
+          <div class="callout co-idea" style="margin-bottom:10px;"><p><strong>Quick help:</strong> tap the <span class="glossary-inline-help">?</span> on any card for a plain-English definition.</p></div>
           <div class="grid-3" id="asset-grid" style="gap:12px;"></div>
+          <div id="asset-glossary" class="glossary-help-panel" aria-live="polite"></div>
           <div id="asset-detail"></div>
           <p class="fineprint" style="margin-top:20px;">Risk vs. expected return (approximate)</p>
           <div class="chart-wrap" style="height:280px;"><canvas id="rvrChart" role="img" aria-label="Bubble chart of investment types by risk and expected return"></canvas></div>
@@ -1373,6 +1361,14 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
       <p class="fineprint" style="margin-top:12px;">Trouble seeing the form? <a id="survey-direct-link" href="#" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
     </section>
 
+    <!-- ============ GLOSSARY ============ -->
+    <section class="page" id="page-glossary" hidden aria-label="Glossary">
+      <p class="page-eyebrow"><span class="dot"></span>Glossary</p>
+      <h1 class="page-title">Money glossary</h1>
+      <p class="page-lede">Plain-English definitions for every term used on this site — from W-2s and FICA to bonds, index funds, and deductibles.</p>
+      <div id="glossary-body"></div>
+    </section>
+
     <!-- ============ ABOUT ============ -->
     <section class="page" id="page-about" hidden aria-label="About this project">
       <p class="page-eyebrow"><span class="dot"></span>About</p>
@@ -1438,6 +1434,7 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
         <li><a href="#ai-prompts">AI Prompts</a></li>
         <li><a href="#quiz">Money Quiz</a></li>
         <li><a href="#survey">Survey</a></li>
+        <li><a href="#glossary">Glossary</a></li>
         <li><a href="#about">About</a></li>
       </ul>
     </div>
@@ -1503,7 +1500,7 @@ const TOPICS = {
     related:['protect-credit','protect-insurance','save-banking'] }
 };
 const TOPIC_ORDER = Object.keys(TOPICS);
-const PAGES = ['home','tools','ai-prompts','quiz','survey','about'].concat(TOPIC_ORDER);
+const PAGES = ['home','tools','ai-prompts','quiz','survey','glossary','about'].concat(TOPIC_ORDER);
 const PILLAR_OF = { make:'Making Money', save:'Saving Money', invest:'Investing', protect:'Protecting Money' };
 
 /* ============================================================
@@ -1621,6 +1618,7 @@ function initPageTools(route) {
     if (route === 'protect-credit') { updateCredit(); calcDebt(); }
     if (route === 'protect-fraud') renderScamList();
     if (route === 'ai-prompts') renderAiPrompts();
+    if (route === 'glossary') renderGlossary();
     if (route === 'quiz') buildQuiz();
     if (route === 'survey') initSurvey();
   }, 40);
@@ -1996,6 +1994,86 @@ function showDeductible(key, el) {
 }
 
 const riskDot = { low:'#2563EB', medium:'#F59E0B', high:'#DC2626' };
+const glossaryHelp = {
+  hysa:{term:'Savings account',def:'A savings account is a safe place for short-term money. It usually earns a little interest and is a good home for an emergency fund.'},
+  bonds:{term:'Bond',def:'A bond is a loan you make to a government or company. In return, they pay you interest over time and repay the loan later.'},
+  funds:{term:'Mutual fund / Index fund',def:'A fund pools money from many investors to buy many companies at once. That spreads risk and is often the easiest beginner way to invest.'},
+  stocks:{term:'Stock',def:'A stock is a tiny ownership share in a company. Stocks can grow a lot, but they can also fall sharply and even become worth nothing if the company fails.'},
+  crypto:{term:'Crypto',def:'Crypto is digital money like Bitcoin. It is very volatile and should generally be treated as speculation, not a safe place for emergency money.'}
+};
+function showGlossaryHelp(id) {
+  const panel = document.getElementById('asset-glossary');
+  if (!panel) return;
+  const entry = glossaryHelp[id];
+  if (!entry) { panel.innerHTML=''; panel.classList.remove('show'); return; }
+  panel.innerHTML = `<div class="glossary-help-card"><h5>${entry.term}</h5><p>${entry.def}</p><a href="#glossary" style="font-size:12.5px;font-weight:600;">See the full glossary →</a></div>`;
+  panel.classList.add('show');
+}
+
+/* ============================================================
+   GLOSSARY — plain-English definitions, grouped by pillar
+   ============================================================ */
+const GLOSSARY = [
+  { cat:'Earning & taxes', color:'var(--green-700)', terms:[
+    ['Gross pay','Money you earn before taxes and deductions are taken out.'],
+    ['Net pay (take-home)','What is left after taxes and deductions — the money you can actually spend or save.'],
+    ['Withholding','Tax your employer takes out of each paycheck and sends to the government for you.'],
+    ['W-2','The form your employer sends every January showing your wages and the tax withheld — you use it to file your tax return.'],
+    ['W-4','The form you fill out when starting a job so your employer knows how much federal income tax to hold back.'],
+    ['FICA','The payroll tax that funds Social Security (6.2%) and Medicare (1.45%). Employers pay a matching amount.'],
+    ['Tax refund','Money back after filing your return when more tax was withheld during the year than you actually owed.'],
+    ['Self-employment tax','The 15.3% tax (both halves of FICA) owed on side-hustle income when there is no employer.']
+  ]},
+  { cat:'Saving & banking', color:'var(--blue-700)', terms:[
+    ['Budget','A plan that gives every dollar a job before you spend it.'],
+    ['50/30/20 rule','A starting map for a budget: about 50% needs, 30% wants, 20% savings or debt payoff.'],
+    ['Pay yourself first','Moving money to savings the moment you are paid, before any other spending.'],
+    ['Emergency fund','Three to six months of essential expenses kept somewhere safe and easy to reach.'],
+    ['Checking account','A bank account for everyday spending — easy access, but little or no interest.'],
+    ['High-yield savings account','A savings account that pays far more interest (often 4–5%) than the 0.01% at many big banks.'],
+    ['Interest','Money a bank pays you for keeping funds there — or the cost you pay to borrow.'],
+    ['APR','Annual Percentage Rate: the yearly cost of borrowing money. Higher APR means more interest paid.'],
+    ['Cash back','A percentage of card spending returned to you. Only a win if you pay the full balance every month.'],
+    ['FDIC insurance','Government protection for bank deposits up to $250,000 per depositor, per bank. It does not cover stocks or crypto.']
+  ]},
+  { cat:'Investing', color:'var(--teal-700)', terms:[
+    ['Stock (share)','A tiny ownership stake in one company. It can grow a lot — or fall to nothing if the company fails.'],
+    ['Dividend','A slice of company profit paid out to shareholders.'],
+    ['Bond','A loan you make to a government or company; they repay it with interest. Steadier than stocks, but not risk-free.'],
+    ['Mutual fund','A pool of many investors’ money used to buy many investments at once.'],
+    ['Index fund','A low-fee fund that simply tracks a market index, like the S&P 500, instead of picking stocks.'],
+    ['Diversification','Spreading money across many investments so one failure hurts less. It reduces risk but does not remove it.'],
+    ['Brokerage account','The account you open to buy stocks, bonds, and funds.'],
+    ['Compound interest','Earning on your money and on the interest it already earned — the reason starting early wins.'],
+    ['Rule of 72','Divide 72 by your yearly return percentage to estimate how many years money takes to double.'],
+    ['Inflation','Prices rising over time. Money that grows slower than inflation buys less each year.'],
+    ['Crypto','Digital assets like Bitcoin with no company earnings behind them — highly speculative.']
+  ]},
+  { cat:'Credit, debt & protection', color:'var(--gold-600)', terms:[
+    ['Credit score','A 300–850 number showing how reliably you repay. Payment history counts most (~35%).'],
+    ['Credit utilization','The share of your card limit you are using. Try to keep it under 30%.'],
+    ['Secured credit card','A starter card backed by your own deposit — a safe way to begin building credit history at 18.'],
+    ['Minimum payment','The smallest card payment allowed each month. Paying only this stretches debt out for years.'],
+    ['Co-signer','A person equally responsible for someone else’s loan. Missed payments hurt both credit scores.'],
+    ['Credit freeze','A free lock at all three credit bureaus that blocks new accounts from being opened in your name.'],
+    ['Premium','The regular amount you pay to keep an insurance policy active.'],
+    ['Deductible','What you pay out of pocket before insurance starts paying.'],
+    ['Coverage limit','The maximum an insurance policy will ever pay.'],
+    ['Renters insurance','Cheap coverage (about $10–20/month) for your belongings — a landlord’s policy covers only the building.'],
+    ['Phishing','Fake messages that pretend to be real companies to steal passwords or account information.'],
+    ['Identity theft','Someone using your personal information, like your Social Security number, to open accounts in your name.']
+  ]}
+];
+
+function renderGlossary() {
+  const body = document.getElementById('glossary-body');
+  if (!body || body.childElementCount) return;
+  body.innerHTML = GLOSSARY.map(c => `
+    <h2 class="content-h2" style="color:${c.color};">${c.cat}</h2>
+    <div class="glossary-grid">
+      ${c.terms.map(t => `<div class="glossary-card"><h3>${t[0]}</h3><p>${t[1]}</p></div>`).join('')}
+    </div>`).join('');
+}
 const assets = [
   {id:'hysa',name:'Savings account',icon:'ti-building-bank',type:'Cash',risk:'low',riskN:1,ret:'3–5%',retN:4,liq:'Anytime',min:'$0',horizon:'0–2 years',rl:'Very Low',
    desc:'Your money sits in a bank and earns a small, guaranteed amount. FDIC-insured — you can’t lose the principal. Best for emergency funds and short-term goals.',
@@ -2030,11 +2108,14 @@ function renderAssetGrid() {
   if (!g) return;
   const list = assetFilter==='all' ? assets : assets.filter(a=>a.risk===assetFilter);
   g.innerHTML = list.map(a=>`
-    <button class="asset-card${activeAsset===a.id?' asel':''}" onclick="showAsset('${a.id}')">
-      <i class="ti ${a.icon}" style="color:${riskDot[a.risk]}" aria-hidden="true"></i>
+    <div class="asset-card${activeAsset===a.id?' asel':''}" role="button" tabindex="0" onclick="showAsset('${a.id}')" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); showAsset('${a.id}'); }">
+      <div class="asset-card-head">
+        <i class="ti ${a.icon}" style="color:${riskDot[a.risk]}" aria-hidden="true"></i>
+        <button class="asset-help-btn" type="button" onclick="event.stopPropagation(); showGlossaryHelp('${a.id}')" aria-label="Explain ${a.name}">?</button>
+      </div>
       <div class="an">${a.name}${a.starter?' ★':''}</div><div class="at">${a.type}</div>
       <div class="arisk"><span class="rdot" style="background:${riskDot[a.risk]}"></span>${a.rl} risk</div>
-    </button>`).join('');
+    </div>`).join('');
 }
 function showAsset(id) {
   activeAsset = activeAsset===id ? null : id;
