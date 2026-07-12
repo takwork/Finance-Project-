@@ -161,7 +161,7 @@ a { color:var(--blue-600); }
 .page-eyebrow { display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--acc,var(--blue-600));margin-bottom:4px; }
 .page-eyebrow .dot { width:7px;height:7px;border-radius:50%;background:var(--acc,var(--blue-600)); }
 h1.page-title { font-size:clamp(22px,2.3vw,28px);font-weight:800;letter-spacing:-0.02em;line-height:1.2;margin-bottom:6px; }
-.page-lede { font-size:14.5px;color:var(--ink-3);max-width:78ch;margin-bottom:18px;line-height:1.6;padding-bottom:14px;border-bottom:1px solid var(--line); }
+.page-lede { font-size:14.5px;color:var(--ink-3);margin-bottom:18px;line-height:1.6;padding-bottom:14px;border-bottom:1px solid var(--line); }
 .section { margin:36px 0; }
 .section-head { display:flex;align-items:baseline;justify-content:space-between;gap:var(--sp-4);margin-bottom:14px; }
 .section-head h2 { font-size:clamp(19px,2vw,23px);font-weight:750;letter-spacing:-0.02em; }
@@ -293,13 +293,6 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
 .hero-protect:hover { border-color:var(--gold-500);box-shadow:var(--sh-sm); }
 .hero-proof { margin-top:16px;font-size:13px;color:var(--ink-3); }
 .hero-proof strong { color:var(--green-600);font-weight:750;font-variant-numeric:tabular-nums; }
-
-.pillar-mini { display:flex;align-items:center;gap:12px;padding:14px 16px;text-decoration:none;color:inherit;border-top:3px solid var(--acc); }
-.pillar-mini .icon-chip { width:36px;height:36px;font-size:18px;border-radius:10px; }
-.pillar-mini h3 { font-size:15px;font-weight:700;letter-spacing:-0.01em; }
-.pillar-mini p { font-size:12.5px;color:var(--ink-4);line-height:1.4; }
-.pillar-mini .go { margin-left:auto;font-size:17px;color:var(--ink-4);transition:transform 0.15s,color 0.15s; }
-.pillar-mini:hover .go { color:var(--acc);transform:translateX(3px); }
 
 .tool-card { display:flex;align-items:flex-start;gap:var(--sp-4);text-decoration:none;color:inherit; }
 .tool-card h3 { font-size:15.5px;font-weight:650;margin-bottom:3px; }
@@ -526,37 +519,7 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
           <a class="hp3" data-accent="invest" href="#invest-funds"><i class="ti ti-chart-line" aria-hidden="true"></i><span class="n">Invest</span><span class="d">Grow your money</span></a>
         </div>
         <a class="hero-protect" href="#protect-credit"><i class="ti ti-shield" aria-hidden="true"></i><span><strong>Protect what you build</strong> — credit, insurance, scams &amp; identity theft</span><span class="go-arrow">→</span></a>
-        <p class="hero-proof">$100/month invested at 10% from age 16 → <strong>$<span class="counter" data-count="226049">0</span></strong> by 46. That's why this course exists.</p>
-      </div>
-
-      <!-- Pillars -->
-      <div class="section reveal" aria-label="Finance pillars">
-        <div class="section-head">
-          <h2>The money pillars</h2>
-          <p>Earn it, save it, grow it — and protect all three.</p>
-        </div>
-        <div class="grid-4">
-          <a class="card hoverable pillar-mini" data-accent="make" href="#make-jobs">
-            <span class="icon-chip"><i class="ti ti-briefcase" aria-hidden="true"></i></span>
-            <div><h3>Earning</h3><p>Jobs, taxes &amp; side hustles</p></div>
-            <i class="ti ti-arrow-right go" aria-hidden="true"></i>
-          </a>
-          <a class="card hoverable pillar-mini" data-accent="save" href="#save-banking">
-            <span class="icon-chip"><i class="ti ti-pig-money" aria-hidden="true"></i></span>
-            <div><h3>Saving</h3><p>Smart money, budgets &amp; stash</p></div>
-            <i class="ti ti-arrow-right go" aria-hidden="true"></i>
-          </a>
-          <a class="card hoverable pillar-mini" data-accent="invest" href="#invest-funds">
-            <span class="icon-chip"><i class="ti ti-chart-line" aria-hidden="true"></i></span>
-            <div><h3>Investing</h3><p>Stocks, funds &amp; compounding</p></div>
-            <i class="ti ti-arrow-right go" aria-hidden="true"></i>
-          </a>
-          <a class="card hoverable pillar-mini" data-accent="protect" href="#protect-credit">
-            <span class="icon-chip"><i class="ti ti-shield" aria-hidden="true"></i></span>
-            <div><h3>Protecting</h3><p>Credit, insurance &amp; scams</p></div>
-            <i class="ti ti-arrow-right go" aria-hidden="true"></i>
-          </a>
-        </div>
+        <p class="hero-proof">Earn it, save it, grow it — and protect all three.</p>
       </div>
 
       <!-- Tools -->
@@ -578,7 +541,7 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
           </a>
           <a class="card hoverable tool-card" href="#protect-credit" data-accent="protect">
             <span class="icon-chip"><i class="ti ti-credit-card" aria-hidden="true"></i></span>
-            <div><h3>Credit Card Payoff</h3><p>See why minimum payments are a trap at 20% APR.</p></div>
+            <div><h3>Credit Card Payoff</h3><p>See why minimum payments are a trap at 21% APR.</p></div>
             <i class="ti ti-arrow-right go" aria-hidden="true"></i>
           </a>
           <a class="card hoverable tool-card" href="#invest-funds" data-accent="invest">
@@ -990,7 +953,7 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
     <section class="page" id="page-save-banking" data-accent="save" hidden aria-label="Smart banking">
       <p class="page-eyebrow"><span class="dot"></span>Saving Money</p>
       <h1 class="page-title">Smart beats only frugal</h1>
-      <p class="page-lede">Frugal savers cut back. Smart savers also make the dollars they already have work harder — cash back on spending you'd do anyway, and real interest on money you're already saving.</p>
+      <p class="page-lede">Frugal savers cut back. Smart savers also earn cash back on spending they'd do anyway, and real interest on money they're already saving.</p>
 
       <div class="grid-2">
         <div class="card">
@@ -1016,7 +979,7 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
             <div class="stat"><h4>Smarter card (3%)</h4><div class="val pos" id="cc-earn-smart">$300</div><div class="sub">back per year</div></div>
             <div class="stat"><h4>Difference</h4><div class="val pos" id="cc-diff">$200</div><div class="sub">same spending</div></div>
           </div>
-          <div class="callout co-warn" style="margin-bottom:0;"><p>This only works if you <strong>pay the full balance every month</strong>. A 20% APR balance erases cashback fast. Cashback is a bonus for people who already don't carry a balance — not a reason to get a card early.</p></div>
+          <div class="callout co-warn" style="margin-bottom:0;"><p>This only works if you <strong>pay the full balance every month</strong>. A 21% APR balance erases cashback fast. Cashback is a bonus for people who already don't carry a balance — not a reason to get a card early.</p></div>
         </div>
       </div>
 
@@ -1111,7 +1074,7 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
     <section class="page" id="page-invest-compound" data-accent="invest" hidden aria-label="Compound interest">
       <p class="page-eyebrow"><span class="dot"></span>Investing</p>
       <h1 class="page-title">The magic of compounding</h1>
-      <p class="page-lede">Simple interest pays you on the original amount. Compound interest pays you on your money <em>and</em> on the interest you've already earned. Over decades, that's the gap between "okay" and life-changing.</p>
+      <p class="page-lede">Compound interest pays you on your money <em>and</em> on the interest you've already earned — over decades, that's the gap between "okay" and life-changing.</p>
 
       <div class="grid-3">
         <div class="card"><span class="icon-chip"><i class="ti ti-clock" aria-hidden="true"></i></span><h3 class="content-h3">Time is #1</h3><p style="font-size:14px;color:var(--ink-3);line-height:1.65;">Starting 10 years earlier can matter more than the exact dollar amount.</p></div>
@@ -1153,7 +1116,7 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
       </div>
 
       <h2 class="content-h2">The Rule of 72</h2>
-      <p class="body">Quick mental math: divide <strong>72</strong> by your annual return (%) to estimate how many years money takes to <strong>double</strong>. ~7%/yr → 72 ÷ 7 ≈ 10 years. It works both ways: compounding builds wealth for investors and buries people who only pay credit card minimums (20% APR → debt doubles in ~3.6 years).</p>
+      <p class="body">Quick mental math: divide <strong>72</strong> by your annual return (%) to estimate how many years money takes to <strong>double</strong>. ~7%/yr → 72 ÷ 7 ≈ 10 years. It works both ways: compounding builds wealth for investors and buries people who only pay credit card minimums (21% APR → debt doubles in ~3.4 years).</p>
 
       <div class="tool-panel" id="tool-r72">
         <div class="tool-head"><span class="icon-chip"><i class="ti ti-percentage" aria-hidden="true"></i></span><h3>Rule of 72 — Try Your Own Rate</h3></div>
@@ -1200,11 +1163,11 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
         <div class="tool-body">
           <div class="ctrl">
             <label for="credit-score">Simulate a credit score</label>
-            <input type="range" id="credit-score" min="300" max="850" step="10" value="720" oninput="updateCredit()">
-            <span class="rdout" id="credit-score-out">720</span>
+            <input type="range" id="credit-score" min="300" max="850" step="10" value="730" oninput="updateCredit()">
+            <span class="rdout" id="credit-score-out">730</span>
           </div>
           <div class="stat-row">
-            <div class="stat"><h4>Score</h4><div class="val" id="cr-score">720</div></div>
+            <div class="stat"><h4>Score</h4><div class="val" id="cr-score">730</div></div>
             <div class="stat"><h4>Rating</h4><div class="val" id="cr-rating" style="color:var(--blue-600)">Good</div></div>
             <div class="stat"><h4>Car loan rate (est.)</h4><div class="val" id="cr-rate">7.2%</div></div>
             <div class="stat"><h4>Extra cost vs. excellent</h4><div class="val" id="cr-extra">~$900</div></div>
@@ -1219,7 +1182,7 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
       </div>
 
       <div class="tool-panel" id="tool-debt">
-        <div class="tool-head"><span class="icon-chip"><i class="ti ti-credit-card-off" aria-hidden="true"></i></span><h3>Minimum-Payment Trap</h3><span class="tool-sub">20% APR credit card</span></div>
+        <div class="tool-head"><span class="icon-chip"><i class="ti ti-credit-card-off" aria-hidden="true"></i></span><h3>Minimum-Payment Trap</h3><span class="tool-sub">21% APR credit card</span></div>
         <div class="tool-body">
           <div class="ctrl">
             <label for="cc-balance">Credit card balance ($)</label>
@@ -1340,7 +1303,7 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
         <a class="card hoverable tool-card" href="#make-jobs" data-accent="make"><span class="icon-chip"><i class="ti ti-coin" aria-hidden="true"></i></span><div><h3>Skill-to-Income Calculator</h3><p>What a skill could earn per month, year, and over 4 years.</p></div><i class="ti ti-arrow-right go" aria-hidden="true"></i></a>
         <a class="card hoverable tool-card" href="#make-taxes" data-accent="make"><span class="icon-chip"><i class="ti ti-receipt" aria-hidden="true"></i></span><div><h3>Take-home Estimator</h3><p>Gross vs. net pay — see where your paycheck goes.</p></div><i class="ti ti-arrow-right go" aria-hidden="true"></i></a>
         <a class="card hoverable tool-card" href="#protect-credit" data-accent="protect"><span class="icon-chip"><i class="ti ti-gauge" aria-hidden="true"></i></span><div><h3>Credit Score Simulator</h3><p>What a score means in real dollars on a $15k car loan.</p></div><i class="ti ti-arrow-right go" aria-hidden="true"></i></a>
-        <a class="card hoverable tool-card" href="#protect-credit" data-accent="protect"><span class="icon-chip"><i class="ti ti-credit-card-off" aria-hidden="true"></i></span><div><h3>Credit Card Payoff</h3><p>Why minimum payments at 20% APR can take years to escape.</p></div><i class="ti ti-arrow-right go" aria-hidden="true"></i></a>
+        <a class="card hoverable tool-card" href="#protect-credit" data-accent="protect"><span class="icon-chip"><i class="ti ti-credit-card-off" aria-hidden="true"></i></span><div><h3>Credit Card Payoff</h3><p>Why minimum payments at 21% APR can take years to escape.</p></div><i class="ti ti-arrow-right go" aria-hidden="true"></i></a>
         <a class="card hoverable tool-card" href="#invest-funds" data-accent="invest"><span class="icon-chip"><i class="ti ti-chart-pie" aria-hidden="true"></i></span><div><h3>Investment Explorer</h3><p>Savings, bonds, funds, stocks, crypto — risk vs. reward, pros &amp; cons.</p></div><i class="ti ti-arrow-right go" aria-hidden="true"></i></a>
         <a class="card hoverable tool-card" href="#protect-fraud" data-accent="protect"><span class="icon-chip"><i class="ti ti-spy" aria-hidden="true"></i></span><div><h3>Spot the Scam</h3><p>Five real-world messages — can you tell scam from legit?</p></div><i class="ti ti-arrow-right go" aria-hidden="true"></i></a>
         <a class="card hoverable tool-card" href="#quiz" data-accent="save"><span class="icon-chip"><i class="ti ti-clipboard-check" aria-hidden="true"></i></span><div><h3>Money Quiz</h3><p>12 scenario questions across all four pillars.</p></div><i class="ti ti-arrow-right go" aria-hidden="true"></i></a>
@@ -1878,7 +1841,7 @@ function calcDebt() {
   const minPay = +document.getElementById('cc-min').value;
   document.getElementById('cc-bal-out').textContent = '$' + bal.toLocaleString();
   document.getElementById('cc-min-out').textContent = '$' + minPay;
-  const mr = 0.20/12;
+  const mr = 0.21/12;
   let b = bal, paid = 0, months = 0;
   while (b > 0 && months < 600) {
     const interest = b * mr;
