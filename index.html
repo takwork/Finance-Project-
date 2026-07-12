@@ -66,7 +66,6 @@
 [data-theme="dark"] .hero { background:
   radial-gradient(ellipse 55% 65% at 50% -10%, rgba(59,130,246,0.16), transparent 60%),
   linear-gradient(180deg,#131E33 0%,#0B1220 100%); }
-[data-theme="dark"] .hero-badge { background:var(--bg-softer); }
 [data-theme="dark"] .btn-outline { background:transparent; }
 
 html { scroll-behavior:smooth; }
@@ -275,10 +274,10 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
   radial-gradient(ellipse 55% 65% at 50% -10%, rgba(37,99,235,0.10), transparent 60%),
   linear-gradient(180deg,#FFFFFF 0%,#F8FAFC 100%);
   border:1px solid var(--line);padding:26px 24px 22px;margin-top:var(--sp-3);overflow:hidden; }
-.hero-badge { display:inline-flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--blue-100);color:var(--blue-700);font-size:12.5px;font-weight:600;padding:5px 13px;border-radius:var(--r-pill);margin-bottom:var(--sp-4);box-shadow:var(--sh-sm); }
 .hero h1 { font-size:clamp(18px,2.1vw,26px);font-weight:800;letter-spacing:-0.03em;line-height:1.2;margin:0 auto 8px; }
 .hero h1 em { font-style:normal;color:var(--blue-600); }
-.hero p.sub { font-size:14.5px;color:var(--ink-3);line-height:1.55;margin:0 auto 16px; }
+.hero p.sub { font-size:13.5px;color:var(--ink-3);line-height:1.55;margin:0 auto 3px;max-width:1000px; }
+.hero p.sub-2 { margin-bottom:16px; }
 .hero-ctas { display:flex;gap:var(--sp-3);justify-content:center;flex-wrap:wrap;margin-bottom:20px; }
 .hero-pillars { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:620px;margin:0 auto; }
 .hp3 { display:flex;flex-direction:column;align-items:center;gap:3px;background:var(--bg);border:1.5px solid var(--line);border-bottom:3px solid var(--acc);border-radius:var(--r-md);padding:12px 10px 10px;text-decoration:none;color:var(--ink);box-shadow:var(--sh-sm);transition:transform 0.16s,box-shadow 0.16s; }
@@ -460,7 +459,7 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
 <header class="site-header">
   <div class="header-inner">
     <button class="menu-btn" id="menu-btn" onclick="toggleNav()" aria-label="Open navigation menu" aria-expanded="false">☰</button>
-    <a class="logo" href="#home"><span class="logo-mark"><i class="ti ti-coin" aria-hidden="true"></i></span>Teen <em>Money</em> Lab</a>
+    <a class="logo" href="#home"><span class="logo-mark"><i class="ti ti-coin" aria-hidden="true"></i></span>HighSchool Finance: Teen <em>Money</em> Lab</a>
     <nav class="header-links" aria-label="Primary">
       <a class="header-link" href="#home" data-route="home">Home</a>
       <a class="header-link" href="#tools" data-route="tools">Tools</a>
@@ -534,9 +533,9 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
     <!-- ============ HOME ============ -->
     <section class="page" id="page-home" aria-label="Home">
       <div class="hero">
-        <span class="hero-badge"><i class="ti ti-school" aria-hidden="true"></i> Free personal finance course · Grades 9–12</span>
         <h1>Money skills for real life, <em>before</em> you need them.</h1>
-        <p class="sub">Practical lessons and real calculators for earning, saving, and investing — start with what you know and grow from there.</p>
+        <p class="sub">Schools teach algebra, chemistry, and history — yet most students graduate without a single lesson on money. This site exists to change that.</p>
+        <p class="sub sub-2">Practical lessons and real calculators for the three pillars of money: you earn it, you save part of it, and you invest those savings so they grow.</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#make-jobs">Start learning <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
           <a class="btn btn-outline" href="#quiz">Take the quiz</a>
@@ -548,6 +547,34 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
         </div>
         <a class="hero-protect" href="#protect-credit"><i class="ti ti-shield" aria-hidden="true"></i><span><strong>Protect what you build</strong> — credit, insurance, scams &amp; identity theft</span><span class="go-arrow">→</span></a>
         <p class="hero-proof">Earn it, save it, grow it — and protect all three.</p>
+      </div>
+
+      <!-- Featured lessons -->
+      <div class="section reveal" aria-label="Featured lessons">
+        <div class="section-head">
+          <h2>Featured lessons</h2>
+          <p>Great starting points if you're new here.</p>
+        </div>
+        <div class="grid-3">
+          <a class="card hoverable lesson-card" href="#invest-compound" data-accent="invest">
+            <span class="tag">Investing</span>
+            <h3>The magic of compounding</h3>
+            <p>At the market's historical ~10% average, $100/month from age 16 beats $300/month from age 30. The math will surprise you.</p>
+            <span class="meta">7 min lesson + calculator →</span>
+          </a>
+          <a class="card hoverable lesson-card" href="#save-banking" data-accent="save">
+            <span class="tag">Saving money</span>
+            <h3>Smart savings</h3>
+            <p>Smart beats only frugal — earn cash back on spending you'd do anyway, and real interest on money you're already saving.</p>
+            <span class="meta">5 min lesson + comparison →</span>
+          </a>
+          <a class="card hoverable lesson-card" href="#invest-funds" data-accent="invest">
+            <span class="tag">Investing</span>
+            <h3>Investment types</h3>
+            <p>Savings, bonds, funds, stocks, crypto — how risk and reward trade off, and where beginners usually start.</p>
+            <span class="meta">6 min lesson + explorer →</span>
+          </a>
+        </div>
       </div>
 
       <!-- Tools -->
@@ -599,34 +626,6 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
             <p>12 copy-paste prompts for ChatGPT, Claude, or Gemini — learn saving and investing more deeply, with zero private info required.</p>
           </div>
           <a class="btn btn-primary" href="#ai-prompts">Browse prompts</a>
-        </div>
-      </div>
-
-      <!-- Featured lessons -->
-      <div class="section reveal" aria-label="Featured lessons">
-        <div class="section-head">
-          <h2>Featured lessons</h2>
-          <p>Great starting points if you're new here.</p>
-        </div>
-        <div class="grid-3">
-          <a class="card hoverable lesson-card" href="#invest-compound" data-accent="invest">
-            <span class="tag">Investing</span>
-            <h3>The magic of compounding</h3>
-            <p>At the market's historical ~10% average, $100/month from age 16 beats $300/month from age 30. The math will surprise you.</p>
-            <span class="meta">7 min lesson + calculator →</span>
-          </a>
-          <a class="card hoverable lesson-card" href="#make-taxes" data-accent="make">
-            <span class="tag">Making money</span>
-            <h3>Where did my paycheck go?</h3>
-            <p>Gross vs. net pay, what FICA means, and why your first check is smaller than you expected.</p>
-            <span class="meta">5 min lesson + estimator →</span>
-          </a>
-          <a class="card hoverable lesson-card" href="#protect-fraud" data-accent="protect">
-            <span class="tag">Protecting money</span>
-            <h3>Spot the scam</h3>
-            <p>Money-flip DMs, fake-check jobs, phishing texts — practice spotting them before they cost you.</p>
-            <span class="meta">5 min lesson + game →</span>
-          </a>
         </div>
       </div>
 
@@ -2014,12 +2013,24 @@ function showGlossaryHelp(id) {
    GLOSSARY — plain-English definitions, grouped by pillar
    ============================================================ */
 const GLOSSARY = [
+  { cat:'Investing', color:'var(--teal-700)', terms:[
+    ['Stock (share)','A small piece of ownership in one company. If a company has 1 million shares and you own one, you own one-millionth of that business. You make money when the share price rises or the company pays dividends — but if the company fails, shares can become worthless.'],
+    ['Dividend','A slice of company profit paid out to shareholders.'],
+    ['Bond','A loan you make to a government or company; they repay it with interest. Steadier than stocks, but not risk-free.'],
+    ['Mutual fund','A basket of many investments you buy in one purchase. Money from thousands of investors is pooled together to buy stocks, bonds, or both — so even a small amount buys you tiny slices of hundreds of companies instead of a bet on just one.'],
+    ['Index fund','A low-fee fund that simply tracks a market index, like the S&P 500, instead of picking stocks.'],
+    ['Diversification','Spreading money across many investments so one failure hurts less. It reduces risk but does not remove it.'],
+    ['Brokerage account','The account you open to buy stocks, bonds, and funds.'],
+    ['Compound interest','Earning on your money and on the interest it already earned — the reason starting early wins.'],
+    ['Rule of 72','Divide 72 by your yearly return percentage to estimate how many years money takes to double.'],
+    ['Inflation','Prices rising over time. Money that grows slower than inflation buys less each year.'],
+    ['Crypto','Digital assets like Bitcoin with no company earnings behind them — highly speculative.']
+  ]},
   { cat:'Earning & taxes', color:'var(--green-700)', terms:[
     ['Gross pay','Money you earn before taxes and deductions are taken out.'],
     ['Net pay (take-home)','What is left after taxes and deductions — the money you can actually spend or save.'],
     ['Withholding','Tax your employer takes out of each paycheck and sends to the government for you.'],
     ['W-2','The form your employer sends every January showing your wages and the tax withheld — you use it to file your tax return.'],
-    ['W-4','The form you fill out when starting a job so your employer knows how much federal income tax to hold back.'],
     ['FICA','The payroll tax that funds Social Security (6.2%) and Medicare (1.45%). Employers pay a matching amount.'],
     ['Tax refund','Money back after filing your return when more tax was withheld during the year than you actually owed.'],
     ['Self-employment tax','The 15.3% tax (both halves of FICA) owed on side-hustle income when there is no employer.']
@@ -2033,26 +2044,13 @@ const GLOSSARY = [
     ['High-yield savings account','A savings account that pays far more interest (often 4–5%) than the 0.01% at many big banks.'],
     ['Interest','Money a bank pays you for keeping funds there — or the cost you pay to borrow.'],
     ['APR','Annual Percentage Rate: the yearly cost of borrowing money. Higher APR means more interest paid.'],
-    ['Cash back','A percentage of card spending returned to you. Only a win if you pay the full balance every month.'],
-    ['FDIC insurance','Government protection for bank deposits up to $250,000 per depositor, per bank. It does not cover stocks or crypto.']
-  ]},
-  { cat:'Investing', color:'var(--teal-700)', terms:[
-    ['Stock (share)','A tiny ownership stake in one company. It can grow a lot — or fall to nothing if the company fails.'],
-    ['Dividend','A slice of company profit paid out to shareholders.'],
-    ['Bond','A loan you make to a government or company; they repay it with interest. Steadier than stocks, but not risk-free.'],
-    ['Mutual fund','A pool of many investors’ money used to buy many investments at once.'],
-    ['Index fund','A low-fee fund that simply tracks a market index, like the S&P 500, instead of picking stocks.'],
-    ['Diversification','Spreading money across many investments so one failure hurts less. It reduces risk but does not remove it.'],
-    ['Brokerage account','The account you open to buy stocks, bonds, and funds.'],
-    ['Compound interest','Earning on your money and on the interest it already earned — the reason starting early wins.'],
-    ['Rule of 72','Divide 72 by your yearly return percentage to estimate how many years money takes to double.'],
-    ['Inflation','Prices rising over time. Money that grows slower than inflation buys less each year.'],
-    ['Crypto','Digital assets like Bitcoin with no company earnings behind them — highly speculative.']
+    ['Cash back','A percentage of card spending returned to you. Only a win if you pay the full balance every month.']
   ]},
   { cat:'Credit, debt & protection', color:'var(--gold-600)', terms:[
+    ['Credit card','A card that borrows the bank\'s money every time you buy something. Pay the full balance by the due date and the borrowing is free; carry a balance and interest — often 20%+ APR — starts piling onto what you owe.'],
     ['Credit score','A 300–850 number showing how reliably you repay. Payment history counts most (~35%).'],
     ['Credit utilization','The share of your card limit you are using. Try to keep it under 30%.'],
-    ['Secured credit card','A starter card backed by your own deposit — a safe way to begin building credit history at 18.'],
+    ['Secured credit card','A beginner credit card backed by a refundable deposit you put down (often $200), which becomes your spending limit. Because the deposit protects the bank, it is easy to get at 18 — use it for small purchases, pay in full every month, and it builds real credit history. You get the deposit back when you close or upgrade the card.'],
     ['Minimum payment','The smallest card payment allowed each month. Paying only this stretches debt out for years.'],
     ['Co-signer','A person equally responsible for someone else’s loan. Missed payments hurt both credit scores.'],
     ['Credit freeze','A free lock at all three credit bureaus that blocks new accounts from being opened in your name.'],
