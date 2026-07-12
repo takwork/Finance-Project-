@@ -116,10 +116,13 @@ a { color:var(--blue-600); }
 .sn-item:hover i { color:var(--ink-2); }
 .sn-item.active { background:var(--blue-50);color:var(--blue-700);font-weight:600;box-shadow:inset 3px 0 0 var(--blue-600); }
 .sn-item.active i { color:var(--blue-600); }
-.sn-item .done-tick { margin-left:auto;font-size:13px;color:var(--green-600); }
+/* numbered lesson circles (1–12); turn into a check when complete */
+.sn-num { width:21px;height:21px;border-radius:50%;border:1px solid var(--acc-line,var(--line-2));background:var(--acc-bg,var(--bg-softer));display:inline-flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:var(--acc-strong,var(--ink-3));flex-shrink:0;font-variant-numeric:tabular-nums;transition:background 0.15s,border-color 0.15s,color 0.15s; }
+.sn-item.done .sn-num { background:var(--green-600);border-color:var(--green-600);color:#fff; }
+.sn-item.active .sn-num { background:var(--blue-600);border-color:var(--blue-600);color:#fff; }
 .sn-group { margin-top:var(--sp-2); }
-.sn-group-head { display:flex;align-items:center;gap:10px;width:calc(100% - 16px);margin:1px 8px;padding:9px 12px;border:none;border-radius:var(--r-sm);background:none;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--ink-3);cursor:pointer;text-align:left; }
-.sn-group-head:hover { background:var(--bg-softer);color:var(--ink); }
+.sn-group-head { display:flex;align-items:center;gap:10px;width:calc(100% - 16px);margin:1px 8px;padding:9px 12px;border:none;border-radius:var(--r-sm);background:none;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--acc-strong,var(--ink-3));cursor:pointer;text-align:left; }
+.sn-group-head:hover { background:var(--acc-bg,var(--bg-softer)); }
 .sn-group-head .dot { width:9px;height:9px;border-radius:50%;background:var(--acc,var(--ink-4));flex-shrink:0; }
 .sn-group-head .chev { margin-left:auto;font-size:15px;color:var(--ink-4);transition:transform 0.2s; }
 .sn-group.open .sn-group-head .chev { transform:rotate(90deg); }
@@ -467,33 +470,33 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
     <div class="sn-group" data-accent="make" id="group-make">
       <button class="sn-group-head" onclick="toggleGroup('make')" aria-expanded="false"><span class="dot"></span>Making Money<span class="sn-count" id="count-make">0/3</span><i class="ti ti-chevron-right chev" aria-hidden="true"></i></button>
       <div class="sn-group-body">
-        <a class="sn-item" href="#make-jobs" data-route="make-jobs"><i class="ti ti-briefcase" aria-hidden="true"></i>Jobs &amp; Paychecks</a>
-        <a class="sn-item" href="#make-taxes" data-route="make-taxes"><i class="ti ti-receipt-tax" aria-hidden="true"></i>Taxes Basics</a>
-        <a class="sn-item" href="#make-hustles" data-route="make-hustles"><i class="ti ti-rocket" aria-hidden="true"></i>Side Hustles</a>
+        <a class="sn-item" href="#make-jobs" data-route="make-jobs"><span class="sn-num" data-n="1">1</span>Jobs &amp; Paychecks</a>
+        <a class="sn-item" href="#make-taxes" data-route="make-taxes"><span class="sn-num" data-n="2">2</span>Taxes Basics</a>
+        <a class="sn-item" href="#make-hustles" data-route="make-hustles"><span class="sn-num" data-n="3">3</span>Side Hustles</a>
       </div>
     </div>
     <div class="sn-group" data-accent="save" id="group-save">
       <button class="sn-group-head" onclick="toggleGroup('save')" aria-expanded="false"><span class="dot"></span>Saving Money<span class="sn-count" id="count-save">0/3</span><i class="ti ti-chevron-right chev" aria-hidden="true"></i></button>
       <div class="sn-group-body">
-        <a class="sn-item" href="#save-banking" data-route="save-banking"><i class="ti ti-building-bank" aria-hidden="true"></i>Smart Money</a>
-        <a class="sn-item" href="#save-budget" data-route="save-budget"><i class="ti ti-wallet" aria-hidden="true"></i>Budgeting</a>
-        <a class="sn-item" href="#save-emergency" data-route="save-emergency"><i class="ti ti-lifebuoy" aria-hidden="true"></i>Emergency Fund</a>
+        <a class="sn-item" href="#save-banking" data-route="save-banking"><span class="sn-num" data-n="4">4</span>Smart Money</a>
+        <a class="sn-item" href="#save-budget" data-route="save-budget"><span class="sn-num" data-n="5">5</span>Budgeting</a>
+        <a class="sn-item" href="#save-emergency" data-route="save-emergency"><span class="sn-num" data-n="6">6</span>Emergency Fund</a>
       </div>
     </div>
     <div class="sn-group" data-accent="invest" id="group-invest">
       <button class="sn-group-head" onclick="toggleGroup('invest')" aria-expanded="false"><span class="dot"></span>Investing<span class="sn-count" id="count-invest">0/3</span><i class="ti ti-chevron-right chev" aria-hidden="true"></i></button>
       <div class="sn-group-body">
-        <a class="sn-item" href="#invest-funds" data-route="invest-funds"><i class="ti ti-chart-pie" aria-hidden="true"></i>Investment Types</a>
-        <a class="sn-item" href="#invest-stocks" data-route="invest-stocks"><i class="ti ti-chart-line" aria-hidden="true"></i>What Is a Stock?</a>
-        <a class="sn-item" href="#invest-compound" data-route="invest-compound"><i class="ti ti-trending-up" aria-hidden="true"></i>Compound Interest</a>
+        <a class="sn-item" href="#invest-funds" data-route="invest-funds"><span class="sn-num" data-n="7">7</span>Investment Types</a>
+        <a class="sn-item" href="#invest-stocks" data-route="invest-stocks"><span class="sn-num" data-n="8">8</span>What Is a Stock?</a>
+        <a class="sn-item" href="#invest-compound" data-route="invest-compound"><span class="sn-num" data-n="9">9</span>Compound Interest</a>
       </div>
     </div>
     <div class="sn-group" data-accent="protect" id="group-protect">
       <button class="sn-group-head" onclick="toggleGroup('protect')" aria-expanded="false"><span class="dot"></span>Protecting Money<span class="sn-count" id="count-protect">0/3</span><i class="ti ti-chevron-right chev" aria-hidden="true"></i></button>
       <div class="sn-group-body">
-        <a class="sn-item" href="#protect-credit" data-route="protect-credit"><i class="ti ti-credit-card" aria-hidden="true"></i>Credit &amp; Debt</a>
-        <a class="sn-item" href="#protect-insurance" data-route="protect-insurance"><i class="ti ti-shield" aria-hidden="true"></i>Insurance</a>
-        <a class="sn-item" href="#protect-fraud" data-route="protect-fraud"><i class="ti ti-spy" aria-hidden="true"></i>Scams &amp; Identity Theft</a>
+        <a class="sn-item" href="#protect-credit" data-route="protect-credit"><span class="sn-num" data-n="10">10</span>Credit &amp; Debt</a>
+        <a class="sn-item" href="#protect-insurance" data-route="protect-insurance"><span class="sn-num" data-n="11">11</span>Insurance</a>
+        <a class="sn-item" href="#protect-fraud" data-route="protect-fraud"><span class="sn-num" data-n="12">12</span>Scams &amp; Identity Theft</a>
       </div>
     </div>
 
@@ -810,13 +813,13 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
         <div class="tool-body">
           <div class="ctrl">
             <label for="gross-pay">Gross pay ($/month)</label>
-            <input type="range" id="gross-pay" min="100" max="2000" step="50" value="480" oninput="calcPaycheck()">
-            <span class="rdout" id="gross-out">$480</span>
+            <input type="range" id="gross-pay" min="100" max="2000" step="50" value="500" oninput="calcPaycheck()">
+            <span class="rdout" id="gross-out">$500</span>
           </div>
           <div class="stat-row">
-            <div class="stat"><h4>Gross</h4><div class="val" id="pc-gross">$480</div></div>
-            <div class="stat"><h4>Taxes (~15%)</h4><div class="val neg" id="pc-tax">−$72</div></div>
-            <div class="stat"><h4>Take-home</h4><div class="val pos" id="pc-net">$408</div><div class="sub">budget with this</div></div>
+            <div class="stat"><h4>Gross</h4><div class="val" id="pc-gross">$500</div></div>
+            <div class="stat"><h4>Taxes (~15%)</h4><div class="val neg" id="pc-tax">−$75</div></div>
+            <div class="stat"><h4>Take-home</h4><div class="val pos" id="pc-net">$425</div><div class="sub">budget with this</div></div>
           </div>
           <p class="fineprint">A rough estimate for learning — real withholding varies by state and income. If you earn little in a year, you may get much of it back as a refund after filing.</p>
         </div>
@@ -1121,8 +1124,8 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
         <div class="tool-body">
           <div class="ctrl">
             <label for="c-start">Starting amount ($)</label>
-            <input type="range" id="c-start" min="0" max="5000" step="50" value="1000" oninput="calcCompound()">
-            <span class="rdout" id="c-start-out">$1,000</span>
+            <input type="range" id="c-start" min="0" max="5000" step="50" value="1500" oninput="calcCompound()">
+            <span class="rdout" id="c-start-out">$1,500</span>
           </div>
           <div class="ctrl">
             <label for="c-monthly">Monthly contribution ($)</label>
@@ -1140,9 +1143,9 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
             <span class="rdout" id="c-rate-out">10%</span>
           </div>
           <div class="stat-row">
-            <div class="stat"><h4>You put in</h4><div class="val" id="c-contrib">$37,000</div></div>
-            <div class="stat"><h4>Growth</h4><div class="val pos" id="c-growth">+$208,886</div></div>
-            <div class="stat"><h4>Final value</h4><div class="val pos" id="c-total">$245,886</div></div>
+            <div class="stat"><h4>You put in</h4><div class="val" id="c-contrib">$37,500</div></div>
+            <div class="stat"><h4>Growth</h4><div class="val pos" id="c-growth">+$218,305</div></div>
+            <div class="stat"><h4>Final value</h4><div class="val pos" id="c-total">$255,805</div></div>
           </div>
           <div class="chart-wrap" style="height:240px;"><canvas id="compoundChart" role="img" aria-label="Line chart comparing contributions to total value over time"></canvas></div>
           <p class="fineprint">Estimates for learning — not a promise of returns.</p>
@@ -1474,7 +1477,7 @@ const TOPICS = {
     related:['invest-funds','invest-compound','protect-fraud'] },
   'invest-compound': { title:'Compound Interest', pillar:'Investing',
     facts:['72 ÷ rate ≈ years for money to double','Time in the market beats timing the market','Starting at 16 vs 26 can change everything'],
-    dyk:'In the default demo (10% for 30 years), growth adds about $209,000 on top of the $37,000 you put in — the money ends up doing far more work than you.',
+    dyk:'In the default demo (10% for 30 years), growth adds about $218,000 on top of the $37,500 you put in — the money ends up doing far more work than you.',
     related:['invest-funds','invest-stocks','protect-credit'] },
   'protect-credit': { title:'Credit & Debt', pillar:'Protecting Money',
     facts:['Scores run 300–850; 700+ is good','Payment history ≈ 35% of your score','Keep utilization under 30% of your limit'],
@@ -1511,16 +1514,13 @@ function updateProgressUI() {
   document.getElementById('hp-label').textContent = done + ' / ' + total + ' lessons';
   const rf = document.getElementById('rail-progress-fill');
   if (rf) { rf.style.width = (done/total*100) + '%'; document.getElementById('rail-progress-count').textContent = done; }
-  // sidebar ticks + group counts
+  // sidebar numbered circles turn into checks when complete
   document.querySelectorAll('.sidenav .sn-item[data-route]').forEach(el => {
-    const r = el.dataset.route;
-    let tick = el.querySelector('.done-tick');
-    if (completed.has(r) && !tick) {
-      tick = document.createElement('i');
-      tick.className = 'ti ti-circle-check-filled done-tick';
-      tick.setAttribute('aria-label','completed');
-      el.appendChild(tick);
-    } else if (!completed.has(r) && tick) tick.remove();
+    const num = el.querySelector('.sn-num');
+    if (!num) return;
+    const done = completed.has(el.dataset.route);
+    el.classList.toggle('done', done);
+    num.textContent = done ? '✓' : num.dataset.n;
   });
   ['make','save','invest','protect'].forEach(g => {
     const items = TOPIC_ORDER.filter(t => t.startsWith(g + '-'));
