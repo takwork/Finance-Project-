@@ -375,6 +375,16 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
 .scam-exp { display:none;font-size:13px;color:var(--ink-3);margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);line-height:1.6; }
 .scam-exp.show { display:block; }
 
+/* AI prompt cards */
+.prompt-card { display:flex;flex-direction:column;gap:8px;padding:14px 16px; }
+.prompt-card h3 { font-size:15px;font-weight:700;letter-spacing:-0.01em; }
+.prompt-card .pc-learn { font-size:12.5px;color:var(--ink-3);line-height:1.5; }
+.prompt-card .pc-learn strong { color:var(--ink-2);font-weight:600; }
+.prompt-card .prompt-text { flex:1;font-size:13px;color:var(--ink-2);line-height:1.6;background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 12px; }
+.copy-btn { align-self:flex-start; }
+.copy-btn.copied { border-color:var(--green-600) !important;color:var(--green-700) !important;background:var(--green-50) !important; }
+.band-ai { background:linear-gradient(120deg,var(--blue-50),var(--teal-50)); }
+
 /* quiz page */
 .quiz-score-bar { position:sticky;top:calc(var(--header-h) + 10px);z-index:60;display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:8px 10px 8px 16px;margin-bottom:16px;font-size:14px;color:var(--ink-2);box-shadow:var(--sh-md); }
 .quiz-score-bar #score-msg { margin-left:auto; }
@@ -496,6 +506,7 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
 
     <div class="sn-divider" role="separator"></div>
     <a class="sn-item" href="#tools" data-route="tools"><i class="ti ti-calculator" aria-hidden="true"></i>Tools &amp; Calculators</a>
+    <a class="sn-item" href="#ai-prompts" data-route="ai-prompts"><i class="ti ti-sparkles" aria-hidden="true"></i>AI Prompts</a>
     <a class="sn-item" href="#quiz" data-route="quiz"><i class="ti ti-clipboard-check" aria-hidden="true"></i>Money Quiz</a>
     <a class="sn-item" href="#survey" data-route="survey"><i class="ti ti-message-circle" aria-hidden="true"></i>Survey</a>
     <a class="sn-item" href="#about" data-route="about"><i class="ti ti-info-circle" aria-hidden="true"></i>About</a>
@@ -560,6 +571,18 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
             <div><h3>Survey</h3><p>Tell us what to teach next — about two minutes, all multiple choice.</p></div>
             <i class="ti ti-arrow-right go" aria-hidden="true"></i>
           </a>
+        </div>
+      </div>
+
+      <!-- AI prompts band -->
+      <div class="section reveal">
+        <div class="band band-ai">
+          <span class="icon-chip"><i class="ti ti-sparkles" aria-hidden="true"></i></span>
+          <div>
+            <h2>Ask AI to Explain This</h2>
+            <p>12 copy-paste prompts for ChatGPT, Claude, or Gemini — learn saving and investing more deeply, with zero private info required.</p>
+          </div>
+          <a class="btn btn-primary" href="#ai-prompts">Browse prompts</a>
         </div>
       </div>
 
@@ -984,6 +1007,8 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
         </div>
       </div>
 
+      <div class="callout co-idea"><p><strong>Go deeper with AI:</strong> copy a <a href="#ai-prompts">Saving Money prompt</a> into your favorite AI tool — no private info needed — then come back and test yourself below.</p></div>
+
       <div class="check-card" data-check="save-banking">
         <h3><i class="ti ti-clipboard-check" aria-hidden="true"></i>Check your understanding</h3>
         <p class="q">When does cashback actually help you?</p>
@@ -1135,6 +1160,8 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
       </div>
 
       <div class="callout co-takeaway"><p>When the growth number beats the contribution number, your money is working harder than you are. Time — starting early and staying consistent — beats "perfect" timing.</p></div>
+
+      <div class="callout co-idea"><p><strong>Go deeper with AI:</strong> copy an <a href="#ai-prompts">Investing Money prompt</a> into your favorite AI tool — no private info needed — then come back and test yourself below.</p></div>
 
       <div class="check-card" data-check="invest-compound">
         <h3><i class="ti ti-clipboard-check" aria-hidden="true"></i>Check your understanding</h3>
@@ -1308,7 +1335,25 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
         <a class="card hoverable tool-card" href="#invest-funds" data-accent="invest"><span class="icon-chip"><i class="ti ti-chart-pie" aria-hidden="true"></i></span><div><h3>Investment Explorer</h3><p>Savings, bonds, funds, stocks, crypto — risk vs. reward, pros &amp; cons.</p></div><i class="ti ti-arrow-right go" aria-hidden="true"></i></a>
         <a class="card hoverable tool-card" href="#protect-fraud" data-accent="protect"><span class="icon-chip"><i class="ti ti-spy" aria-hidden="true"></i></span><div><h3>Spot the Scam</h3><p>Five real-world messages — can you tell scam from legit?</p></div><i class="ti ti-arrow-right go" aria-hidden="true"></i></a>
         <a class="card hoverable tool-card" href="#quiz" data-accent="save"><span class="icon-chip"><i class="ti ti-clipboard-check" aria-hidden="true"></i></span><div><h3>Money Quiz</h3><p>12 scenario questions across all four pillars.</p></div><i class="ti ti-arrow-right go" aria-hidden="true"></i></a>
+        <a class="card hoverable tool-card" href="#ai-prompts" data-accent="invest"><span class="icon-chip"><i class="ti ti-sparkles" aria-hidden="true"></i></span><div><h3>Ask AI to Explain This</h3><p>12 copy-paste prompts for your favorite AI tool — saving and investing, learning only.</p></div><i class="ti ti-arrow-right go" aria-hidden="true"></i></a>
       </div>
+    </section>
+
+    <!-- ============ AI PROMPTS ============ -->
+    <section class="page" id="page-ai-prompts" hidden aria-label="Ask AI to explain this">
+      <p class="page-eyebrow"><span class="dot"></span>AI Prompts</p>
+      <h1 class="page-title">Ask AI to Explain This</h1>
+      <p class="page-lede">Copy a prompt into your favorite AI tool — ChatGPT, Claude, Gemini, or another — to go deeper on saving and investing. Designed for learning, not personal financial advice.</p>
+
+      <div class="callout co-warn"><p><strong>These prompts are for learning only.</strong> Do not paste private information such as real bank balances, account numbers, passwords, Social Security numbers, or personal financial documents into any AI tool. For real financial decisions, talk with a trusted adult or qualified professional.</p></div>
+
+      <h2 class="content-h2" style="color:var(--blue-700);">Saving Money</h2>
+      <div class="grid-2" id="ai-grid-save"></div>
+
+      <h2 class="content-h2" style="color:var(--teal-700);">Investing Money</h2>
+      <div class="grid-2" id="ai-grid-invest"></div>
+
+      <p class="fineprint">Try a prompt after using a calculator, then come back and test what you learned.</p>
     </section>
 
     <!-- ============ QUIZ ============ -->
@@ -1390,6 +1435,7 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
       <h4>More</h4>
       <ul>
         <li><a href="#tools">Tools &amp; Calculators</a></li>
+        <li><a href="#ai-prompts">AI Prompts</a></li>
         <li><a href="#quiz">Money Quiz</a></li>
         <li><a href="#survey">Survey</a></li>
         <li><a href="#about">About</a></li>
@@ -1457,7 +1503,7 @@ const TOPICS = {
     related:['protect-credit','protect-insurance','save-banking'] }
 };
 const TOPIC_ORDER = Object.keys(TOPICS);
-const PAGES = ['home','tools','quiz','survey','about'].concat(TOPIC_ORDER);
+const PAGES = ['home','tools','ai-prompts','quiz','survey','about'].concat(TOPIC_ORDER);
 const PILLAR_OF = { make:'Making Money', save:'Saving Money', invest:'Investing', protect:'Protecting Money' };
 
 /* ============================================================
@@ -1551,7 +1597,7 @@ function showPage(route, fromHistory) {
     setGroup(g, true);
   }
   document.title = (route === 'home' ? 'Teen Money Lab — Personal Finance for Teens'
-    : (TOPICS[route] ? TOPICS[route].title : route.charAt(0).toUpperCase() + route.slice(1)) + ' · Teen Money Lab');
+    : (TOPICS[route] ? TOPICS[route].title : route === 'ai-prompts' ? 'AI Prompts' : route.charAt(0).toUpperCase() + route.slice(1)) + ' · Teen Money Lab');
 
   toggleNav(false);
   window.scrollTo({ top: 0, behavior: fromHistory ? 'instant' : 'smooth' });
@@ -1574,6 +1620,7 @@ function initPageTools(route) {
     if (route === 'invest-compound') { calcCompound(); calcRule72(); }
     if (route === 'protect-credit') { updateCredit(); calcDebt(); }
     if (route === 'protect-fraud') renderScamList();
+    if (route === 'ai-prompts') renderAiPrompts();
     if (route === 'quiz') buildQuiz();
     if (route === 'survey') initSurvey();
   }, 40);
@@ -2060,6 +2107,92 @@ function scamAnswer(i, guessScam, btn) {
   btn.closest('.scam-item').querySelectorAll('.scam-btn').forEach(b => b.disabled = true);
   btn.classList.add(correct ? 'correct' : 'wrong');
   document.getElementById('scam-exp-' + i).classList.add('show');
+}
+
+/* ============================================================
+   AI PROMPTS — copy-paste study prompts (no AI connection,
+   no private data; students paste these into their own AI tool)
+   ============================================================ */
+const AI_PROMPTS = {
+  save: [
+    { title:'Build My First Budget',
+      learn:'How to divide money between needs, wants, saving, and investing.',
+      prompt:'I am a high school student learning how to budget. Use a simple example with a small monthly income and show how to divide money into needs, wants, savings, and investing. Explain why saving first is a smart habit.' },
+    { title:'Needs vs. Wants Decision',
+      learn:'How to make better spending decisions before buying something.',
+      prompt:'Teach me how to tell the difference between a need, a want, and something I should wait to buy. Give me 5 examples that high school students might actually face.' },
+    { title:'Savings Goal Planner',
+      learn:'How to turn a money goal into a weekly or monthly savings plan.',
+      prompt:'I want to understand how to save for a goal like a phone, laptop, car, or trip. Show me how to calculate how much I need to save each week or month if I know the total cost and my deadline.' },
+    { title:'Emergency Fund Starter',
+      learn:'Why emergency savings matter, even for teenagers.',
+      prompt:'Explain what an emergency fund is and why a teenager should have one. Give me realistic examples of emergencies a high school student might face and how a small emergency fund can help.' },
+    { title:'Where Should Savings Go?',
+      learn:'Why short-term money should usually be kept safe and easy to access.',
+      prompt:'Explain the difference between keeping money in cash, checking, savings, and investing. For money I might need soon, explain why safety and access matter more than high returns.' },
+    { title:'Spending Habits Check',
+      learn:'How small spending habits can affect saving.',
+      prompt:'Help me think through my spending habits as a high school student. Give me 10 common small expenses students may not notice, and explain how small changes can help me save more without feeling like I can never have fun.' }
+  ],
+  invest: [
+    { title:'Magic of Compound Interest',
+      learn:'Why starting early can make a big difference over time.',
+      prompt:'Explain compound interest like I am a high school student. Use a simple example where someone starts with a small amount and adds money every month. Show why starting early can matter more than starting with a lot of money.' },
+    { title:'Saving vs. Investing',
+      learn:'When to save money and when investing may make sense.',
+      prompt:'Explain the difference between saving and investing. When should money be saved instead of invested? When might investing make sense? Include risk, time, and short-term vs. long-term goals.' },
+    { title:'Mutual Funds and Index Funds',
+      learn:'How funds can spread money across many investments.',
+      prompt:'Explain mutual funds and index funds in simple words. Compare them with buying one individual stock. Use an example that shows why owning many companies can reduce risk compared with betting on one company.' },
+    { title:'What Are Bonds?',
+      learn:'How bonds compare with stocks and savings accounts.',
+      prompt:'Explain what bonds are in simple terms. Compare bonds with stocks and savings accounts. Explain why bonds are usually considered lower risk than stocks, but still not completely risk-free.' },
+    { title:'Risk vs. Reward',
+      learn:'Why higher potential returns usually come with higher risk.',
+      prompt:'Teach me how risk and reward work in investing. Explain why investments with higher possible returns usually come with higher risk. Give examples using savings accounts, bonds, index funds, individual stocks, and speculative investments.' },
+    { title:'Diversification',
+      learn:'Why spreading money across investments can reduce risk.',
+      prompt:'Explain diversification using the phrase "don\'t put all your eggs in one basket." Show why putting all your money into one stock is risky, and how spreading money across different investments can help reduce risk. Also explain that diversification reduces risk but does not guarantee against losses.' }
+  ]
+};
+
+function renderAiPrompts() {
+  ['save','invest'].forEach(cat => {
+    const grid = document.getElementById('ai-grid-' + cat);
+    if (!grid || grid.childElementCount) return;
+    grid.innerHTML = AI_PROMPTS[cat].map((p, i) => `
+      <div class="card prompt-card">
+        <h3>${p.title}</h3>
+        <p class="pc-learn"><strong>What this helps you learn:</strong> ${p.learn}</p>
+        <p class="prompt-text">${p.prompt}</p>
+        <button class="btn btn-outline btn-sm copy-btn" onclick="copyPrompt(this,'${cat}',${i})" aria-label="Copy prompt: ${p.title}"><i class="ti ti-copy" aria-hidden="true"></i> Copy Prompt</button>
+      </div>`).join('');
+  });
+}
+
+function copyPrompt(btn, cat, i) {
+  const p = AI_PROMPTS[cat][i];
+  const confirmCopied = () => {
+    const original = btn.innerHTML;
+    btn.innerHTML = '<i class="ti ti-check" aria-hidden="true"></i> Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.innerHTML = original; btn.classList.remove('copied'); }, 1600);
+  };
+  const fallbackCopy = () => {
+    const ta = document.createElement('textarea');
+    ta.value = p.prompt;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); confirmCopied(); } catch (e) {}
+    ta.remove();
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(p.prompt).then(confirmCopied, fallbackCopy);
+  } else {
+    fallbackCopy();
+  }
+  if (typeof gtag === 'function') gtag('event', 'ai_prompt_copy', { prompt_title: p.title });
 }
 
 /* ============================================================
