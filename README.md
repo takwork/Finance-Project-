@@ -148,4 +148,4 @@ Content assumes no prior finance knowledge and avoids shaming students for where
 
 ## Author
 
-**Bharat Nagpal**
+**Taksh N**
