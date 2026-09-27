@@ -1,0 +1,19 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+
+# Claude Code project context — local only, not part of the deployed site
+CLAUDE.md
+
+# Guard against accidentally copying working-folder files from
+# ~/projects/personal_finance into this deploy repo
+teen-money-lab*.html
+hero-options.html
+redesign-spec-*.md
+survey-questions.md
+tasks.md
+skills/
+.cursor/
+
+# Vercel CLI local state, if this folder ever gets `vercel link`ed
+.vercel

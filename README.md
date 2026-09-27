@@ -33,7 +33,7 @@ Earn → Save → Invest → Concepts
 | **Earn** | Your pay goes up when your skills go up. | What could I earn?, Side hustles, First paycheck 101, Quiz |
 | **Save** | Saving = more choices later. | Budget builder, Emergency stash, Save for something, Quiz |
 | **Save → Money hygiene** | *(under Save tab)* | Credit score 101, Scams & identity theft, Good debt vs. bad debt |
-| **Invest** | Start early, stay patient — time is your superpower. | Investment types, How money grows, Your money at work, Risk vs. reward, Quiz |
+| **Invest** | Start early, stay patient — time is your superpower. | Investment types, How money grows, Risk vs. reward, Quiz |
 | **Concepts** | Deep-dive explainers with quizzes. | What is a stock?, Why credit history matters, What is compound interest?, The rule of 72 |
 
 ---
@@ -63,8 +63,7 @@ All calculators use sliders and dropdowns — results update live.
 |------|----------------|
 | **Investment types** | Filterable asset grid (savings, index funds, bonds, stocks, crypto) with detail panels |
 | **Risk/return chart** | Bubble chart plotting risk vs. approximate return (Chart.js) |
-| **Compound interest** | Starting amount, monthly contribution, years, return % → contributed vs. growth + line chart |
-| **Your money at work** | Side-by-side bars: money you put in vs. money earned from growth |
+| **Compound interest** | Starting amount, monthly contribution, years, return % → contributed vs. growth, bar comparison, line chart |
 | **Risk vs. reward** | Tap savings, bonds, index funds, single stocks, or crypto to see profiles |
 
 ### Quizzes
@@ -148,4 +147,5 @@ Content assumes no prior finance knowledge and avoids shaming students for where
 ---
 
 ## Author
-TakN
+
+**Bharat Nagpal**
