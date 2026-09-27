@@ -200,6 +200,19 @@ h1.page-title { font-size:clamp(22px,2.3vw,28px);font-weight:800;letter-spacing:
 .section-head p { font-size:14px;color:var(--ink-3); }
 .section-link { font-size:14px;font-weight:600;color:var(--blue-600);text-decoration:none;white-space:nowrap; }
 .section-link:hover { text-decoration:underline; }
+.home-tile-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:32px 0; }
+.home-tile { min-width:0;align-self:start; }
+.home-tile[open] { grid-column:1 / -1; }
+.home-tile-summary { display:flex;align-items:center;gap:14px;min-height:104px;padding:18px 20px;list-style:none;cursor:pointer;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--sh-sm);transition:border-color 0.15s,box-shadow 0.15s; }
+.home-tile-summary::-webkit-details-marker { display:none; }
+.home-tile-summary:hover { border-color:var(--line-2);box-shadow:var(--sh-md); }
+.home-tile-summary > span:nth-child(2) { flex:1;min-width:0; }
+.home-tile-summary h2 { font-size:17px;font-weight:750;line-height:1.3; }
+.home-tile-summary p { margin-top:4px;font-size:13px;color:var(--ink-3);line-height:1.5; }
+.home-tile-chevron { color:var(--ink-3);font-size:20px;transition:transform 0.18s; }
+.home-tile[open] .home-tile-chevron { transform:rotate(180deg); }
+.home-tile-content { margin-top:12px;padding:20px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md); }
+.home-tile-content > .grid-3 { margin-top:14px; }
 h2.content-h2 { font-size:20px;font-weight:750;letter-spacing:-0.02em;margin:24px 0 10px; }
 h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
 .content p.body { font-size:15px;color:var(--ink-2);margin-bottom:12px;max-width:78ch; }
@@ -475,6 +488,10 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
   .header-progress { display:none; }
 }
 @media (max-width:680px) {
+  .home-tile-grid { grid-template-columns:1fr;gap:10px;margin:24px 0; }
+  .home-tile[open] { grid-column:auto; }
+  .home-tile-summary { min-height:88px;padding:14px; }
+  .home-tile-content { padding:14px; }
   .grid-2, .grid-3, .grid-4, .glossary-grid { grid-template-columns:1fr; }
   .hero { padding:var(--sp-6) var(--sp-5); }
   .band .btn { margin-left:0; }
@@ -582,12 +599,15 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
         <p class="hero-proof">Earn it, save it, grow it — and protect all three.</p>
       </div>
 
+      <div class="home-tile-grid">
       <!-- Featured lessons -->
-      <div class="section reveal" aria-label="Featured lessons">
-        <div class="section-head">
-          <h2>Featured lessons</h2>
-          <p>Great starting points if you're new here.</p>
-        </div>
+      <details class="home-tile reveal" aria-label="Featured lessons">
+        <summary class="home-tile-summary">
+          <span class="icon-chip" style="--acc:var(--teal-600);--acc-bg:var(--teal-50);"><i class="ti ti-book-2" aria-hidden="true"></i></span>
+          <span><h2>Featured lessons</h2><p>Great starting points if you're new here.</p></span>
+          <i class="ti ti-chevron-down home-tile-chevron" aria-hidden="true"></i>
+        </summary>
+        <div class="home-tile-content">
         <div class="grid-3">
           <a class="card hoverable lesson-card" href="#invest-compound" data-accent="invest">
             <span class="tag">Investing</span>
@@ -608,14 +628,18 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
             <span class="meta">6 min lesson + explorer →</span>
           </a>
         </div>
-      </div>
+        </div>
+      </details>
 
       <!-- Tools -->
-      <div class="section reveal" aria-label="Interactive tools">
-        <div class="section-head">
-          <h2>Interactive tools</h2>
-          <a class="section-link" href="#tools">See all tools →</a>
-        </div>
+      <details class="home-tile reveal" aria-label="Interactive tools">
+        <summary class="home-tile-summary">
+          <span class="icon-chip" style="--acc:var(--blue-600);--acc-bg:var(--blue-50);"><i class="ti ti-calculator" aria-hidden="true"></i></span>
+          <span><h2>Interactive tools</h2><p>Calculators and activities to put money skills into practice.</p></span>
+          <i class="ti ti-chevron-down home-tile-chevron" aria-hidden="true"></i>
+        </summary>
+        <div class="home-tile-content">
+        <a class="section-link" href="#tools">See all tools →</a>
         <div class="grid-3">
           <a class="card hoverable tool-card" href="#invest-compound" data-accent="invest">
             <span class="icon-chip"><i class="ti ti-trending-up" aria-hidden="true"></i></span>
@@ -648,10 +672,17 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
             <i class="ti ti-arrow-right go" aria-hidden="true"></i>
           </a>
         </div>
-      </div>
+        </div>
+      </details>
 
       <!-- AI prompts band -->
-      <div class="section reveal">
+      <details class="home-tile reveal" aria-label="Ask AI to Explain This">
+        <summary class="home-tile-summary">
+          <span class="icon-chip" style="--acc:var(--green-600);--acc-bg:var(--green-50);"><i class="ti ti-sparkles" aria-hidden="true"></i></span>
+          <span><h2>Ask AI to Explain This</h2><p>Guided prompts for exploring money topics with AI.</p></span>
+          <i class="ti ti-chevron-down home-tile-chevron" aria-hidden="true"></i>
+        </summary>
+        <div class="home-tile-content">
         <div class="band band-ai">
           <span class="icon-chip"><i class="ti ti-sparkles" aria-hidden="true"></i></span>
           <div>
@@ -660,14 +691,17 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
           </div>
           <a class="btn btn-primary" href="#ai-prompts">Browse prompts</a>
         </div>
-      </div>
+        </div>
+      </details>
 
       <!-- Real-life scenarios -->
-      <div class="section reveal" aria-label="Real-life scenarios">
-        <div class="section-head">
-          <h2>Real-life scenarios</h2>
-          <p>Situations you'll actually face — and where to learn the answer.</p>
-        </div>
+      <details class="home-tile reveal" aria-label="Real-life scenarios">
+        <summary class="home-tile-summary">
+          <span class="icon-chip" style="--acc:var(--gold-600);--acc-bg:var(--gold-50);"><i class="ti ti-message-circle-2" aria-hidden="true"></i></span>
+          <span><h2>Real-life scenarios</h2><p>Everyday money situations and where to learn the answer.</p></span>
+          <i class="ti ti-chevron-down home-tile-chevron" aria-hidden="true"></i>
+        </summary>
+        <div class="home-tile-content">
         <div class="grid-3">
           <div class="scenario-card" data-accent="make">
             <span class="icon-chip"><i class="ti ti-receipt" aria-hidden="true"></i></span>
@@ -688,10 +722,17 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
             <a href="#save-emergency">Build your stash →</a>
           </div>
         </div>
-      </div>
+        </div>
+      </details>
 
       <!-- Quiz band -->
-      <div class="section reveal">
+      <details class="home-tile reveal" aria-label="Think you know money">
+        <summary class="home-tile-summary">
+          <span class="icon-chip" style="--acc:var(--blue-600);--acc-bg:var(--blue-50);"><i class="ti ti-clipboard-check" aria-hidden="true"></i></span>
+          <span><h2>Think you know money?</h2><p>Try 12 scenario questions across all four pillars.</p></span>
+          <i class="ti ti-chevron-down home-tile-chevron" aria-hidden="true"></i>
+        </summary>
+        <div class="home-tile-content">
         <div class="band band-quiz">
           <span class="icon-chip"><i class="ti ti-clipboard-check" aria-hidden="true"></i></span>
           <div>
@@ -700,10 +741,17 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
           </div>
           <a class="btn btn-primary" href="#quiz">Take the quiz</a>
         </div>
-      </div>
+        </div>
+      </details>
 
       <!-- Survey band -->
-      <div class="section reveal">
+      <details class="home-tile reveal" aria-label="Help shape this site">
+        <summary class="home-tile-summary">
+          <span class="icon-chip" style="--acc:var(--gold-600);--acc-bg:var(--gold-50);"><i class="ti ti-message-circle" aria-hidden="true"></i></span>
+          <span><h2>Help shape this site</h2><p>Share what students and teachers want to learn next.</p></span>
+          <i class="ti ti-chevron-down home-tile-chevron" aria-hidden="true"></i>
+        </summary>
+        <div class="home-tile-content">
         <div class="band band-survey">
           <span class="icon-chip"><i class="ti ti-message-circle" aria-hidden="true"></i></span>
           <div>
@@ -712,6 +760,8 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
           </div>
           <a class="btn btn-primary" href="#survey">Take the survey</a>
         </div>
+        </div>
+      </details>
       </div>
 
       <!-- About strip -->

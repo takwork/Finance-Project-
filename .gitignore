@@ -4,6 +4,7 @@ Thumbs.db
 
 # Claude Code project context — local only, not part of the deployed site
 CLAUDE.md
+rules.md
 
 # Guard against accidentally copying working-folder files from
 # ~/projects/personal_finance into this deploy repo
