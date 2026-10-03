@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XWRTSPM39R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XWRTSPM39R');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>try{if(localStorage.getItem('tml2-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
+<title>Jobs &amp; Paychecks · Teen Money Lab</title>
+<meta name="description" content="Working more hours has a hard ceiling. Building a skill raises what you earn per hour — that’s how income grows without burning out.">
+<link rel="canonical" href="https://highschool-finance.com/learn/make-jobs.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Teen Money Lab">
+<meta property="og:title" content="Jobs &amp; Paychecks · Teen Money Lab">
+<meta property="og:description" content="Working more hours has a hard ceiling. Building a skill raises what you earn per hour — that’s how income grows without burning out.">
+<meta property="og:url" content="https://highschool-finance.com/learn/make-jobs.html">
+<meta property="og:image" content="https://highschool-finance.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body class="parts-page" data-root="../" data-page="make-jobs" data-accent="make">
+
+<header class="site-header">
+  <button class="menu-btn" id="menu-open" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><i class="ti ti-menu-2" aria-hidden="true"></i></button>
+  <a class="logo" href="../index.html"><span class="logo-mark"><i class="ti ti-coin" aria-hidden="true"></i></span>Teen Money <em>Lab</em></a>
+  <nav class="top-links" aria-label="Main">
+    <a href="../lessons.html" data-page="lessons">Lessons</a><a href="../tools.html" data-page="tools">Tools</a><a href="../quiz.html" data-page="quiz">Quiz</a><a href="../ask-ai.html" data-page="ask-ai">Ask AI</a><a href="../glossary.html" data-page="glossary">Glossary</a>
+  </nav>
+</header>
+
+<main class="page lesson-3col">
+  <p class="crumb"><span class="dot"></span><a href="../lessons.html">Earn</a> · Lesson 1 of 3</p>
+  <h1>Your pay goes up when your skills go up</h1>
+  <p class="lede">Working more hours has a hard ceiling. Building a skill raises what you earn <em>per hour</em> — that’s how income grows without burning out.</p>
+
+  <nav class="part-nav" aria-label="Sections of this lesson">
+    <a href="#learn"><span><span class="n">1</span>Learn</span></a>
+    <a href="#try"><span><span class="n">2</span>Try it</span></a>
+    <a href="#check"><span><span class="n">3</span>Check</span></a>
+  </nav>
+
+  <section class="part" id="learn" aria-labelledby="h-learn">
+    <h2 class="part-head" id="h-learn"><span class="n">1</span>Learn</h2>
+    <ol class="points">
+      <li><strong>Hours have a ceiling</strong>There are only so many hours in a week — and school takes most of them. If your only lever is “work more,” your income maxes out fast.</li>
+      <li><strong>Skills don’t</strong>Tutoring, video editing, design, coding help, photography — every skill you add raises your hourly rate. Skills compound like money.</li>
+    </ol>
+    <p class="example"><span class="who">Example</span>Maya tutors math at $15/hr freshman year. By senior year she adds video editing and charges $35/hr. Same hours, more than double the money — because she leveled up her skills.</p>
+  </section>
+
+  <section class="part part-try" id="try" aria-labelledby="h-try">
+    <h2 class="part-head" id="h-try"><span class="n">2</span>Try it<small><i class="ti ti-calculator" aria-hidden="true"></i> Calculator</small></h2>
+  <div class="tool" data-tool="skill" aria-labelledby="t-skill">
+    <h3 class="tool-title" id="t-skill">What could a skill earn you?</h3>
+
+    <div class="result" aria-live="polite">
+      <p class="result-label">In one year</p>
+      <p class="big" data-out="yearly">$3,900</p>
+      <p class="says" data-out="says"></p>
+    </div>
+
+    <div class="field">
+      <div class="field-top"><label for="skill-sel">Your skill</label></div>
+      <select id="skill-sel" name="skill">
+        <option value="15">Tutoring</option>
+        <option value="18">Babysitting / Childcare</option>
+        <option value="20">Video editing</option>
+        <option value="22">Graphic design</option>
+        <option value="14">Lawn care / Cleaning</option>
+        <option value="25">Coding / Web help</option>
+        <option value="16">Social media management</option>
+        <option value="20">Photography assist</option>
+        <option value="0">My own rate…</option>
+      </select>
+    </div>
+    <div class="field" data-custom hidden>
+      <div class="field-top"><label for="custom-rate">Your hourly rate</label><output data-out="rate" for="custom-rate">$20/hr</output></div>
+      <input type="range" id="custom-rate" name="rate" min="10" max="60" step="1" value="20">
+    </div>
+    <div class="field">
+      <div class="field-top"><label for="hrs-week">Hours per week</label><output data-out="hrs" for="hrs-week">5 hrs</output></div>
+      <input type="range" id="hrs-week" name="hrs" min="1" max="20" step="1" value="5">
+    </div>
+  </div>
+  </section>
+
+  <section class="part" id="check" aria-labelledby="h-check">
+    <h2 class="part-head" id="h-check"><span class="n">3</span>Check</h2>
+  <div class="remember">
+    <p class="label">Remember</p>
+    <p>Pay follows scarcity. If almost anyone can do a task, rates stay low — hard-to-learn skills earn more. Start building one this semester.</p>
+  </div>
+
+  <div class="section check" aria-labelledby="qc">
+    <p class="label" id="qc">Quick check</p>
+    <p class="q">Why do skilled side hustles (coding, design, tutoring) generally pay more than simple tasks?</p>
+    <button class="opt">They take less time per job</button>
+    <button class="opt" data-correct>Fewer people can do them, so demand outpaces supply</button>
+    <button class="opt">The government sets higher rates for them</button>
+    <p class="feedback" aria-live="polite"><strong data-fb></strong><span data-exp hidden>Pay follows scarcity. If almost anyone can do a task, rates stay low. Hard-to-learn skills command higher rates.</span></p>
+  </div>
+  </section>
+
+  <nav class="next-up" id="lesson-nav" aria-label="Lesson navigation"></nav>
+</main>
+
+<footer class="site-footer">© Teen Money Lab<span class="sep">·</span><a href="../about.html">About</a><span class="sep">·</span>For learning, not financial advice</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

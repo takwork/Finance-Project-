@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XWRTSPM39R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XWRTSPM39R');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>try{if(localStorage.getItem('tml2-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
+<title>Money Quiz · Teen Money Lab</title>
+<meta name="description" content="12 real-life questions — 3 from each part, drawn from a bank of 36. One at a time, with an explanation after each. A new mix every time.">
+<link rel="canonical" href="https://highschool-finance.com/quiz.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Teen Money Lab">
+<meta property="og:title" content="Money Quiz · Teen Money Lab">
+<meta property="og:description" content="12 real-life questions — 3 from each part, drawn from a bank of 36. One at a time, with an explanation after each. A new mix every time.">
+<meta property="og:url" content="https://highschool-finance.com/quiz.html">
+<meta property="og:image" content="https://highschool-finance.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-root="" data-page="quiz">
+
+<header class="site-header">
+  <button class="menu-btn" id="menu-open" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><i class="ti ti-menu-2" aria-hidden="true"></i></button>
+  <a class="logo" href="index.html"><span class="logo-mark"><i class="ti ti-coin" aria-hidden="true"></i></span>Teen Money <em>Lab</em></a>
+  <nav class="top-links" aria-label="Main">
+    <a href="lessons.html" data-page="lessons">Lessons</a><a href="tools.html" data-page="tools">Tools</a><a href="quiz.html" data-page="quiz">Quiz</a><a href="ask-ai.html" data-page="ask-ai">Ask AI</a><a href="glossary.html" data-page="glossary">Glossary</a>
+  </nav>
+</header>
+
+<main class="page">
+  <div id="quiz-intro">
+    <h1>Money Quiz</h1>
+    <p class="lede">12 real-life questions — 3 from each part, drawn from a bank of 36. One at a time, with an explanation after each. A new mix every time.</p>
+    <button class="btn btn-primary" id="quiz-start" style="margin-top:28px">Start the quiz <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+  </div>
+  <div id="quiz-app" aria-live="polite"></div>
+</main>
+
+<footer class="site-footer">© Teen Money Lab<span class="sep">·</span><a href="about.html">About</a><span class="sep">·</span>For learning, not financial advice</footer>
+<script src="assets/site.js"></script>
+<script>
+(() => {
+  'use strict';
+  const QB = {
+    make: [
+      { q:'You tutor 4 hours a week at $18/hr. How much do you earn in a month (4 weeks)?', opts:['$72','$288','$180'], c:1,
+        exp:'4 hrs × $18 = $72/week. $72 × 4 weeks = $288/month.' },
+      { q:'Your gross paycheck is $400. Why might your take-home be only about $340?', opts:['Your employer keeps the difference','Taxes are automatically withheld','You owe money from last month'], c:1,
+        exp:'Federal income tax, state tax, and FICA are withheld automatically. You may get some back after filing.' },
+      { q:'What does FICA on your pay stub fund?', opts:['Federal Income Collection Allowance','Social Security and Medicare taxes','A retirement account you control'], c:1,
+        exp:'FICA takes 6.2% for Social Security and 1.45% for Medicare. Your employer matches it.' },
+      { q:'You earn $500 this month from a photography side hustle with no employer. What’s different about your taxes?', opts:['Nothing — you only owe taxes over $10,000','You must pay self-employment tax (15.3%) plus income tax','Taxes only apply next April, so ignore it now'], c:1,
+        exp:'Self-employed people pay both halves of FICA. Keep ~25–30% of every self-employment dollar aside.' },
+      { q:'Which strategy most reliably increases your hourly earning rate over time?', opts:['Working more hours at your current job','Building a high-demand skill and showing results','Waiting for your employer’s annual raise'], c:1,
+        exp:'Skills compound like money. Hours worked have a ceiling; skills don’t.' },
+      { q:'A W-2 form arrives from your employer in January. What is it for?', opts:['Applying for a new job','Filing your tax return — it shows what you earned and what was withheld','Proving employment for a loan'], c:1,
+        exp:'Employers send W-2s by January 31. They report your wages and withholding so you can file your return by April 15.' },
+      { q:'What is “net pay”?', opts:['What you earn before any deductions','What you take home after taxes and deductions','What you’d earn if you worked overtime'], c:1,
+        exp:'Gross pay = before deductions. Net pay = after. Always budget using net — that’s the money you actually have.' },
+      { q:'You negotiate your wage from $14/hr to $16/hr. Working 20 hrs/week, how much extra do you earn per month (4 weeks)?', opts:['$40 more','$80 more','$160 more'], c:2,
+        exp:'$2 more × 20 hrs = $40/week. $40 × 4 weeks = $160/month — about $1,920 extra per year from one conversation.' },
+      { q:'Your friend works “under the table” for cash and doesn’t report it. What risk are they taking?', opts:['None — cash income isn’t taxable','Underreporting income is illegal and can mean penalties or back taxes','They’ll just get a smaller refund'], c:1,
+        exp:'All income is taxable no matter how it’s paid — cash, Venmo, or crypto. Not reporting it is tax evasion.' }
+    ],
+    save: [
+      { q:'What does “pay yourself first” mean?', opts:['Buy the things you want before paying bills','Move money to savings before spending anything else','Only save if you have money left over'], c:1,
+        exp:'Savings moves out the moment you get paid. It removes the “should I save this month?” decision.' },
+      { q:'Why should your emergency fund NOT be in a stock market account?', opts:['Because stocks don’t earn interest','Because markets can drop 30–40% right when you need the money most','Because banks don’t allow it'], c:1,
+        exp:'A 35% drop the week your car breaks means forced selling at a loss. Emergency money must be safe and liquid.' },
+      { q:'The 50/30/20 budget rule allocates your income as:', opts:['50% wants, 30% needs, 20% savings','50% savings, 30% needs, 20% wants','50% needs, 30% wants, 20% savings/debt'], c:2,
+        exp:'50% fixed needs, 30% flexible wants, 20% savings or debt payoff. Ratios can shift — the point is a plan.' },
+      { q:'Financial experts typically recommend keeping how much in an emergency fund?', opts:['1 week of expenses','3–6 months of essential expenses','2 years of expenses'], c:1,
+        exp:'3–6 months of essentials means a job loss or major repair won’t force you into debt.' },
+      { q:'What is the main advantage of a high-yield savings account over regular checking?', opts:['It’s harder to access so you spend less','It earns significantly more interest on your balance','It comes with a better debit card'], c:1,
+        exp:'0.01% vs 4–5%: on $1,000 that’s $0.10 vs $40–50 per year — for moving the money once.' },
+      { q:'You want a $600 item in 4 months. How much do you need to save per month?', opts:['$100/month','$150/month','$200/month'], c:1,
+        exp:'$600 ÷ 4 = $150/month. A number plus a deadline makes saving automatic.' },
+      { q:'You take home $1,600/month and spend $900 on rent, $200 on food, and $300 on other things. How much is left to save?', opts:['$0','$200','$400'], c:1,
+        exp:'$1,600 − $900 − $200 − $300 = $200. Even $200/month is $2,400 a year before any interest.' },
+      { q:'You save $40 per week from a part-time job. About how much is that over a 36-week school year?', opts:['$720','$1,440','$2,000'], c:1,
+        exp:'$40 × 36 weeks = $1,440. Small, steady amounts add up faster than most people expect.' },
+      { q:'Your essential expenses are $250/month. What’s a 3-month emergency fund target?', opts:['$250','$500','$750'], c:2,
+        exp:'3 × $250 = $750. That’s the cushion that keeps a dead phone or lost hours from becoming debt.' }
+    ],
+    invest: [
+      { q:'You put $50/month into an index fund for 30 years at 7% ($18,000 contributed). Roughly what might you end up with?', opts:['$18,000 — same as you put in','$30,000','~$60,000 — compounding tripled your money'], c:2,
+        exp:'At 7% compounded for 30 years, $50/month grows to ~$60,000. Compounding added ~$42,000.' },
+      { q:'What’s the main advantage of a mutual/index fund over picking a single stock?', opts:['Funds always go up in value','You own hundreds of companies, so one failure doesn’t ruin you','Funds always have higher returns'], c:1,
+        exp:'Diversification: one company fails, hundreds of others still work for you.' },
+      { q:'You invest $500 in a single stock. The company goes bankrupt. What happens?', opts:['You get your $500 back — the government protects investors','You lose the full $500 — stockholders are last in line','Your broker covers the loss'], c:1,
+        exp:'In bankruptcy, employees, creditors, and bondholders are paid first. Stockholders typically get nothing.' },
+      { q:'You invest at roughly 9% per year. About how long until your money doubles (Rule of 72)?', opts:['About 4 years','About 8 years (72 ÷ 9 = 8)','About 18 years'], c:1,
+        exp:'72 ÷ 9 = 8 years. Each doubling takes about the same time at a steady rate.' },
+      { q:'You’re saving to buy a car in 8 months. Where should you put that money?', opts:['A high-yield savings account — safe and accessible','Crypto — potential gains could speed up your goal','An index fund — long-term growth is better'], c:0,
+        exp:'For goals under 1–2 years, markets are too risky. Short-term money belongs in safe, liquid accounts.' },
+      { q:'Inflation is 3% and your savings account earns 1%. What’s happening to your money’s real value?', opts:['It’s growing — 1% is still positive','It’s losing purchasing power each year','Inflation doesn’t affect savings accounts'], c:1,
+        exp:'Real return = return − inflation = −2%. The dollar amount grows, but what it buys shrinks.' },
+      { q:'What is diversification in investing?', opts:['Putting all your money in the best-performing investment','Spreading money across many investments so one failure doesn’t sink you','Switching investments frequently to chase returns'], c:1,
+        exp:'“Don’t put all your eggs in one basket.” A fund holding hundreds of companies is diversified — if one fails, the rest keep working.' },
+      { q:'What is a bond?', opts:['A guaranteed investment that always pays 5%+','A type of stock in a government company','A loan you make to a government or company in exchange for interest'], c:2,
+        exp:'When you buy a bond, you’re the lender. Bonds are generally steadier than stocks but grow less.' },
+      { q:'One index fund charges 0.05% in yearly fees; a managed fund charges 1.2%. On $10,000 over 30 years at 7% returns, roughly what’s the difference?', opts:['A few dollars — fees are too small to matter','Around $20,000 — high fees eat compounding (≈$75,000 vs ≈$54,000)','Higher fees mean higher returns'], c:1,
+        exp:'Fees come out of your return every single year, so they compound too: ≈$75,000 with the cheap fund vs ≈$54,000 with the expensive one.' }
+    ],
+    protect: [
+      { q:'What’s the biggest single factor in your credit score?', opts:['How much money you have in the bank','Your payment history — paying bills on time','Your income level'], c:1,
+        exp:'Payment history is ~35% of a FICO score. One missed payment can drop you 50–100 points.' },
+      { q:'You carry a $1,000 credit card balance at 23% APR and pay only the minimum. What happens?', opts:['You pay it off in about 2 years','It can take years — often 5 or more — and cost hundreds extra in interest','Interest stops once you’ve paid back the original $1,000'], c:1,
+        exp:'Card minimums shrink as the balance drops, which stretches the payoff out for years. This is compound interest working against you.' },
+      { q:'Someone DMs you offering to “flip” your $200 into $800 in 48 hours. What is this?', opts:['A legitimate side hustle opportunity','A rare investment worth exploring','A scam — guaranteed fast returns don’t exist'], c:2,
+        exp:'Money-flipping scams target teens on social media. No real investment guarantees 4× in two days.' },
+      { q:'What does FDIC insurance protect?', opts:['Your stock portfolio from market losses','Your bank deposits (up to $250,000) if the bank fails','Your credit score if you miss a payment'], c:1,
+        exp:'FDIC covers bank deposits. Stocks and investments are NOT covered.' },
+      { q:'Your landlord’s insurance covers the building. What protects your laptop in a fire?', opts:['Nothing — landlord insurance covers everything inside','Renters insurance, about $10–20/month','Homeowners insurance, since you live there'], c:1,
+        exp:'Landlord policies cover the structure. Renters insurance protects your personal belongings.' },
+      { q:'You co-sign a car loan for a friend and they miss payments. What happens to you?', opts:['Nothing — it’s their loan','It can hurt your credit too — co-signers are equally responsible','Only their credit is affected'], c:1,
+        exp:'Co-signing makes you equally responsible. Missed payments appear on your credit report too.' },
+      { q:'You lose your wallet with your Social Security card inside. What’s the free first step to protect your credit?', opts:['Wait and see if anyone misuses it','Freeze your credit for free at all 3 bureaus (Equifax, Experian, TransUnion)','Apply for a brand-new Social Security number'], c:1,
+        exp:'A credit freeze is free and stops new accounts from being opened in your name. You generally can’t change your SSN just because a card was lost.' },
+      { q:'You get a text: “Your bank account is locked — click here to verify your password.” What should you do?', opts:['Click the link and enter your password to unlock it fast','Ignore the link and contact your bank through its official app or the number on your card','Reply with your account number to prove it’s you'], c:1,
+        exp:'Real banks never ask for your password by text. Always go directly to the official app or number — never a link in an unexpected message.' },
+      { q:'What is a deductible in an insurance policy?', opts:['The monthly amount you pay for coverage','The amount you pay out of pocket before insurance starts paying','The maximum the policy will ever pay you'], c:1,
+        exp:'Premium = what you pay regularly. Deductible = what you pay first, out of pocket. Coverage limit = the max the policy pays.' }
+    ]
+  };
+  const PARTS = [['make', 'Earn', 'learn/make-jobs.html'], ['save', 'Save', 'learn/save-banking.html'],
+                 ['invest', 'Invest', 'learn/invest-funds.html'], ['protect', 'Protect', 'learn/protect-credit.html']];
+
+  const app = document.getElementById('quiz-app');
+  const intro = document.getElementById('quiz-intro');
+  let questions = [];
+  let at = 0;
+  let score = {};
+
+  const shuffle = arr => {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+    return a;
+  };
+  const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+
+  function start() {
+    questions = PARTS.flatMap(([key, name]) => shuffle(QB[key]).slice(0, 3).map(q => ({ ...q, key, name })));
+    at = 0;
+    score = { make:0, save:0, invest:0, protect:0 };
+    intro.hidden = true;
+    show();
+  }
+
+  function show() {
+    const q = questions[at];
+    app.replaceChildren();
+    const top = el('div', 'quiz-top');
+    top.append(el('span', '', `Question ${at + 1} of ${questions.length}`));
+    const track = el('div', 'quiz-track');
+    const fill = el('span');
+    fill.style.width = (at / questions.length * 100) + '%';
+    track.append(fill);
+
+    const body = el('div', 'check');
+    body.dataset.accent = q.key;
+    body.append(el('p', 'quiz-pillar', q.name), el('p', 'quiz-q', q.q));
+    const fb = el('p', 'feedback');
+    const next = el('button', 'btn btn-primary quiz-next', at < questions.length - 1 ? 'Next question' : 'See my score');
+    next.hidden = true;
+    next.addEventListener('click', () => { at++; if (at < questions.length) show(); else finish(); window.scrollTo({ top:0 }); });
+
+    const opts = q.opts.map((text, i) => {
+      const b = el('button', 'opt', text);
+      b.addEventListener('click', () => {
+        const ok = i === q.c;
+        if (ok) score[q.key]++;
+        opts.forEach((x, j) => {
+          x.disabled = true;
+          if (j === q.c) { x.classList.add('right'); x.prepend('✓ '); }
+          else if (j === i) { x.classList.add('wrong'); x.prepend('✕ '); }
+          else x.classList.add('faded');
+        });
+        fb.replaceChildren(el('strong', '', ok ? 'Correct. ' : 'Not quite. '), q.exp);
+        fb.classList.add('show');
+        next.hidden = false;
+        next.focus({ preventScroll:true });
+      });
+      return b;
+    });
+    body.append(...opts, fb, next);
+    app.append(top, track, body);
+  }
+
+  function finish() {
+    const total = Object.values(score).reduce((a, b) => a + b, 0);
+    const pct = Math.round(total / questions.length * 100);
+    if (typeof gtag === 'function') gtag('event', 'quiz_completed', { quiz_score:total, quiz_total:questions.length, quiz_percentage:pct });
+    const msg = pct === 100 ? 'Perfect score.' : pct >= 75 ? 'Great job.' : pct >= 50 ? 'Good start.' : 'Keep learning — you’ll get there.';
+    app.replaceChildren();
+    app.append(el('p', 'result-label', 'Your score'), el('p', 'score-big', `${total} / ${questions.length}`), el('p', 'score-msg', msg));
+    const list = el('ul', 'breakdown');
+    PARTS.forEach(([key, name, link]) => {
+      const li = el('li');
+      li.dataset.accent = key;
+      li.append(name, el('b', '', `${score[key]} / 3`));
+      if (score[key] < 3) { const a = el('a', '', 'Review'); a.href = link; li.append(a); }
+      list.append(li);
+    });
+    const actions = el('div', 'end-actions');
+    const again = el('button', 'btn btn-primary', 'Try a new set');
+    again.addEventListener('click', start);
+    const back = el('a', 'btn btn-quiet', 'Back to lessons');
+    back.href = 'lessons.html';
+    actions.append(again, back);
+    app.append(list, actions);
+  }
+
+  document.getElementById('quiz-start').addEventListener('click', start);
+})();
+</script>
+</body>
+</html>
