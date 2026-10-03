@@ -18,3 +18,7 @@ skills/
 
 # Vercel CLI local state, if this folder ever gets `vercel link`ed
 .vercel
+
+# Local-only homepage redesign drafts/mockups — not approved for the live
+# site yet, so kept out of git entirely (never pushed, never deployed)
+/redesign/

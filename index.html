@@ -326,17 +326,19 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
 .hero p.sub { font-size:13.5px;color:var(--ink-3);line-height:1.55;margin:0 auto 3px;max-width:1000px; }
 .hero p.sub-2 { margin-bottom:16px; }
 .hero-ctas { display:flex;gap:var(--sp-3);justify-content:center;flex-wrap:wrap;margin-bottom:20px; }
-.hero-pillars { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:620px;margin:0 auto; }
-.hp3 { display:flex;flex-direction:column;align-items:center;gap:3px;background:var(--bg);border:1.5px solid var(--line);border-bottom:3px solid var(--acc);border-radius:var(--r-md);padding:12px 10px 10px;text-decoration:none;color:var(--ink);box-shadow:var(--sh-sm);transition:transform 0.16s,box-shadow 0.16s; }
+.hero-pillars { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:560px;margin:0 auto; }
+.hp3 { display:flex;flex-direction:column;align-items:center;text-align:center;gap:9px;background:var(--acc-bg);border:1px solid var(--acc-line);border-radius:18px;padding:20px 8px 16px;text-decoration:none;color:var(--ink);transition:transform 0.16s,box-shadow 0.16s; }
 .hp3:hover { transform:translateY(-3px);box-shadow:var(--sh-md); }
-.hp3 i { font-size:26px;color:var(--acc);line-height:1; }
-.hp3 .n { font-size:15.5px;font-weight:750;color:var(--acc-strong);letter-spacing:-0.01em; }
-.hp3 .d { font-size:12px;color:var(--ink-4);font-weight:500;line-height:1.35; }
-.hero-protect { display:inline-flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;max-width:620px;width:100%;margin:12px auto 0;background:var(--gold-50);border:1px solid var(--gold-100);border-radius:var(--r-md);padding:8px 14px;font-size:13px;color:var(--ink-2);text-decoration:none;transition:border-color 0.15s,box-shadow 0.15s; }
-.hero-protect i { color:var(--gold-500);font-size:18px; }
-.hero-protect strong { color:var(--gold-600); }
-.hero-protect .go-arrow { color:var(--gold-600);font-weight:600; }
-.hero-protect:hover { border-color:var(--gold-500);box-shadow:var(--sh-sm); }
+.hp3-icon { width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:20px;background:var(--acc);color:#fff; }
+.hp3[data-accent="make"] .hp3-icon   { box-shadow:0 6px 14px -4px rgba(22,163,74,0.45); }
+.hp3[data-accent="save"] .hp3-icon   { box-shadow:0 6px 14px -4px rgba(37,99,235,0.45); }
+.hp3[data-accent="invest"] .hp3-icon { box-shadow:0 6px 14px -4px rgba(13,148,136,0.45); }
+.hp3 .n { font-size:15.5px;font-weight:800;color:var(--ink);letter-spacing:-0.01em; }
+.hp3 .d { font-size:11.5px;color:var(--ink-2);font-weight:500;line-height:1.3;opacity:.85; }
+.hero-protect { display:block;max-width:560px;margin:14px auto 0;text-align:center;text-wrap:balance;line-height:1.5;font-size:13.5px;color:var(--ink-3);text-decoration:none; }
+.hero-protect i { color:var(--gold-600);font-size:15px;vertical-align:-2px;margin-right:4px; }
+.hero-protect strong { color:var(--ink-2);font-weight:600; }
+.hero-protect:hover { color:var(--ink-2); }
 .hero-proof { margin-top:16px;font-size:13px;color:var(--ink-3); }
 .hero-proof strong { color:var(--green-600);font-weight:750;font-variant-numeric:tabular-nums; }
 
@@ -585,18 +587,17 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
     <section class="page" id="page-home" aria-label="Home">
       <div class="hero">
         <h1>Money skills for real life, <em>before</em> you need them.</h1>
-        <p class="sub">Schools teach algebra, chemistry, and history — yet most students graduate without a single lesson on money. This site exists to change that.</p>
-        <p class="sub sub-2">Practical lessons and real calculators for the three pillars of money: you earn it, you save part of it, and you invest those savings so they grow.</p>
+        <p class="sub sub-2">With real calculators built in.</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#make-jobs">Start learning <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
           <a class="btn btn-outline" href="#quiz">Take the quiz</a>
         </div>
         <div class="hero-pillars">
-          <a class="hp3" data-accent="make" href="#make-jobs"><i class="ti ti-briefcase" aria-hidden="true"></i><span class="n">Earn</span><span class="d">Jobs &amp; paychecks</span></a>
-          <a class="hp3" data-accent="save" href="#save-banking"><i class="ti ti-pig-money" aria-hidden="true"></i><span class="n">Save</span><span class="d">Smart money &amp; goals</span></a>
-          <a class="hp3" data-accent="invest" href="#invest-funds"><i class="ti ti-chart-line" aria-hidden="true"></i><span class="n">Invest</span><span class="d">Grow your money</span></a>
+          <a class="hp3" data-accent="make" href="#make-jobs"><span class="hp3-icon"><i class="ti ti-briefcase" aria-hidden="true"></i></span><span class="n">Earn</span><span class="d">Jobs &amp; paychecks</span></a>
+          <a class="hp3" data-accent="save" href="#save-banking"><span class="hp3-icon"><i class="ti ti-pig-money" aria-hidden="true"></i></span><span class="n">Save</span><span class="d">Smart money &amp; goals</span></a>
+          <a class="hp3" data-accent="invest" href="#invest-funds"><span class="hp3-icon"><i class="ti ti-chart-line" aria-hidden="true"></i></span><span class="n">Invest</span><span class="d">Grow your money</span></a>
         </div>
-        <a class="hero-protect" href="#protect-credit"><i class="ti ti-shield" aria-hidden="true"></i><span><strong>Protect what you build</strong> — credit, insurance, scams &amp; identity theft</span><span class="go-arrow">→</span></a>
+        <a class="hero-protect" href="#protect-credit"><strong><i class="ti ti-shield" aria-hidden="true"></i>Protect what you build</strong> — credit, insurance, scams &amp; identity theft</a>
         <p class="hero-proof">Earn it, save it, grow it — and protect all three.</p>
       </div>
 
@@ -1460,7 +1461,7 @@ h3.content-h3 { font-size:16px;font-weight:650;margin:18px 0 8px; }
       <div class="grid-2">
         <div class="card">
           <h3 class="content-h3" style="margin-top:0;">Why this exists</h3>
-          <p style="font-size:14.5px;color:var(--ink-2);line-height:1.75;">I created Teen Money Lab because personal finance is not taught enough in school, even though every student will need it in real life. Every lesson pairs a short explanation with a tool you can actually play with, because numbers you move yourself stick better than numbers you read.</p>
+          <p style="font-size:14.5px;color:var(--ink-2);line-height:1.75;">Schools teach algebra, chemistry, and history — but not money, even though every student will need it. I built Teen Money Lab to fill that gap. Every lesson pairs a short explanation with a tool you can actually play with, because numbers you move yourself stick better than numbers you read.</p>
         </div>
         <div class="card">
           <h3 class="content-h3" style="margin-top:0;">How to use it</h3>
