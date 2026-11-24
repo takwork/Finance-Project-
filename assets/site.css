@@ -164,6 +164,8 @@ body.drawer-open { overflow:hidden; }
 .crumb a { color:var(--acc-strong);text-decoration:none; }
 .page h1 { font-size:27px;line-height:1.25;letter-spacing:-0.02em;font-weight:800;margin-bottom:14px;text-wrap:balance; }
 .lede { font-size:18px;line-height:1.6;color:var(--ink-2); }
+.byline { font-size:15px;color:var(--ink-3);margin:-4px 0 14px; }
+.byline strong { color:var(--ink);font-weight:650; }
 .section { margin-top:44px; }
 .label {
   font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
