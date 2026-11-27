@@ -214,8 +214,10 @@
   /* ---------- quick check (one question per lesson) ---------- */
   function bindChecks() {
     document.querySelectorAll('.check').forEach(card => {
-      const opts = card.querySelectorAll('.opt');
       const fb = card.querySelector('.feedback');
+      const opts = [...card.querySelectorAll('.opt')];
+      for (let i = opts.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [opts[i], opts[j]] = [opts[j], opts[i]]; }
+      opts.forEach(o => fb.before(o));
       const verdict = fb.querySelector('[data-fb]');
       const why = fb.querySelector('[data-exp]');
       opts.forEach(o => o.addEventListener('click', () => {

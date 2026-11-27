@@ -95,7 +95,7 @@
         exp:'3 × $250 = $750. That’s the cushion that keeps a dead phone or lost hours from becoming debt.' }
     ],
     invest: [
-      { q:'You put $50/month into an index fund for 30 years at 7% ($18,000 contributed). Roughly what might you end up with?', opts:['$18,000 — same as you put in','$30,000','~$60,000 — compounding tripled your money'], c:2,
+      { q:'You put $50/month into an index fund for 30 years at 7% ($18,000 contributed). Roughly what might you end up with?', opts:['About $18,000','About $30,000','About $60,000'], c:2,
         exp:'At 7% compounded for 30 years, $50/month grows to ~$60,000. Compounding added ~$42,000.' },
       { q:'What’s the main advantage of a mutual/index fund over picking a single stock?', opts:['Funds always go up in value','You own hundreds of companies, so one failure doesn’t ruin you','Funds always have higher returns'], c:1,
         exp:'Diversification: one company fails, hundreds of others still work for you.' },
@@ -111,7 +111,7 @@
         exp:'“Don’t put all your eggs in one basket.” A fund holding hundreds of companies is diversified — if one fails, the rest keep working.' },
       { q:'What is a bond?', opts:['A guaranteed investment that always pays 5%+','A type of stock in a government company','A loan you make to a government or company in exchange for interest'], c:2,
         exp:'When you buy a bond, you’re the lender. Bonds are generally steadier than stocks but grow less.' },
-      { q:'One index fund charges 0.05% in yearly fees; a managed fund charges 1.2%. On $10,000 over 30 years at 7% returns, roughly what’s the difference?', opts:['A few dollars — fees are too small to matter','Around $20,000 — high fees eat compounding (≈$75,000 vs ≈$54,000)','Higher fees mean higher returns'], c:1,
+      { q:'One index fund charges 0.05% in yearly fees; a managed fund charges 1.2%. On $10,000 over 30 years at 7% returns, roughly what’s the difference?', opts:['A few dollars','Around $20,000','The managed fund ends up ahead'], c:1,
         exp:'Fees come out of your return every single year, so they compound too: ≈$75,000 with the cheap fund vs ≈$54,000 with the expensive one.' }
     ],
     protect: [
@@ -127,7 +127,7 @@
         exp:'Landlord policies cover the structure. Renters insurance protects your personal belongings.' },
       { q:'You co-sign a car loan for a friend and they miss payments. What happens to you?', opts:['Nothing — it’s their loan','It can hurt your credit too — co-signers are equally responsible','Only their credit is affected'], c:1,
         exp:'Co-signing makes you equally responsible. Missed payments appear on your credit report too.' },
-      { q:'You lose your wallet with your Social Security card inside. What’s the free first step to protect your credit?', opts:['Wait and see if anyone misuses it','Freeze your credit for free at all 3 bureaus (Equifax, Experian, TransUnion)','Apply for a brand-new Social Security number'], c:1,
+      { q:'You lose your wallet with your Social Security card inside. What’s the free first step to protect your credit?', opts:['Wait and see if anyone misuses it','Freeze your credit at the three credit bureaus','Apply for a brand-new Social Security number'], c:1,
         exp:'A credit freeze is free and stops new accounts from being opened in your name. You generally can’t change your SSN just because a card was lost.' },
       { q:'You get a text: “Your bank account is locked — click here to verify your password.” What should you do?', opts:['Click the link and enter your password to unlock it fast','Ignore the link and contact your bank through its official app or the number on your card','Reply with your account number to prove it’s you'], c:1,
         exp:'Real banks never ask for your password by text. Always go directly to the official app or number — never a link in an unexpected message.' },
@@ -195,7 +195,7 @@
       });
       return b;
     });
-    body.append(...opts, fb, next);
+    body.append(...shuffle(opts), fb, next);
     app.append(top, track, body);
   }
 
