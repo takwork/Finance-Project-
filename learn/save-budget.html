@@ -64,10 +64,62 @@
 
   <section class="part part-try" id="try" aria-labelledby="h-try">
     <h2 class="part-head" id="h-try"><span class="n">2</span>Try it<small><i class="ti ti-calculator" aria-hidden="true"></i> Calculator</small></h2>
-  <section class="tool" data-tool="sorter" aria-labelledby="t-sorter">
-    <p class="label">Warm up</p>
-    <h3 class="tool-title" id="t-sorter">Need or want?</h3>
-    <p class="tool-sub">Sort each one, then check.</p>
+  <section class="tool" data-tool="goalplan" id="plan" aria-labelledby="t-plan">
+    <h3 class="tool-title" id="t-plan">Plan for a goal</h3>
+    <p class="tool-sub">Filled in with a made-up example — Jordan, saving for a laptop. Change any number.</p>
+
+    <div class="result" aria-live="polite">
+      <p class="result-label" data-out="head-label">Saving $70 a month, you reach it in</p>
+      <p class="big" data-out="head">10 months</p>
+      <p class="says" data-out="says"></p>
+    </div>
+    <dl class="plan-facts">
+      <div><dt>Left after spending</dt><dd data-out="left">$100</dd></div>
+      <div><dt>Still needed for the goal</dt><dd data-out="need">$650</dd></div>
+      <div><dt>Needed each month to hit your date</dt><dd data-out="per-month">—</dd></div>
+    </dl>
+    <p class="plan-verdict" data-out="verdict" aria-live="polite"></p>
+
+    <div data-split-wrap>
+      <div class="split" role="img" aria-label="How the month's money is split: must-pay spending, optional spending, saving, and money not planned yet">
+        <span data-seg="ess" style="--c:#64748B"></span>
+        <span data-seg="opt" style="--c:#CBD5E1"></span>
+        <span data-seg="save" style="--c:var(--blue-600)"></span>
+        <span data-seg="free" style="--c:var(--line)"></span>
+      </div>
+      <p class="split-key">
+        <span style="--c:#64748B">Must-pay</span>
+        <span style="--c:#CBD5E1">Optional</span>
+        <span style="--c:var(--blue-600)">Saving</span>
+        <span style="--c:var(--line-2)">Not planned yet</span>
+      </p>
+    </div>
+
+    <div class="tool-divider"></div>
+    <p class="tool-h">Your month</p>
+    <div class="money-row"><label for="p-income">Money you get each month<small>Job, allowance, gifts</small></label><span class="money"><input id="p-income" name="income" type="number" inputmode="decimal" min="0" step="1" value="300"></span></div>
+    <div class="money-row"><label for="p-ess">Must-pay spending<small>Phone, bus pass, lunch</small></label><span class="money"><input id="p-ess" name="ess" type="number" inputmode="decimal" min="0" step="1" value="90"></span></div>
+    <div class="money-row"><label for="p-opt">Optional spending<small>Games, food out, clothes</small></label><span class="money"><input id="p-opt" name="opt" type="number" inputmode="decimal" min="0" step="1" value="110"></span></div>
+
+    <div class="tool-divider"></div>
+    <p class="tool-h">Your goal</p>
+    <div class="money-row"><label for="p-goal">Goal amount</label><span class="money"><input id="p-goal" name="goal" type="number" inputmode="decimal" min="0" step="1" value="800"></span></div>
+    <div class="money-row"><label for="p-saved">Already saved for it</label><span class="money"><input id="p-saved" name="saved" type="number" inputmode="decimal" min="0" step="1" value="150"></span></div>
+    <div class="money-row"><label for="p-date">Target date</label><input class="date-input" id="p-date" name="target" type="date"></div>
+
+    <div class="tool-divider"></div>
+    <div class="field">
+      <div class="field-top"><label for="p-save">You choose to save each month</label><span class="money money-sm"><input name="save-num" type="number" inputmode="decimal" min="0" step="1" value="70" aria-label="Monthly savings amount"></span></div>
+      <input type="range" id="p-save" name="save" min="0" max="100" step="1" value="70">
+      <p class="hint" data-out="save-hint"></p>
+    </div>
+    <p class="hint plan-note" data-out="input-note" hidden></p>
+    <p class="fine"><strong>How this works:</strong> “left after spending” is what’s free each month — you decide how much of it to save. Money you’ve already saved counts toward the goal, not as monthly income. We count whole months and round any partial month up, and round monthly amounts up to the next dollar. No interest is added: for a goal this close, keep the money somewhere safe like a savings account, not in investments. The 50/30/20 split above is one example, not a rule.</p>
+  </section>
+
+  <details class="practice">
+    <summary><span><span class="ex-t">Practice: need or want?</span><span class="ex-d">Optional · sort 8 everyday buys</span></span><i class="ti ti-chevron-down chev" aria-hidden="true"></i></summary>
+    <section class="tool" data-tool="sorter" aria-label="Need or want sorter">
     <div style="margin-top:14px">
       <div class="sort-row" data-ans="need"><span class="sort-name">Phone bill<span class="mark"></span></span><span class="seg"><button data-val="need" aria-pressed="false">Need</button><button data-val="want" aria-pressed="false">Want</button></span></div>
       <div class="sort-row" data-ans="want"><span class="sort-name">Movie night with friends<span class="mark"></span></span><span class="seg"><button data-val="need" aria-pressed="false">Need</button><button data-val="want" aria-pressed="false">Want</button></span></div>
@@ -82,48 +134,8 @@
       <button class="btn btn-quiet" data-check-sort>Check my sorting</button>
       <p data-sort-result aria-live="polite"></p>
     </div>
-  </section>
-
-  <section class="tool" data-tool="budget" aria-labelledby="t-budget">
-    <h3 class="tool-title" id="t-budget">Budget builder</h3>
-    <p class="tool-sub">Savings come out first, then the rest is split.</p>
-
-    <div class="result" aria-live="polite">
-      <p class="result-label">You save each month</p>
-      <p class="big" data-out="save">$50</p>
-      <p class="says" data-out="says"></p>
-    </div>
-    <div class="split" role="img" aria-label="How your monthly income is split between savings, needs and wants">
-      <span data-seg="save" style="--c:var(--blue-600)"></span>
-      <span data-seg="needs" style="--c:#94A3B8"></span>
-      <span data-seg="wants" style="--c:#CBD5E1"></span>
-    </div>
-    <p class="split-key">
-      <span style="--c:var(--blue-600)">Save <b data-out="k-save">$50</b></span>
-      <span style="--c:#94A3B8">Needs <b data-out="k-needs">$125</b></span>
-      <span style="--c:#CBD5E1">Wants <b data-out="k-wants">$75</b></span>
-    </p>
-
-    <div class="tool-divider"></div>
-    <div class="field">
-      <div class="field-top"><label for="s-income">Monthly income</label><output data-out="income" for="s-income">$250</output></div>
-      <input type="range" id="s-income" name="income" min="50" max="1500" step="25" value="250">
-    </div>
-    <div class="field">
-      <div class="field-top"><label for="s-save">Save first</label><output data-out="pct" for="s-save">20%</output></div>
-      <input type="range" id="s-save" name="pct" min="5" max="50" step="5" value="20">
-    </div>
-
-    <div class="tool-divider"></div>
-    <p class="tool-h">Turn it into a goal</p>
-    <p class="result-sm" data-out="goal-time">16 months</p>
-    <p class="says" data-out="goal-says" style="margin-bottom:18px"></p>
-    <div class="field">
-      <div class="field-top"><label for="goal-amt">Savings goal</label><output data-out="goal" for="goal-amt">$800</output></div>
-      <input type="range" id="goal-amt" name="goal" min="100" max="5000" step="100" value="800">
-    </div>
-    <p class="fine">After savings comes out, the rest is split using the classic 50:30 needs-to-wants ratio (5/8 needs, 3/8 wants).</p>
-  </section>
+    </section>
+  </details>
   </section>
 
   <section class="part" id="check" aria-labelledby="h-check">

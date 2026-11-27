@@ -26,6 +26,18 @@
   const fmt = n => '$' + Math.round(n).toLocaleString('en-US');
   const plural = (n, one, many) => n + ' ' + (n === 1 ? one : many);
 
+  /* ---------- goal planner date helpers ---------- */
+  // whole months from today until an ISO date (YYYY-MM-DD); a partial month doesn't count. null if not a real date
+  const monthsUntil = (iso, today) => {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+    if (!m) return null;
+    const y = +m[1], mo = +m[2] - 1, d = +m[3];
+    const t = new Date(y, mo, d);
+    if (t.getFullYear() !== y || t.getMonth() !== mo || t.getDate() !== d) return null;
+    return (y - today.getFullYear()) * 12 + (mo - today.getMonth()) - (d < today.getDate() ? 1 : 0);
+  };
+  const monthLabel = (today, add) => new Date(today.getFullYear(), today.getMonth() + add, 1).toLocaleDateString('en-US', { month:'long', year:'numeric' });
+
   /* ---------- lesson progress (kept for this browser tab only, like the old site's per-visit progress) ---------- */
   const PROGRESS_KEY = 'tml-progress';
   let done;
@@ -267,32 +279,116 @@
       });
     },
 
-    budget(el) {
-      tool(el, (v, out) => {
-        const inc = v('income');
-        const pct = v('pct');
-        const goal = v('goal');
-        const save = Math.round(inc * pct / 100);
-        const rem = inc - save;
-        const needs = Math.round(rem * 0.625);
-        const wants = Math.round(rem * 0.375);
-        out('income', fmt(inc));
-        out('pct', pct + '%');
-        out('save', fmt(save));
-        out('says', `That’s <strong>${fmt(save * 12)} a year</strong> — moved to savings before you spend anything else.`, true);
-        out('k-save', fmt(save));
-        out('k-needs', fmt(needs));
-        out('k-wants', fmt(wants));
-        el.querySelector('[data-seg="save"]').style.flexGrow = save;
-        el.querySelector('[data-seg="needs"]').style.flexGrow = needs;
-        el.querySelector('[data-seg="wants"]').style.flexGrow = wants;
-        out('goal', fmt(goal));
-        const months = Math.ceil(goal / save);
-        const d = new Date();
-        d.setMonth(d.getMonth() + months);
-        out('goal-time', plural(months, 'month', 'months'));
-        out('goal-says', `Saving ${fmt(save)} a month gets you to ${fmt(goal)} around <strong>${d.toLocaleDateString('en-US', { month:'long', year:'numeric' })}</strong>.`, true);
-      });
+    goalplan(el) {
+      const field = name => el.querySelector(`[name="${name}"]`);
+      const range = field('save');
+      const typed = field('save-num');
+      const dateIn = field('target');
+      const today = new Date();
+      if (!dateIn.value) {
+        let d = new Date(today.getFullYear(), today.getMonth() + 8, today.getDate());
+        if (d.getDate() !== today.getDate()) d = new Date(today.getFullYear(), today.getMonth() + 9, 0); // e.g. Jan 31 → last day of the month
+        dateIn.value = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      }
+      let invalid = false;
+      // blank counts as $0; negative or unreadable is flagged and also counted as $0, so results stay real numbers
+      const money = name => {
+        const input = field(name);
+        const raw = input.value.trim();
+        const n = Number(raw);
+        const bad = (input.validity && input.validity.badInput) || (raw !== '' && (!Number.isFinite(n) || n < 0));
+        input.setAttribute('aria-invalid', String(bad));
+        if (bad) invalid = true;
+        return bad || raw === '' ? 0 : n;
+      };
+      // text below is built only from numbers computed here and fixed wording, never from typed text
+      const out = (key, html) => { el.querySelector(`[data-out="${key}"]`).innerHTML = html; };
+      const run = e => {
+        invalid = false;
+        const income = money('income');
+        const ess = money('ess');
+        const opt = money('opt');
+        const goalAmt = money('goal');
+        const saved = money('saved');
+        const available = income - ess - opt;
+        const free = Math.max(0, Math.floor(available));
+
+        // money free to save vs. money the student chooses to save
+        const want = e && e.target === range ? Number(range.value) : money('save-num');
+        const chosen = Math.min(Math.round(want), free);
+        range.max = String(Math.max(free, 1));
+        range.disabled = free === 0;
+        range.value = String(chosen);
+        if (document.activeElement !== typed) typed.value = String(chosen);
+        paintRange(range);
+        out('save-hint', free > 0
+          ? `Up to ${fmt(free)} a month is free after spending.` + (want > free ? ` Counting ${fmt(free)}.` : '')
+          : 'Nothing is free to save until spending is less than what you get.');
+
+        const need = Math.max(0, goalAmt - saved);
+        const months = monthsUntil(dateIn.value, today);
+        const dateOk = months !== null && months >= 1;
+        dateIn.setAttribute('aria-invalid', String(goalAmt > 0 && need > 0 && !dateOk));
+        const perMonth = need > 0 && dateOk ? Math.ceil(need / months) : null;
+        const targetLabel = dateOk ? new Date(dateIn.value + 'T00:00').toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' }) : '';
+
+        out('left', available >= 0 ? fmt(available) : `${fmt(-available)} over`);
+        out('need', fmt(need));
+        out('per-month', goalAmt <= 0 || (need > 0 && perMonth === null) ? '—' : need === 0 ? '$0' : fmt(perMonth) + '/mo');
+
+        let label, head, says;
+        if (goalAmt <= 0) {
+          label = 'Your goal'; head = 'Add a goal'; says = 'Enter how much the thing you’re saving for costs.';
+        } else if (need === 0) {
+          label = 'Your goal'; head = 'Reached'; says = `You already have <strong>${fmt(saved)}</strong> — enough for your ${fmt(goalAmt)} goal.`;
+        } else if (available < 0) {
+          label = 'Your month'; head = 'Over budget';
+          says = `Spending is <strong>${fmt(-available)} more</strong> than what you get each month, so nothing is left to save yet. Cut optional spending or plan more income first.`;
+        } else if (chosen === 0) {
+          label = 'Your timeline'; head = 'Not started';
+          says = free > 0 ? 'Choose an amount to save each month to see when you’d get there.' : 'Nothing is left after spending yet, so there’s no timeline. Try lowering optional spending.';
+        } else {
+          const m = Math.ceil(need / chosen);
+          label = `Saving ${fmt(chosen)} a month, you reach it in`;
+          head = m > 600 ? '50+ years' : plural(m, 'month', 'months');
+          says = m > 600 ? 'That’s too far away to plan for — try saving more each month or a smaller goal.' : `That’s around <strong>${monthLabel(today, m)}</strong>.`;
+        }
+        out('head-label', label);
+        out('head', head);
+        out('says', says);
+
+        let verdict = '', tone = '';
+        if (goalAmt > 0 && need > 0) {
+          if (!dateOk) {
+            verdict = 'Pick a target date at least one month from today to check your plan.'; tone = 'warn';
+          } else if (available < 0) {
+            verdict = `Reaching it by ${targetLabel} takes ${fmt(perMonth)} a month — but right now spending is more than income.`; tone = 'bad';
+          } else if (perMonth > free) {
+            verdict = `Even saving all ${fmt(free)} that’s free isn’t enough by ${targetLabel} — that takes ${fmt(perMonth)} a month. Try a later date, a smaller goal, or less optional spending.`; tone = 'bad';
+          } else if (chosen >= perMonth) {
+            verdict = `Your plan works: ${fmt(chosen)} a month reaches the goal by ${targetLabel}.`; tone = 'ok';
+          } else {
+            verdict = `${fmt(chosen)} a month is ${fmt(perMonth - chosen)} short of reaching it by ${targetLabel}. You have ${fmt(free)} free, so saving ${fmt(perMonth)} a month would do it.`; tone = 'warn';
+          }
+        }
+        const v = el.querySelector('[data-out="verdict"]');
+        v.hidden = !verdict;
+        v.className = 'plan-verdict' + (tone ? ' ' + tone : '');
+        v.innerHTML = verdict ? `<i class="ti ${tone === 'ok' ? 'ti-circle-check' : 'ti-alert-circle'}" aria-hidden="true"></i><span>${verdict}</span>` : '';
+
+        el.querySelector('[data-split-wrap]').hidden = income <= 0 || available < 0;
+        el.querySelector('[data-seg="ess"]').style.flexGrow = ess;
+        el.querySelector('[data-seg="opt"]').style.flexGrow = opt;
+        el.querySelector('[data-seg="save"]').style.flexGrow = chosen;
+        el.querySelector('[data-seg="free"]').style.flexGrow = Math.max(0, available - chosen);
+
+        const note = el.querySelector('[data-out="input-note"]');
+        note.hidden = !invalid;
+        note.textContent = invalid ? 'A box has a negative or unreadable number, so it’s counted as $0.' : '';
+      };
+      el.addEventListener('input', run);
+      el.addEventListener('change', run);
+      run();
     },
 
     emergency(el) {
